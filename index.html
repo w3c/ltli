@@ -7,14 +7,14 @@
     <script class="remove">
       var respecConfig = {
           specStatus: "ED",
-	  edDraftURI: "http://www.inter-locale/w3c/ltli/LTLI.html",
+	        edDraftURI: "http://w3c.github.io/ltli/",
           shortName:  "ltli",
           editors: [
                 {   name:       "Addison Phillips",
                     company:    "Invited Expert"
 	    },
-	    {   name: "Felix Sasaki",
-		company: "W3C"
+	              {   name: "Felix Sasaki",
+		                company: "W3C"
             }
           ],
           previousMaturity: "WD",
@@ -43,7 +43,8 @@ localBiblio:  {
       };
 	    
     </script>
-    <style type="text/css">
+    
+<style type="text/css">
       div.example-title {
     padding-right:  1em;
     min-width: 7.5em;
@@ -75,7 +76,7 @@ span.example { padding: .1em .5em .15em; }
 
 .example {
     border-color: #AB7D1;
-    background: #8CA4A8;
+    background: #D3E9FF;
 }
     
     </style>
@@ -86,15 +87,28 @@ span.example { padding: .1em .5em .15em; }
     <section id="abstract">
       <p>This document describes the best practices for identifying or selecting
         the language of content as well as the the locale preferences used to
-        process or display data values and other information using Web
-        technologies. It describes how document formats, specifications, and
-        implementations should handle language tags, as well as extensions to
-        language tags to describe those cultural or linguistic preferences
-        referred to in internationalization as a "locale".</p>
+        process or display data values and other information on the Web. It
+        describes how document formats, specifications, and implementations
+        should handle language tags, as well as extensions to language tags to
+        describe the cultural or linguistic preferences referred to in
+        internationalization as a "locale".</p>
     </section>
     <section id="sotd">
-      <p>This is an updated Public Working Draft of "Language and Locale
-        Identifiers for the World Wide Web (LTLI)".</p>
+      <p>This is an updated Public Working Draft of "Language Tags and Locale
+        Identifiers for the World Wide Web". The Working Group expects this to become a Working
+        Group Note.</p>
+      
+      
+      <div class="note"><p>If you wish to make comments regarding this document, please 
+        <a href="https://github.com/w3c/ltli/issues" style="font-size: 120%;">raise a github issue</a>.
+        You may also send email to the list <a href="mailto:www-international@w3.org?subject=[ltli] ">www-international@w3.org</a> 
+            (<a href="mailto:www-international@w3.org?subject=subscribe">subscribe</a>,
+            <a href="http://lists.w3.org/Archives/Public/www-international/">archives</a>) as mentioned below.
+        Please include <q>[ltli]</q> at the start of your email's subject.  To make it easier to 
+        track comments, please raise separate issues or send separate emails for each comment. 
+        All comments are welcome.</p>
+      </div>
+    
     </section>
     <section id="introduction">
       <h2>Introduction</h2>
@@ -103,31 +117,35 @@ span.example { padding: .1em .5em .15em; }
         <p>Language tags, as defined in [[!BCP47]], have been generally adopted
           by Web and Internet protocols and formats as the preferred means of
           identifying the natural language of content. Web technologies depend
-          on these language tags to perform language-specific formatting or
-          processing. In addition, [[!BCP47]] language tags are also used to
-          identify cultural or linguistic preferences related to natural
-          language or regional association. These preferences are sometimes used
-          for processes such as presenting numbers, dates, or times; for sorting
-          lists linguistically; to provide defaults for preferences such as
-          calendar, units of measurement, or 12- vs. 24-hour time presentation;
-          and many other details that users might find too tedious to set
-          individually. Collectively, these preferences are usually called a
-          locale.</p>
+          on language tags to perform language-specific formatting or
+          processing. For example, a user-agent might use the language to select
+          the right font for displaying text or a Web page designers might style
+          text differently in one language than in another.</p>
+        <p>In addition, language tags are also used to identify cultural or
+          linguistic preferences related to natural language or regional
+          association. These preferences are sometimes used for processes such
+          as presenting numbers, dates, or times; for sorting lists
+          linguistically; to provide defaults for preferences such as calendar,
+          units of measurement, or 12- vs. 24-hour time presentation; and many
+          other details that users might find too tedious to set individually.
+          Collectively, these preferences are usually called a <a href="#locale">locale</a>.</p>
         <p>This document describes best practices for the adoption and use of
-          [[!BCP47]] language tags for the identification of natural language
-          content as well as the use of tags to represent the locale preferences
-          of the user or content author. It describes how document formats,
+          BCP47 language tags for the identification of natural language content
+          as well as the use of tags to represent the locale preferences of the
+          user or content author. It describes how document formats,
           specifications, and implementations should handle the language tags
           described by [[!BCP47]], as well as data structures that extend these
           tags to describe <a href="#international-preferences">international
             preferences</a> (see also sec. 3.1 in [[WS-I18N-SCENARIOS]]). </p>
         <p>Identification of language and locale has a broad range of
           applications within the World Wide Web. Existing standards which make
-          use of language identification includes the <code>xml:lang</code>
+          use of language identification include the <code>xml:lang</code>
           attribute in [[XML10]], the <code>lang</code> and <code>hreflang</code>
-          atttributes in [[HTML]], or the <code>language</code> property in
-          [[XSL10]]. Locale identification is used for example within the CLDR
-          project, cf. "Locale Data Markup Language (LDML)" [[!LDML]].</p>
+          atttributes in [[HTML]], the <code>language</code> property in
+          [[XSL10]], and the <code>:lang</code> pseudo-class in CSS
+          [[CSS3-SELECTORS]]. Language tags are also used to identify locales,
+          such as in the Unicode Common Locale Data Repository or "CLDR" project
+          [[!CLDR]].</p>
         <p>Locales can be identified in several ways, which generally are
           dependent on the programming language and operating environment of the
           user. One method is by inference from language tags. For example, an
@@ -164,8 +182,8 @@ span.example { padding: .1em .5em .15em; }
           form, and terminology of language tags. The second part, called <em>Matching
             of Language Tags</em> [[!RFC4647]], describes several schemes for
           matching, comparing, and selecting content using language tags and
-          includes useful terminology related to comparison of language preferences
-          to tagged content.</p>
+          includes useful terminology related to comparison of language
+          preferences to tagged content.</p>
         <p>A <dfn title="language-tag">language tag</dfn> is a string used as
           an identifier for a language. In this document, the term <em>language
             tag</em> always refers explicitly to a [[!BCP47]] language tag.
@@ -190,7 +208,8 @@ span.example { padding: .1em .5em .15em; }
           preferences. The HTTP [[RFC2616]] <code>Accept-Language</code>[[RFC3282]]
           header is an example of one kind of language priority list.</p>
         <p>A <dfn title="basic-language-range">basic language range</dfn> is
-          simply a language tag used to express a language preference. An <dfn
+          simply a language tag used to express a language preference. An <dfn
+
             title="extended-language-range">extended language range</dfn> allows
           a more expressive set of language preference through the use of a
           wildcard subtag <q><code>*</code></q>.</p>
@@ -251,8 +270,8 @@ span.example { padding: .1em .5em .15em; }
             visible strings</li>
           <li>Presentation (human-oriented formatting) of dates, times, numbers,
             lists, and other values</li>
-          <li>Collation, sorting, and organization of content (such as in a phone
-            book or a dictionary)</li>
+          <li>Collation, sorting, and organization of content (such as in a
+            phone book or a dictionary)</li>
           <li>Alternate time-keeping and calendars, which may include holidays,
             work rules, weekday/weekend distinctions, the number and
             organization of months, the numbering of years, and so forth</li>
@@ -280,10 +299,10 @@ span.example { padding: .1em .5em .15em; }
           culturally affected behavior.</p>
         <p>Generally, systems that are internationalized can support a wide
           variety of languages and behaviors to meet the international
-          preferences of many kinds of users. We a particular system can respond
-          to changes in the locale by trying to load different resources or
-          performing culturally appropriate formatting we say that this system
-          is <em>locale-aware</em> or <em>enabled</em>.&nbsp; </p>
+          preferences of many kinds of users. When a particular system can
+          respond to changes in the locale by trying to load different resources
+          or performing culturally appropriate formatting we say that this
+          system is <em>locale-aware</em> or <em>enabled</em>.&nbsp; </p>
         <p><dfn id="localization">Localization</dfn> The tailoring of a system
           to the individual cultural expectations of a specific target market or
           group of individuals. Localization includes, but is not limited to,
@@ -296,21 +315,23 @@ span.example { padding: .1em .5em .15em; }
         <p>Localized systems often need to perform matching between the
           end-user's international preferences (their "locale") and the
           resources, content, or processing available. This is called <dfn id="language_negotiation">Language
-            Negotiation</dfn>. The process of matching a user's preferences to
-          available localized resources. The system searches for matching
-          content or logic "falling-back" from more-specific to more-general
-          following a deterministic pattern.</p>
-        <p>International preferences do not always correlate strongly with
-          locale identifiers based solely on language and location. For example,
-          many cultures have more than one way of collating text, and so the
-          appropriate sort ordering cannot always be inferred from the language
-          or region alone. Thus German language users might need to choose
-          between different sort orderings as used in a dictionary versus in a
-          phone book.</p>
-        <p>One way to indicate some of these preferences is via registered
-          Extensions to [[!BCP47]]. The Unicode Common Locale Data Repository
-          project [[!CLDR]] maintains two such extensions: [[!RFC6497]] defines
-          an extension that describes <em>transformations</em> (generally text
+            Negotiation</dfn>. Language negotiation is, thus, process of
+          matching a user's preferences (in the form of a locale or language
+          tag) to available localized resources. The system searches for
+          matching content or logic "falling-back" from more-specific resources
+          to more-general ones following a deterministic pattern.</p>
+        <p>Language tags can provide information about the language, script,
+          region, and language variation using subtags. But sometimes there are
+          international preferences that do not correlate directly with any of
+          these. For example, many cultures have more than one way of sorting
+          content items, and so the appropriate sort ordering cannot always be
+          inferred from the language tag by itself. So, for example, German
+          language users might want to choose between the sort orderings used in
+          a dictionary versus in a phone book.</p>
+        <p>One way to indicate these preferences is via registered Extensions to
+          [[!BCP47]]. The Unicode Common Locale Data Repository project
+          [[!CLDR]] maintains two such extensions: [[!RFC6497]] defines an
+          extension that describes <em>transformations</em> (generally text
           transformations, such as transliteration between scripts).
           [[!RFC6067]] defines <dfn id="unicode_locales">Unicode locales</dfn>,
           which provide the ability to specify in a language tag a number of the
@@ -327,31 +348,38 @@ span.example { padding: .1em .5em .15em; }
         <h3>How to Define Language Tags and How to Reference [[!BCP47]] and
           Related Standards</h3>
         <p>Specifications for the Web that require language identification MUST
-          refer to [[!BCP47]]. Specifications SHOULD NOT refer to specific
-          component RFCs. The "BCP" nomenclature refers to the current set of
-          RFCs that form the "best current practice". At the time this document
-          was published, [[!BCP47]] consisted of [[!RFC5646]] (Tags for
-          Identifying Languages) and [[!RFC4647]] (Matching of Language Tags).</p>
+          refer to [[!BCP47]]. </p>
+        <p>Specifications SHOULD NOT refer to specific component RFCs. The "BCP"
+          nomenclature refers to the current set of RFCs that form the "best
+          current practice". At the time this document was published, [[!BCP47]]
+          consisted of [[!RFC5646]] (Tags for Identifying Languages) and
+          [[!RFC4647]] (Matching of Language Tags).</p>
         <p>Formulations such as "<span class="quote">RFC 5646 or its successor</span>"
           MAY be used, but only in cases where the specific document version is
           necessary. While this style of reference was once popular, using the
           BCP reference is more accurate. Since the grammar of language tags has
           been fixed since [[RFC4646]], referring to the BCP will not incur
           additional compliance risk to most implementations.</p>
-        <p>Some specifications require compliance with the older language tag
-          grammar, such as found in [[RFC1766]] or [[RFC3066]]. This grammar was
-          more permissive and is described in [[!BCP47]] as the production <code>obs-language-tag</code>.
-          Specifications MUST reference [[!BCP47]] and, when backwards
-          compatibility is required, SHOULD reference <code>obs-language-tag</code>
-          rather than referencing one of the obsolete versions of [[!BCP47]].
-          The obsolete versions referred to by <code>obs-language-tag</code>
-          include [[RFC1766]] and [[RFC3066]]. [[RFC4646]], which introduced the
-          current grammar for language tags, is also obsolete.</p>
-        <p>Specifications SHOULD also reference registered extensions to
-          [[!BCP47]] as necessary. In particular, [[!RFC6067]] defines the <em>BCP
-            47 Extension U</em>, also known as "Unicode Locales". This extension
-          to [[!BCP47]] provides additional subtag sequences for selecting
-          specific locale variations.</p>
+        <p>Some specifications might desire or require compliance with the older
+          language tag grammar, such as found in [[RFC1766]] or [[RFC3066]].
+          This grammar was more permissive and is described in [[!BCP47]] as the
+          production <code>obs-language-tag</code>. Specifications MUST
+          reference [[!BCP47]] and, when backwards compatibility is required,
+          SHOULD reference <code>obs-language-tag</code> rather than
+          referencing one of the obsolete versions of [[!BCP47]]. The obsolete
+          versions referred to by <code>obs-language-tag</code> include
+          [[RFC1766]] and [[RFC3066]]. [[RFC4646]], which introduced the current
+          grammar for language tags, is also obsolete.</p>
+        <p>Specifications MAY also reference registered extensions to [[!BCP47]]
+          as necessary. In particular, [[!RFC6067]] defines the <em>BCP 47
+            Extension U</em>, also known as "Unicode Locales". This extension to
+          [[!BCP47]] provides additional subtag sequences for selecting specific
+          locale variations.</p>
+        <div class="issue">
+          <p><em>Ed.:</em> Add discussion of when to use obs-language-tag. Add
+            discussion and requirements related to the terms 'well-formed' and
+            'valid'.</p>
+        </div>
       </section>
     </section>
     <section id="locale_vs">
@@ -399,7 +427,6 @@ span.example { padding: .1em .5em .15em; }
           <li><a href="http://www.w3.org/International/questions/qa-no-language">Tagging
               text with no language</a></li>
         </ul>
-        <p></p>
       </div>
     </section>
     <section id="tags_v_values">
@@ -581,36 +608,36 @@ span.example { padding: .1em .5em .15em; }
       <h3>Revision Log (Non-Normative)</h3>
       <p>The following changes were made since the revision of 2006-06-20.</p>
       <ul>
-        <li>
-          <p>Converted the format to ReSpec.</p>
-          <p>All references to RFC3066bis were updated to BCP 47 or to RFC5646
-            or RFC 4647 as appropriate.</p>
-          <p>References to HTML were changed to HTML5.</p>
-        </li>
+        <li>Converted the format to ReSpec.</li>
+        <li>All references to RFC3066bis were updated to BCP 47 or to RFC5646 or
+          RFC 4647 as appropriate.</li>
+        <li>References to HTML were changed to point to HTML5.</li>
+        <li>Imported and rewrote the text formerly containing in
+          [[WS-I18N-SCENARIOS]] defining internationalization, locale, and other
+          important terms.</li>
+        <li>Modified and reorganized the other sections of this document. Moved
+          the Web services materials to an appendix.</li>
+        <li>Modified the SOTD to reflect our use of github.</li>
       </ul>
       <p>The following log records changes that have been made to this document
         since the <a href="http://www.w3.org/TR/2006/WD-ltli-20060419/">publication
           in April 2006</a>.</p>
       <ul>
         <li>
-          <p>The informative <a href="#sec-introduction">introductory section</a>
-            has been rewritten thoroughly, including the description of the <a
-              href="#sec-scope">scope of the document</a>, of <a href="#sec-app-scenarios">application
-              scenarios</a> and of the separation <a href="#sec-locale-vs-language">locale
-              versus natural language</a>.</p>
+          <p>The informative introductory section has been rewritten thoroughly,
+            including the description of the scope of the document, of
+            application scenarios and of the separation of locale versus natural
+            language.</p>
         </li>
         <li>
           <p>Terms which rely on [[BCP47]] are not <em>defined</em> anymore,
-            but only <em>reference</em> these documents, see <a href="#sec-matching-lang-values"
-              class="section-ref">Section 2.1: Language Tags and Matching of
-              Language Tags</a>. In addition, examples for these terms have been
-            created.</p>
+            but only <em>reference</em> these documents. In addition, examples
+            for these terms were created.</p>
         </li>
         <li>
           <p>The requirements for language and locale values have been taken out
             of the <a href="#sec-conformance">conformance section</a> and are
-            now placed in the separate <a href="#sec-locale-vs-language" class="section-ref">Section
-              4: Language Tags and Locale Values</a>.</p>
+            now placed in the body of the document.</p>
         </li>
         <li>
           <p>A revision log has been created.</p>
@@ -628,5 +655,6 @@ span.example { padding: .1em .5em .15em; }
         <li>WS-I18N contributors: this is all your fault 😪</li>
       </ul>
     </section>
+    
   </body>
 </html>
