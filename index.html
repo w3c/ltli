@@ -43,8 +43,7 @@ localBiblio:  {
       };
 	    
     </script>
-    
-<style type="text/css">
+    <style type="text/css">
       div.example-title {
     padding-right:  1em;
     min-width: 7.5em;
@@ -89,53 +88,53 @@ span.example { padding: .1em .5em .15em; }
         the language of content as well as the the locale preferences used to
         process or display data values and other information on the Web. It
         describes how document formats, specifications, and implementations
-        should handle language tags, as well as extensions to language tags to
+        should handle language tags, as well as extensions to language tags that
         describe the cultural or linguistic preferences referred to in
         internationalization as a "locale".</p>
     </section>
     <section id="sotd">
       <p>This is an updated Public Working Draft of "Language Tags and Locale
-        Identifiers for the World Wide Web". The Working Group expects this to become a Working
-        Group Note.</p>
-      
-      
-      <div class="note"><p>If you wish to make comments regarding this document, please 
-        <a href="https://github.com/w3c/ltli/issues" style="font-size: 120%;">raise a github issue</a>.
-        You may also send email to the list <a href="mailto:www-international@w3.org?subject=[ltli] ">www-international@w3.org</a> 
-            (<a href="mailto:www-international@w3.org?subject=subscribe">subscribe</a>,
-            <a href="http://lists.w3.org/Archives/Public/www-international/">archives</a>) as mentioned below.
-        Please include <q>[ltli]</q> at the start of your email's subject.  To make it easier to 
-        track comments, please raise separate issues or send separate emails for each comment. 
-        All comments are welcome.</p>
+        Identifiers for the World Wide Web". The Working Group expects this to
+        become a Working Group Note.</p>
+      <div class="note">
+        <p>If you wish to make comments regarding this document, please <a href="https://github.com/w3c/ltli/issues"
+
+            style="font-size: 120%;">raise a github issue</a>. You may also send
+          email to the list <a href="mailto:www-international@w3.org?subject=[ltli]%20">www-international@w3.org</a>
+          (<a href="mailto:www-international@w3.org?subject=subscribe">subscribe</a>,
+          <a href="http://lists.w3.org/Archives/Public/www-international/">archives</a>)
+          as mentioned below. Please include <q>[ltli]</q> at the start of your
+          email's subject. To make it easier to track comments, please raise
+          separate issues or send separate emails for each comment. All comments
+          are welcome.</p>
       </div>
-    
     </section>
     <section id="introduction">
       <h2>Introduction</h2>
       <p><em>This section is informative.</em></p>
       <section id="scope">
-        <p>Language tags, as defined in [[!BCP47]], have been generally adopted
-          by Web and Internet protocols and formats as the preferred means of
-          identifying the natural language of content. Web technologies depend
-          on language tags to perform language-specific formatting or
+        <p>Language tags, as defined in [[!BCP47]], identify the natural
+          language of content on the Web and in Internet protocols and formats,
+          providing the ability to perform language-specific formatting or
           processing. For example, a user-agent might use the language to select
-          the right font for displaying text or a Web page designers might style
+          the right font for displaying text or a Web page designer might style
           text differently in one language than in another.</p>
         <p>In addition, language tags are also used to identify cultural or
-          linguistic preferences related to natural language or regional
-          association. These preferences are sometimes used for processes such
-          as presenting numbers, dates, or times; for sorting lists
-          linguistically; to provide defaults for preferences such as calendar,
-          units of measurement, or 12- vs. 24-hour time presentation; and many
-          other details that users might find too tedious to set individually.
-          Collectively, these preferences are usually called a <a href="#locale">locale</a>.</p>
+          linguistic preferences. These are usually related to natural language
+          or regional association of the end user. These preferences are applied
+          to processes such as presenting numbers, dates, or times; sorting
+          lists linguistically; providing defaults presentation for items such
+          as a calendar, units of measurement, or 12- vs. 24-hour time
+          presentation; and many other details that users might find too tedious
+          to set individually. Collectively, these preferences are usually
+          called a <a href="#locale">locale</a>.</p>
         <p>This document describes best practices for the adoption and use of
           BCP47 language tags for the identification of natural language content
-          as well as the use of tags to represent the locale preferences of the
-          user or content author. It describes how document formats,
-          specifications, and implementations should handle the language tags
-          described by [[!BCP47]], as well as data structures that extend these
-          tags to describe <a href="#international-preferences">international
+          as well as the use of language tags to represent the locale
+          preferences of the user or content author. It describes how document
+          formats, specifications, and implementations should handle the
+          language tags described by [[!BCP47]], as well as data structures that
+          extend these tags to describe <a href="#international-preferences">international
             preferences</a> (see also sec. 3.1 in [[WS-I18N-SCENARIOS]]). </p>
         <p>Identification of language and locale has a broad range of
           applications within the World Wide Web. Existing standards which make
@@ -540,15 +539,7 @@ span.example { padding: .1em .5em .15em; }
                 <td>Cyrl, Latn</td>
               </tr>
               <tr>
-                <td><br>
-                </td>
-                <td><br>
-                </td>
-                <td><br>
-                </td>
-              </tr>
-              <tr>
-                <td><br>
+                <td><em>more needed</em><br>
                 </td>
                 <td><br>
                 </td>
@@ -652,9 +643,9 @@ span.example { padding: .1em .5em .15em; }
         <li>Felix Sasaki, for editing this document and publishing the 2006 WD</li>
         <li>Mark Davis, Y.Umaoka, and others for contributions to the BCP47
           extensions</li>
-        <li>WS-I18N contributors: this is all your fault 😪</li>
+        <li>WS-I18N contributors: this document was created to satisfy requirement R005 
+          in [[WS-I18N-REQ]].</li>
       </ul>
     </section>
-    
   </body>
 </html>
