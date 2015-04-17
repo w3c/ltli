@@ -17,12 +17,16 @@
 		                company: "W3C"
             }
           ],
+          // if you wish the publication date to be other than today, set this
+          //publishDate:  "2015-04-24",
+		  noRecTrack: true,
+	
           previousMaturity: "WD",
           previousPublishDate:  "2006-06-12",
           wg:           "Internationalization Working Group",
-          wgURI:        "http://www.w3.org/International/",
+          wgURI:        "http://www.w3.org/International/core/",
           wgPublicList: "www-international",
-          wgPatentURI:  "http://www.w3.org/2004/01/pp-impl/424242/status",
+          wgPatentURI:  "http://www.w3.org/2004/01/pp-impl/32113/status",
 
 localBiblio:  {
     "CLDR": {
@@ -79,8 +83,6 @@ span.example { padding: .1em .5em .15em; }
 }
     
     </style>
-    <link type="text/css" href="local.css" rel="stylesheet">
-<!--<link href="http://www.w3.org/StyleSheets/TR/W3C-WD.css" type="text/css" rel="stylesheet"> -->
   </head>
   <body>
     <section id="abstract">
@@ -488,8 +490,6 @@ span.example { padding: .1em .5em .15em; }
             RECOMMENDED. Some languages that are known to vary in script
             include:</p>
           <table style="width: 100%; border: 6px solid gray">
-            <tbody>
-            </tbody>
             <thead>
               <tr>
                 <th>Language</th>
@@ -623,7 +623,7 @@ span.example { padding: .1em .5em .15em; }
         </li>
         <li>
           <p>The requirements for language and locale values have been taken out
-            of the <a href="#sec-conformance">conformance section</a> and are
+            of the <a href="#conformance">conformance section</a> and are
             now placed in the body of the document.</p>
         </li>
         <li>
