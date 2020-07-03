@@ -1,0 +1,82 @@
+.unicode {
+	font-style: normal
+}
+
+.unicode:link {
+	color: #FF0000;
+	background-color: #FFFFFF;
+}
+
+.unicode:visited {
+	color: #808080;
+	background-color: #FFFFFF;
+}
+
+.unicode:active {
+	color: #0000FF;
+	background-color: #FFFFFF;
+}
+
+em.unicode {
+	font-style: normal;
+}
+
+ins {
+	background-color: #FF6;
+}
+
+p.cjk-demo {
+	font-size: 200%; 
+	text-align: center;
+	font-family: serif;
+}
+
+.req {
+    background-color: #FFC;
+    font-style: italic;
+}
+
+.req::before {
+    content: "\1f44d \00A0 ";
+    font-style: normal;
+    color: #63F;;
+}
+
+.reqex {
+    background-color: #FFC;
+    font-style: italic;
+}
+
+.reqex::before {
+    content: "\1f44d \00A0 Req. #: ";
+    font-style: normal;
+    color: #63F;;
+}
+
+.gap {
+    background-color: #FCF;
+    font-style: italic;
+}
+
+.gap::before {
+    content: "\1f631 \00A0 ";
+    font-style: normal;
+    color: #63F;;
+}
+
+kbd {
+   font-family: Menlo, Consolas, "DejaVu Sans Mono", Monaco, monospace;
+   font-size: .95em;
+   color: blue;
+   page-break-inside: avoid;
+   hyphens: none;
+   text-transform: none;
+   text-align: left;
+   text-align: start;
+}
+
+
+.summary {
+    padding: 1em;
+    background-color: antiquewhite;
+}

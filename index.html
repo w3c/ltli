@@ -47,9 +47,7 @@ localBiblio:  {
       };
 	    
     </script>
-    <style type="text/css">
-    
-    </style>
+    <link rel="stylesheet" href="local.css" type="text/css" />
   </head>
   <body>
     <section id="abstract">
@@ -289,16 +287,18 @@ localBiblio:  {
       </section>
       
 
-      <section id="conformance">
-        <h3>Best Practices: How to Define Language Tags and How to Reference [[BCP47]] and
-          Related Standards</h3>
-        <p>Specifications for the Web that require language identification MUST
-          refer to [[BCP47]]. </p>
-        <p>Specifications SHOULD NOT refer to specific component RFCs. The "BCP"
-          nomenclature refers to the current set of RFCs that form the "best
-          current practice". At the time this document was published, [[BCP47]]
-          consisted of [[RFC5646]] (Tags for Identifying Languages) and
-          [[RFC4647]] (Matching of Language Tags).</p>
+      <section id="best-practices">
+        <h2>Best Practices</h2>
+        
+        <p>This section provides specification authors and implementers with best practices recommended by the Internationalization (I18N) Working Group.</p>
+          
+        <section id="defining">
+	    <h3>How to Define Language Tags and How to Reference Language Tag Standards</h3>
+        <p class="advisement">Specifications for the Web that require language identification MUST refer to [[BCP47]]. </p>
+        
+        <p class="advisement">Specifications SHOULD NOT refer to specific component RFCs.</p>
+        <p>The "BCP" nomenclature refers to the current set of RFCs that form the "best current practice". At the time this document was published, [[BCP47]] consisted of two RFCs: <cite>Tags for the Identification of Languages </cite>[[RFC5646]] and <cite>Matching of Language Tags</cite>[[RFC4647]].</p>
+        
         <p>Formulations such as "<span class="quote">RFC 5646 or its successor</span>"
           MAY be used, but only in cases where the specific document version is
           necessary. While this style of reference was once popular, using the
@@ -326,6 +326,7 @@ localBiblio:  {
             'valid'.</p>
         </div>
       </section>
+    </section>
 
     <section id="locale_vs">
       <h3>Locale versus Natural Language</h3>
