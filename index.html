@@ -235,7 +235,7 @@ localBiblio:  {
           an identifier for a language. In this document, the term <em>language
             tag</em> always refers explicitly to a [[BCP47]] language tag.
           These language tags consist of one or more subtags.</p>
-        <p>A <dfn title="subtag">subtag</dfn> is a sequence of ASCII letters or
+        <p>A <dfn data-lt="subtag|subtags">subtag</dfn> is a sequence of ASCII letters or
           digits separated from other subtags by the hyphen-minus character and
           identifying a specific element of meaning withing the overall language
           tag. In [[BCP47]], subtags can consist of upper or lowercase ASCII
@@ -288,9 +288,14 @@ localBiblio:  {
       
 
       <section id="best-practices">
-        <h2>Best Practices</h2>
+        <h2>Best Practices and Recommendations</h2>
         
-        <p>This section provides specification authors and implementers with best practices recommended by the Internationalization (I18N) Working Group.</p>
+        <p>This section provides specification authors and implementers with best practices recommended by the Internationalization (I18N) Working Group. These (and many other) best practices, along with links to supporting materials, can also be found in the <cite>Internationalization Best Practices for Spec Developers</cite> [[INTERNATIONAL-SPECS]]. In addition to the best practices found here, additional best practices relating to language metadata on the Web can be found in [[STRING-META]].</p>
+        
+        <aside class="note">
+           <p>In this section [[RFC2119]] keywords have their usual meaning. We differentiate <em>best practices</em>, which should be adopted by all specifications and <em>recommendations</em>, which require additional standardization or which are speculative prior to adoption.</p>
+           <p class="advisement">Best practices appear with a different background color and decoration like this.</p>
+        </aside>
           
         <section id="defining">
 	    <h3>How to Define Language Tags and How to Reference Language Tag Standards</h3>
@@ -299,32 +304,31 @@ localBiblio:  {
         <p class="advisement">Specifications SHOULD NOT refer to specific component RFCs.</p>
         <p>The "BCP" nomenclature refers to the current set of RFCs that form the "best current practice". At the time this document was published, [[BCP47]] consisted of two RFCs: <cite>Tags for the Identification of Languages </cite>[[RFC5646]] and <cite>Matching of Language Tags</cite>[[RFC4647]].</p>
         
-        <p>Formulations such as "<span class="quote">RFC 5646 or its successor</span>"
-          MAY be used, but only in cases where the specific document version is
-          necessary. While this style of reference was once popular, using the
+        <p class="advisement">Formulations such as "<span class="quote">RFC 5646 or its successor</span>" MAY be used, but only in cases where the specific document version is necessary.</p>
+        <p>While this style of reference was once popular, using the
           BCP reference is more accurate. Since the grammar of language tags has
           been fixed since [[RFC4646]], referring to the BCP will not incur
           additional compliance risk to most implementations.</p>
-        <p>Some specifications might desire or require compliance with the older
-          language tag grammar, such as found in [[RFC1766]] or [[RFC3066]].
-          This grammar was more permissive and is described in [[BCP47]] as the
-          production <code>obs-language-tag</code>. Specifications MUST
-          reference [[BCP47]] and, when backwards compatibility is required,
-          SHOULD reference <code>obs-language-tag</code> rather than
-          referencing one of the obsolete versions of [[BCP47]]. The obsolete
-          versions referred to by <code>obs-language-tag</code> include
-          [[RFC1766]] and [[RFC3066]]. [[RFC4646]], which introduced the current
-          grammar for language tags, is also obsolete.</p>
-        <p>Specifications MAY also reference registered extensions to [[BCP47]]
-          as necessary. In particular, [[RFC6067]] defines the <em>BCP 47
-            Extension U</em>, also known as "Unicode Locales". This extension to
-          [[BCP47]] provides additional subtag sequences for selecting specific
-          locale variations.</p>
-        <div class="issue">
-          <p><em>Ed.:</em> Add discussion of when to use obs-language-tag. Add
-            discussion and requirements related to the terms 'well-formed' and
-            'valid'.</p>
-        </div>
+          
+        <p class="advisement">Specifications MUST NOT reference obsolete versions of [[BCP47]], such as [[RFC1766]] or [[RFC3066]].</p>
+        <p class="advisement">Specifications that need to preserve compatibility with obsolete versions of [[BCP47]] MUST reference the production <code>obs-language-tag</code> in [[BCP47]].</p>
+        <p>Beginning with [[RFC4646]], [[BCP47]] defined a more complex, machine-readable syntax for language tags. Some specifications might desire or require compatibility with the older language tag grammar found in previous versions of BCP47 (specifically [[RFC1766]] and [[RFC3066]]). This grammar was more permissive and is described in [[BCP47]] as the ABNF production <code>obs-language-tag</code>. [[RFC4646]], which introduced the current grammar for language tags, is itself obsolete.</p>
+        
+        <p class="advisement">Specifications MAY reference registered extensions to [[BCP47]] as necessary.</p>
+        <p>In particular, [[RFC6067]] defines the <cite>BCP 47 Extension U</cite>, also known as "Unicode Locales". This extension to [[BCP47]] provides additional subtag sequences for selecting specific locale variations.</p>
+        
+        <p class="advisement">Specifications SHOULD require that language tags be <a>well-formed</a>.</p>
+        <p class="advisement">Specifications MAY require that language tags be <a>valid</a>.</p>
+        <p class="advisement">Specifications SHOULD require content authors use <a>valid</a> language tags.</p>
+        <p class="advisement">Content validators SHOULD check if content uses <a>valid</a> language tags where feasible.</p>
+        
+        <p>[[BCP47]] defines different levels of conformance. See <cite>classes of conformance</cite> in <a href="https://tools.ietf.org/html/bcp47#section-2.2.9"></a>BCP47 for specifics.</p>
+        
+        <p>A <dfn data-lt="well-formed|well-formed language tag">well-formed langauge tag</dfn> follows the grammar defined in [[BCP47]]. That is, it is structurally correct, consisting of ASCII letters and digit <a>subtags</a> of the prescribed length, separated by hyphens.</p>
+        <p>A <dfn data-lt="valid|valid language tag">valid language tag</dfn> has been checked to ensure that each of the subtags appears in the <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">Language Subtag Registry</a> hosted by IANA. </p>
+        
+        <p>Because checking the subtag registry requires access to or a copy of the registry and additional runtime logic, most specifications do not require that implementations ensure that tags are valid.</p>
+        
       </section>
     </section>
 
