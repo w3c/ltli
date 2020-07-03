@@ -75,31 +75,14 @@ localBiblio:  {
         <p>Tags for identifying the <a>natural language</a> of content or the <a>international preferences</a> of users (in order to select the natural language of content) are one of the fundamental building blocks of the Web. The language tags found in Web and Internet formats and protocols are defined by [[BCP47]]. Consistent use of language tags provides applications the ability to perform language-specific formatting or processing. For example, a user-agent might use the language to select an appropriate font for displaying text or a Web page designer might style text differently in one language than in another.</p>
         
         <p>In addition, language tags are also used to identify <a>international preferences</a> linked to culture, region, or language. Because these preferences are linked to the natural language or regional association of the end user, [[BCP47]] provides a natural way of encoding these preferences also. Such preferences are applied to processes such as presenting numbers, dates, or times; sorting lists linguistically; providing defaults for items such as the presentation of a calendar, common units of measurement, or 12- vs. 24-hour time presentation; and many other details that users might find too tedious to set individually. Collectively, these preferences are usually called a <a>locale</a>.</p>
-        <p>This document describes best practices for the adoption and use of
-          BCP47 language tags for the identification of natural language content
-          as well as the use of language tags to represent the locale
-          preferences of the user or content author. It describes how document
-          formats, specifications, and implementations should handle the
-          language tags described by [[BCP47]], as well as data structures that
-          extend these tags to describe <a href="#international-preferences">international
-            preferences</a> (see also sec. 3.1 in [[WS-I18N-SCENARIOS]]). </p>
-        <p>Identification of language and locale has a broad range of
-          applications within the World Wide Web. Existing standards which make
-          use of language identification include the <code>xml:lang</code>
-          attribute in [[XML10]], the <code>lang</code> and <code>hreflang</code>
-          atttributes in [[HTML]], the <code>language</code> property in
-          [[XSL10]], and the <code>:lang</code> pseudo-class in CSS
-          [[CSS3-SELECTORS]]. Language tags are also used to identify locales,
-          such as in the Unicode Common Locale Data Repository or "CLDR" project
-          [[CLDR]].</p>
-        <p>Locales can be identified in several ways, which generally are
-          dependent on the programming language and operating environment of the
-          user. One method is by inference from language tags. For example, an
-          implementation could map a language tag from an existing protocol,
-          such as HTTP's Accept-Language header, to its locale model. Locales
-          may also be identified directly by using the language tag syntax in
-          data items (elements, attributes, headers, etc.) that explicitly serve
-          the purpose of locale identification.</p>
+        
+        <p>This document describes best practices for the adoption and use of [[BCP47]] language tags for the identification of <a>natural language</a> content as well as the use of language tags to represent the locale preferences of the user or content author. It describes how document formats, specifications, and implementations should handle the language tags described by [[BCP47]], as well as data structures that extend these tags to describe <a>international preferences</a> (see also sec. 3.1 in [[WS-I18N-SCENARIOS]]). </p>
+        
+        <p>Identification of language and locale has a broad range of applications within the World Wide Web. Existing standards which make use of language identification include the <code>xml:lang</code> attribute in [[XML10]], the <code>lang</code> and <code>hreflang</code> atttributes in [[HTML]], the <code>language</code> property in [[XSL10]], and the <code>:lang</code> pseudo-class in CSS [[CSS3-SELECTORS]]. Language tags are also used to identify locales, such as in the Unicode Common Locale Data Repository or "CLDR" project [[CLDR]].</p>
+        
+        <p>Historically, locales were identified by the programming language or operating environment of the user. This application-specific identifier was often inferred from language tags. For example, an implementation could map a language tag from an existing protocol, such as HTTP's Accept-Language header, to its locale model. Locales may also be identified directly by using the language tag syntax in data items (elements, attributes, headers, etc.) that explicitly serve the purpose of locale identification.</p>
+        
+        <p>Unicode Locales are an extension of [[BCP47]] defined as part of Unicode's [[CLDR]] project. These identifiers are identical to language tags, but apply additional rules about the content of certain language tags. Unicode Locales increasingly form the basis for <a>internationalization</a> on the Web, particularly as part of the <code>Intl</code> locale framework in JavaScript.</p>
 
       <section id="out_of_scope">
         <h3>Out of Scope</h3>
@@ -502,18 +485,9 @@ localBiblio:  {
     </section>
     <section class="appendix" id="ws-scenario">
       <h3>Application Scenario: Web Services Internationalization</h3>
-      <p class="issue">This section was part of the original LTLI document and
-        exists to address items identified in [[WS-I18N-REQ]].</p>
-      <p>In order to enable multi-locale operation of Web services and to create
-        the ability for locale negotiation, this specification describes a
-        standardized method for identifying locales and locale and/or language
-        tags on the Web, including non-normative guidelines for implementation.
-        This is called out in Requirement R005 of "Requirements for the
-        Internationalization of Web Services" [[WS-I18N-REQ]]. The mechanism for
-        language and locale identification which is defined in this
-        specification will be used in a future version of the description of Web
-        services Internationalization in "Web Services Internationalization
-        (WS-I18N)"[[WS-I18N]].</p>
+      <p class="issue">This section was part of the original LTLI document and exists to address items identified in [[WS-I18N-REQ]]. It refers to this document as a "specification" (which it no longer is). Removing this section is probably the next step.</p>
+      
+      <p>In order to enable multi-locale operation of Web services and to create the ability for locale negotiation, this specification describes a standardized method for identifying locales and locale and/or language tags on the Web, including non-normative guidelines for implementation. This is called out in Requirement <code>R005</code> of <cite>Requirements for the Internationalization of Web Services</cite> [[WS-I18N-REQ]]. The mechanism for language and locale identification which is defined in this specification will be used in a future version of the description of Web services Internationalization in <cite>Web Services Internationalization (WS-I18N)</cite>[[WS-I18N]].</p>
       <p>Further application scenarios of this specification encompass, for example, the standards mentioned in the <a href="#introduction">Introduction</a>. Scenarios can be divided in four areas:</p>
       <ul>
         <li>
