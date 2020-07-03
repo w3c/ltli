@@ -245,6 +245,12 @@ localBiblio:  {
         <p>Selecting content or behavior based on the language tag requires a
           few additional concepts defined by [[RFC4647]]. In this document, we
           adopt the following terminology:</p>
+          
+        <p>[[BCP47]] defines different levels of conformance. See <a href="https://tools.ietf.org/html/bcp47#section-2.2.9">classes of conformance</a> in [[BCP47]] for specifics. For language tags, the levels of conformance correspond to type of validation that an implementation applies to language tag values.</p>
+        
+        <p>A <dfn data-lt="well-formed|well-formed language tag">well-formed langauge tag</dfn> follows the grammar defined in [[BCP47]]. That is, it is structurally correct, consisting of ASCII letters and digit <a>subtags</a> of the prescribed length, separated by hyphens.</p>
+        <p>A <dfn data-lt="valid|valid language tag">valid language tag</dfn> has been checked to ensure that each of the subtags appears in the <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">Language Subtag Registry</a> hosted by IANA.</p>
+          
         <p>A <dfn title="language-range">language range</dfn> is a string
           similar in structure to a language tag that is used for "identifying
           sets of language tags that share specific attributes".</p>
@@ -319,15 +325,11 @@ localBiblio:  {
         
         <p class="advisement">Specifications SHOULD require that language tags be <a>well-formed</a>.</p>
         <p class="advisement">Specifications MAY require that language tags be <a>valid</a>.</p>
+        
+        <p>Because checking if a tag is <a>valid</a> requires access to or a copy of the registry plus additional runtime logic. While content authors are advised to choose, generate, and exchange only valid values, language tag matching and other common language tag operations are designed so that validity checking is not needed. Features or functions that need to understand the specific semantic content of subtags are the main reason that a specification would normatively require <a>valid</a> tags as part of the protocol or document format.</p>
+        
         <p class="advisement">Specifications SHOULD require content authors use <a>valid</a> language tags.</p>
         <p class="advisement">Content validators SHOULD check if content uses <a>valid</a> language tags where feasible.</p>
-        
-        <p>[[BCP47]] defines different levels of conformance. See <cite>classes of conformance</cite> in <a href="https://tools.ietf.org/html/bcp47#section-2.2.9"></a>BCP47 for specifics.</p>
-        
-        <p>A <dfn data-lt="well-formed|well-formed language tag">well-formed langauge tag</dfn> follows the grammar defined in [[BCP47]]. That is, it is structurally correct, consisting of ASCII letters and digit <a>subtags</a> of the prescribed length, separated by hyphens.</p>
-        <p>A <dfn data-lt="valid|valid language tag">valid language tag</dfn> has been checked to ensure that each of the subtags appears in the <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">Language Subtag Registry</a> hosted by IANA. </p>
-        
-        <p>Because checking the subtag registry requires access to or a copy of the registry and additional runtime logic, most specifications do not require that implementations ensure that tags are valid.</p>
         
       </section>
     </section>
