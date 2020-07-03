@@ -53,13 +53,7 @@ localBiblio:  {
   </head>
   <body>
     <section id="abstract">
-      <p>This document describes the best practices for identifying
-        or selecting the language of content as well as the the locale
-        preferences used to process or display data values and other information
-        on the Web. It describes how document formats, specifications, and
-        implementations should handle language tags, as well as extensions to
-        language tags that describe the cultural or linguistic preferences
-        referred to in internationalization as a "locale".</p>
+      <p>This document describes the best practices for the identification of the natural language of content in document formats, specifications, and implementations on the Web. It also describes how languge tags are used to indicate user's locale preferences, which are used to process or display data values and other information on the Web.</p>
     </section>
     <section id="sotd">
       <p>This is an updated Public Working Draft of "Language Tags and Locale
@@ -67,8 +61,7 @@ localBiblio:  {
         become a Working Group Note.</p>
 
         <p class="note">If you wish to make comments regarding this document, please <a href="https://github.com/w3c/ltli/issues"
-
-            style="font-size: 120%;">raise a github issue</a>. You may also send
+          style="font-size: 120%;">raise a github issue</a>. You may also send
           email to the list <a href="mailto:www-international@w3.org?subject=%5Bltli%5D%20">www-international@w3.org</a>
           (<a href="mailto:www-international@w3.org?subject=subscribe">subscribe</a>,
           <a href="http://lists.w3.org/Archives/Public/www-international/">archives</a>)
@@ -81,21 +74,9 @@ localBiblio:  {
     <section id="introduction">
       <h2>Introduction</h2>
 
-        <p>Language tags, as defined in [[BCP47]], identify the natural
-          language of content on the Web and in Internet protocols and formats,
-          providing the ability to perform language-specific formatting or
-          processing. For example, a user-agent might use the language to select
-          the right font for displaying text or a Web page designer might style
-          text differently in one language than in another.</p>
-        <p>In addition, language tags are also used to identify cultural or
-          linguistic preferences. These are usually related to natural language
-          or regional association of the end user. These preferences are applied
-          to processes such as presenting numbers, dates, or times; sorting
-          lists linguistically; providing defaults presentation for items such
-          as a calendar, units of measurement, or 12- vs. 24-hour time
-          presentation; and many other details that users might find too tedious
-          to set individually. Collectively, these preferences are usually
-          called a <a href="#locale">locale</a>.</p>
+        <p>Tags for identifying the <a>natural language</a> of content or the <a>international preferences</a> of users (in order to select the natural language of content) are one of the fundamental building blocks of the Web. The language tags found in Web and Internet formats and protocols are defined by [[BCP47]]. Consistent use of language tags provides applications the ability to perform language-specific formatting or processing. For example, a user-agent might use the language to select an appropriate font for displaying text or a Web page designer might style text differently in one language than in another.</p>
+        
+        <p>In addition, language tags are also used to identify <a>international preferences</a> linked to culture, region, or language. Because these preferences are linked to the natural language or regional association of the end user, [[BCP47]] provides a natural way of encoding these preferences also. Such preferences are applied to processes such as presenting numbers, dates, or times; sorting lists linguistically; providing defaults for items such as the presentation of a calendar, common units of measurement, or 12- vs. 24-hour time presentation; and many other details that users might find too tedious to set individually. Collectively, these preferences are usually called a <a>locale</a>.</p>
         <p>This document describes best practices for the adoption and use of
           BCP47 language tags for the identification of natural language content
           as well as the use of language tags to represent the locale
@@ -233,10 +214,11 @@ localBiblio:  {
           define and manage on behalf of the user.</p>
       </section>
       
-          <section id="language-terminology">
+      <section id="language-terminology">
         <h3>Languages, Language Tags and Matching of Language Tags</h3>
+        
         <p>This document uses the term <dfn title="language">language</dfn> to
-          refer to what is sometimes called a <em>natural language:</em> the
+          refer to what is sometimes called a <em><dfn>natural language</dfn></em>: the
           spoken, written, or signed communications used by human beings.</p>
         <p>There are many ways that languages might be identified and many
           reasons that software might need to identify the language of content
