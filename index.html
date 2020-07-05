@@ -104,95 +104,52 @@ localBiblio:  {
           user's particular set of cultural conventions, language, and
           formatting choices that software must employ to correctly process or
           present information exchanged with that user.</p>
-        <p><dfn id="internationalization">Internationalization</dfn> The design
-          and development of a product that is enabled for target audiences that
-          vary in culture, region, or language. <em>Internationalization</em>
-          is sometimes abbreviated <dfn title="I18N"><code>I18N</code></dfn>
-          because there are eighteen letters between the "i" and the "n" in the
-          English word.</p>
+          
+        <p><dfn id="internationalization" data-lt="internationalization|I18N">Internationalization</dfn> The design and development of a product that is enabled for target audiences that vary in culture, region, or language. Internationalization is sometimes abbreviated <code>I18N</code> because there are eighteen letters between the "i" and the "n" in the English word.</p>
+        
         <p>There are many kinds of international preferences that may be offered
           on the Web in order for the content or service to be considered usable
           and acceptable by users around the world. Some of these preferences
-          might include: </p>
+          might include:
         <ul>
           <li>Natural language for text processing: parsing, spell checking, and
-            grammar checking are examples of this</li>
+            grammar checking are examples of this;</li>
           <li>User interface language, which may include items like images,
             colors, sounds, formats, and navigational elements as well as the
-            visible strings</li>
+            visible strings;</li>
           <li>Presentation (human-oriented formatting) of dates, times, numbers,
-            lists, and other values</li>
+            lists, and other values;</li>
           <li>Collation, sorting, and organization of content (such as in a
-            phone book or a dictionary)</li>
+            phone book or a dictionary);</li>
           <li>Alternate time-keeping and calendars, which may include holidays,
             work rules, weekday/weekend distinctions, the number and
-            organization of months, the numbering of years, and so forth</li>
-          <li>Tax or regulatory regime</li>
+            organization of months, the numbering of years, and so forth;</li>
+          <li>Tax or regulatory regime;</li>
           <li>Currency</li>
         </ul>
-        ... and many more.
-        <p>Because there are a large number of preferences, software systems
-          (operating environments and programming languages) often use an
-          identifier that combines natural language and other information, such
-          as region or country, as a shorthand indicator for collections of
-          preferences that typify categories of users that share certain
-          cultural preferences.</p>
-        <p>HTML for example uses the <code>lang</code> attribute to indicate
-          the language of segments of content. XML uses the <code>xml:lang</code>
-          attribute for the same purpose.</p>
-        <p>Java, POSIX, .NET and other software development technologies use a
-          similar-looking (but not identical) construct known as a locale to
-          activate certain internationalized capabilities in software.</p>
-        <p><dfn id="locale">Locale</dfn> A collection of international
-          preferences, generally related to a language and geographic region
-          that a (certain category) of users require. These are usually
-          identified by a shorthand identifier or token, such as a language tag,
-          that is passed from the environment to various processes to get
-          culturally affected behavior.</p>
-        <p>Generally, systems that are internationalized can support a wide
-          variety of languages and behaviors to meet the international
-          preferences of many kinds of users. When a particular system can
-          respond to changes in the locale by trying to load different resources
-          or performing culturally appropriate formatting we say that this
-          system is <em>locale-aware</em> or <em>enabled</em>.&nbsp; </p>
-        <p><dfn id="localization">Localization</dfn> The tailoring of a system
-          to the individual cultural expectations of a specific target market or
-          group of individuals. Localization includes, but is not limited to,
-          the translation of user-facing text and messages. Localization is
-          sometimes abbreviated as <dfn title="L10N">L10N</dfn> because there
-          are ten letters between the "L" and the "N" in the English word.</p>
-        <p>When a particular set of content and preferences corresponding to a
-          specific locale is operationally available, then the system is said to
-          be <em>localized</em>. </p>
-        <p>Localized systems often need to perform matching between the
-          end-user's international preferences (their "locale") and the
-          resources, content, or processing available. This is called <dfn id="language_negotiation">Language
-            Negotiation</dfn>. Language negotiation is, thus, process of
-          matching a user's preferences (in the form of a locale or language
-          tag) to available localized resources. The system searches for
-          matching content or logic "falling-back" from more-specific resources
-          to more-general ones following a deterministic pattern.</p>
-        <p>Language tags can provide information about the language, script,
-          region, and language variation using subtags. But sometimes there are
-          international preferences that do not correlate directly with any of
-          these. For example, many cultures have more than one way of sorting
-          content items, and so the appropriate sort ordering cannot always be
-          inferred from the language tag by itself. So, for example, German
-          language users might want to choose between the sort orderings used in
-          a dictionary versus in a phone book.</p>
-        <p>One way to indicate these preferences is via registered Extensions to
-          [[BCP47]]. The Unicode Common Locale Data Repository project
-          [[CLDR]] maintains two such extensions: [[RFC6497]] defines an
-          extension that describes <em>transformations</em> (generally text
-          transformations, such as transliteration between scripts).
-          [[RFC6067]] defines <dfn id="unicode_locales">Unicode locales</dfn>,
-          which provide the ability to specify in a language tag a number of the
-          international preference variations that users or content authors
-          might wish to specify directly (such as the German dictionary/phone
-          book difference described above).</p>
-        <p class="note">Some preferences are individual and are left to content
-          authors, service providers, operating environments, or user agents to
-          define and manage on behalf of the user.</p>
+        ... and many more. </p>
+        
+        <p>Because there are a large number of preferences, software systems (operating environments and programming languages) often use an identifier that combines natural language and other information, such as region or country, as a shorthand indicator for collections of preferences that typify categories of users that share certain cultural preferences.</p>
+          
+        <p>HTML for example uses the <code>lang</code> attribute to indicate the language of segments of content. XML uses the <code>xml:lang</code> attribute for the same purpose.</p>
+        
+        <p><dfn data-lt="localization|localized">Localization</dfn> The tailoring of a system to the individual cultural expectations of a specific target market or group of individuals. Localization includes, but is not limited to, the translation of user-facing text and messages. Localization is sometimes abbreviated as <dfn>L10N</dfn> because there are ten letters between the "L" and the "N" in the English word. When a particular set of content and preferences corresponding to a specific set of international preferences is operationally available, then the system is said to be <em>localized</em>.</p>
+          
+        <p><dfn id="locale">Locale</dfn> A collection of international preferences, generally related to a language and geographic region, that is passed in APIs or set in the operating environment to get culturally affected behavior from a system or process. Usually a locale is identified by an id or shorthand token, such as a language tag.</p>
+        
+        <p>Generally, systems that are internationalized can support a wide range of locales (collections of languages and locally-tailored behaviors and defaults) in order to meet the international preferences of many kinds of users. When a particular system can respond to changes in the locale by trying to load different resources or by performing culturally appropriate formatting, we say that this system is <dfn data-lt="locale aware|locale-aware|enabled|enable">locale-aware</dfn> or <em>enabled</em>.</p>
+        
+        <p><a>Language tags</a> can provide information about the language, script, region, and various specially-registered variants using subtags. But sometimes there are international preferences that do not correlate directly with any of these. For example, many cultures have more than one way of sorting content items, and so the appropriate sort ordering cannot always be inferred from the language tag by itself. Thus a German language user might want to choose between the sort ordering used in a dictionary versus that used in a phone book.</p>
+        
+        <p><dfn data-lt="common locale data repository|CLDR">Common Locale Data Repository</dfn> or <em>CLDR</em> [[CLDR]] is a Unicode Consortium project that defines, collects, and curates sets of <a>locale</a> data needed to <a>enable</a> systems or operating environments. CLDR data and it's locale model are widely adopted, particularly in browsers.</p>
+        
+        <p><dfn>Unicode Locale</dfn>. A language tag extension [[RFC6067]] and additional processing rules defined by [[CLDR]] to support <a>locales</a> defined by Unicode. Unicode locales provide the ability to specify in a language tag a number of the international preference variations that users or content authors might wish to specify directly. The language tag extension uses the <code>-u-</code> subtag.</p>
+        
+        <p>Unicode's [[CLDR]] project also maintains [[RFC6497]], which defines a [[BCP47]] registered extension (using the <code>-t-</code> subtag) which describes <em>transformations</em> (generally text transformations, such as transliteration between scripts).</p>
+        
+        <p class="note">Some preferences are individual and are left to content authors, service providers, operating environments, or user agents to define and manage on behalf of the user.</p>
+        
+        <p><dfn>Language negotiation</dfn> is the process of matching a user's <a>international preferences</a> to available localized resources, content, or processing. The user's preferences are usually expressed as a <a>locale</a> or prioritized list of locales. When negotiating the language, the system follows some sort of algorithm to get the best matching content or functionality from the available resources. In many cases the language negotiation algorithm uses <dfn data-lt="locale fallback|fallback">locale fallback</dfn> that proceeds from more-specific resources to more-general ones following a deterministic pattern.</p>
       </section>
       
       <section id="language-terminology">
@@ -214,10 +171,7 @@ localBiblio:  {
           matching, comparing, and selecting content using language tags and
           includes useful terminology related to comparison of language
           preferences to tagged content.</p>
-        <p>A <dfn title="language-tag">language tag</dfn> is a string used as
-          an identifier for a language. In this document, the term <em>language
-            tag</em> always refers explicitly to a [[BCP47]] language tag.
-          These language tags consist of one or more subtags.</p>
+        <p>A <dfn data-lt="language tag|language tags">language tag</dfn> is a string used as an identifier for a language. In this document, the term <em>language tag</em> always refers explicitly to a [[BCP47]] language tag. These language tags consist of one or more subtags.</p>
         <p>A <dfn data-lt="subtag|subtags">subtag</dfn> is a sequence of ASCII letters or
           digits separated from other subtags by the hyphen-minus character and
           identifying a specific element of meaning withing the overall language
@@ -282,7 +236,7 @@ localBiblio:  {
         <p>This section provides specification authors and implementers with best practices recommended by the Internationalization (I18N) Working Group. These (and many other) best practices, along with links to supporting materials, can also be found in the <cite>Internationalization Best Practices for Spec Developers</cite> [[INTERNATIONAL-SPECS]]. In addition to the best practices found here, additional best practices relating to language metadata on the Web can be found in [[STRING-META]].</p>
         
         <aside class="note">
-           <p>In this section [[RFC2119]] keywords have their usual meaning. We differentiate <em>best practices</em>, which should be adopted by all specifications and <em>recommendations</em>, which require additional standardization or which are speculative prior to adoption.</p>
+           <p>In this section [[BCP14]] keywords have their usual meaning. We differentiate <em>best practices</em>, which should be adopted by all specifications and <em>recommendations</em>, which require additional standardization or which are speculative prior to adoption.</p>
            <p class="advisement">Best practices appear with a different background color and decoration like this.</p>
         </aside>
           
