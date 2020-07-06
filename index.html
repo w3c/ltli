@@ -89,13 +89,11 @@
         
         <p><a>Language tags</a> can also be used to identify <a>international preferences</a> associated with a given piece of content or user because these preferences are linked to the natural language, regional association, or culture of the end user. Such preferences are applied to processes such as presenting numbers, dates, or times; sorting lists linguistically; providing defaults for items such as the presentation of a calendar, or common units of measurement; selecting between 12- vs. 24-hour time presentation; and many other details that users might find too tedious to set individually. Collectively, these preferences are usually called a <a>locale</a>.</p>
         
-        <p>This document describes best practices for the adoption and use of [[BCP47]] language tags for the identification of <a>natural language</a> content as well as the use of language tags to represent the locale preferences of the user or content author. It describes how document formats, specifications, and implementations should handle the language tags described by [[BCP47]], as well as data structures that extend these tags to describe <a>international preferences</a>.</p>
-        
         <p>Existing standards which make use of language identification include the <code>xml:lang</code> attribute in [[XML10]], the <code>lang</code> and <code>hreflang</code> atttributes in [[HTML]], the <code>language</code> property in [[XSL10]], and the <code>:lang</code> pseudo-class in CSS [[CSS3-SELECTORS]]. The JavaScript language has added support for <a>internationalization</a> using <a>Unicode locales</a> as the basis for the APIs found in [[ECMA402]].</p>
         
-        <p>Document formats and protocols often need to identify and exchange information about the <a>natural language</a> of content or perform <a>language negotiation</a> when selecting appropriate content on the Web. For more information and best practices related to this type of language metadata, see [[STRING-META]].</p>
- 
-        <p>This document's focus is on the interplay between <a>language tags</a> and the <a>internationalization</a> of the Web. Many applications need to provide for the <a>localized</a> presentation of data values (such as numbers or dates). This document provides <a href="#best-practices">best practices</a> for specification authors who need to define language tags in their document formats or protocols, including common operations such as <a>language negotiation</a>. It also provides recommendations for how to specify locale-affected behavior and defines core terminology that specifications might need to refer to these behaviors or capabilities.</p>
+        <p>Many applications need to provide for the <a>localized</a> presentation of data values (such as numbers or dates). This document provides <a href="#best-practices">best practices</a> for specification authors who need to define <a>language tags</a>[[BCP47]] in their document formats or protocols, including common operations such as <a>language negotiation</a>. It also provides recommendations for how to specify locale-affected behavior and defines core terminology that specifications might need to refer to these behaviors or capabilities.</p>
+        
+        <p>Document formats and protocols often need to provide metadata about the <a>natural language</a> of content or perform <a></a>language negotiation</a> when selecting appropriate content on the Web. For more information and best practices related to the specification and use of language tags as metadata, see [[STRING-META]].</p>
         
     </section>
 
@@ -194,7 +192,7 @@
           
         <p>[[BCP47]] defines different levels of conformance. See <a href="https://tools.ietf.org/html/bcp47#section-2.2.9">classes of conformance</a> in [[BCP47]] for specifics. For language tags, the levels of conformance correspond to type of validation that an implementation applies to language tag values.</p>
         
-        <p>A <dfn data-lt="well-formed|well-formed language tag">well-formed langauge tag</dfn> follows the grammar defined in [[BCP47]]. That is, it is structurally correct, consisting of ASCII letters and digit <a>subtags</a> of the prescribed length, separated by hyphens.</p>
+        <p>A <dfn data-lt="well-formed|well-formed language tag">well-formed language tag</dfn> follows the grammar defined in [[BCP47]]. That is, it is structurally correct, consisting of ASCII letters and digit <a>subtags</a> of the prescribed length, separated by hyphens.</p>
         <p>A <dfn data-lt="valid|valid language tag">valid language tag</dfn> has been checked to ensure that each of the subtags appears in the <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">Language Subtag Registry</a> hosted by IANA.</p>
           
         <p>A <dfn title="language-range">language range</dfn> is a string
