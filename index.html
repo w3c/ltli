@@ -29,7 +29,19 @@
           wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/32113/status",
           github: "w3c/ltli",
 
-localBiblio:  {
+    localBiblio:  {
+
+	"ECMA402": {
+		title:"ECMAScript Internationalization API",
+		href:"https://www.ecma-international.org/publications/standards/Ecma-402.htm",
+		publisher:"ECMA International",
+		authors: [
+		    "Shane F. Carr",
+		    "Leo Balter",
+		    "Valerie Young",
+		    "Isaac Durazo"
+        ]},
+
     "CLDR": {
 	    title:    "Common Locale Data Repository",
 	    href:     "https://cldr.unicode.org",
@@ -46,7 +58,7 @@ localBiblio:  {
     }
 
       };
-	    
+
     </script>
     <link rel="stylesheet" href="local.css" type="text/css" />
   </head>
@@ -79,7 +91,9 @@ localBiblio:  {
         
         <p>This document describes best practices for the adoption and use of [[BCP47]] language tags for the identification of <a>natural language</a> content as well as the use of language tags to represent the locale preferences of the user or content author. It describes how document formats, specifications, and implementations should handle the language tags described by [[BCP47]], as well as data structures that extend these tags to describe <a>international preferences</a>.</p>
         
-        <p>Identification of language and locale has a broad range of applications within the World Wide Web. Existing standards which make use of language identification include the <code>xml:lang</code> attribute in [[XML10]], the <code>lang</code> and <code>hreflang</code> atttributes in [[HTML]], the <code>language</code> property in [[XSL10]], and the <code>:lang</code> pseudo-class in CSS [[CSS3-SELECTORS]]. Document formats and protocols often need to identify and exchange information about the <a>natural language</a> of content or perform <a>language negotiation</a> when selecting appropriate content on the Web. For more information and best practices related to this type of language metadata, see [[STRING-META]].</p>
+        <p>Existing standards which make use of language identification include the <code>xml:lang</code> attribute in [[XML10]], the <code>lang</code> and <code>hreflang</code> atttributes in [[HTML]], the <code>language</code> property in [[XSL10]], and the <code>:lang</code> pseudo-class in CSS [[CSS3-SELECTORS]]. The JavaScript language has added support for <a>internationalization</a> using <a>Unicode locales</a> as the basis for the APIs found in [[ECMA402]].</p>
+        
+        <p>Document formats and protocols often need to identify and exchange information about the <a>natural language</a> of content or perform <a>language negotiation</a> when selecting appropriate content on the Web. For more information and best practices related to this type of language metadata, see [[STRING-META]].</p>
  
         <p>This document's focus is on the interplay between <a>language tags</a> and the <a>internationalization</a> of the Web. Many applications need to provide for the <a>localized</a> presentation of data values (such as numbers or dates). This document provides <a href="#best-practices">best practices</a> for specification authors who need to define language tags in their document formats or protocols, including common operations such as <a>language negotiation</a>. It also provides recommendations for how to specify locale-affected behavior and defines core terminology that specifications might need to refer to these behaviors or capabilities.</p>
         
@@ -138,7 +152,7 @@ localBiblio:  {
         
         <p><dfn data-lt="common locale data repository|CLDR">Common Locale Data Repository</dfn> or <em>CLDR</em> [[CLDR]] is a Unicode Consortium project that defines, collects, and curates sets of <a>locale</a> data needed to <a>enable</a> systems or operating environments. CLDR data and it's locale model are widely adopted, particularly in browsers.</p>
         
-        <p><dfn>Unicode Locale</dfn>. A language tag extension [[RFC6067]] and additional processing rules defined by [[CLDR]] to support <a>locales</a> defined by Unicode. Unicode locales provide the ability to specify in a language tag a number of the international preference variations that users or content authors might wish to specify directly. The language tag extension uses the <code>-u-</code> subtag. These identifiers are identical to language tags, but apply additional rules about the content of certain language tags. Unicode Locales increasingly form the basis for <a>internationalization</a> on the Web, particularly as part of the <code>Intl</code> locale framework in JavaScript.</p>
+        <p><dfn>Unicode Locale</dfn>. A language tag extension [[RFC6067]] and additional processing rules defined by [[CLDR]] to support <a>locales</a> defined by Unicode. Unicode locales provide the ability to specify in a language tag a number of the international preference variations that users or content authors might wish to specify directly. The language tag extension uses the <code>-u-</code> subtag. These identifiers are identical to language tags, but apply additional rules about the content of certain language tags. Unicode Locales increasingly form the basis for <a>internationalization</a> on the Web, particularly as part of the <code>Intl</code> locale framework [[ECMA402]] in JavaScript.</p>
         
         <p>Unicode's [[CLDR]] project also maintains [[RFC6497]], which defines a [[BCP47]] registered extension (using the <code>-t-</code> subtag) which describes <em>transformations</em> (generally text transformations, such as transliteration between scripts).</p>
         
@@ -235,8 +249,6 @@ localBiblio:  {
            <p class="advisement">Best practices appear with a different background color and decoration like this.</p>
         </aside>
           
-        <section id="defining">
-	    <h3>How to Define Language Tags and How to Reference Language Tag Standards</h3>
         <p class="advisement" id="ltli-bcp47-refer">Specifications for the Web that require language identification MUST refer to [[BCP47]]. </p>
         
         <p class="advisement" id="ltli-no-rfc-refs">Specifications SHOULD NOT refer to specific component RFCs.</p>
@@ -272,7 +284,6 @@ localBiblio:  {
         
         <p>For example, JavaScript and [[CLDR]] provide a "best fit" algorithm which can be tailored by implementers.</p>
         
-      </section>
     </section>
 
     <section id="locale-vs-language">
@@ -309,18 +320,17 @@ localBiblio:  {
         application. </p>
       <p>For more detailed information on the behavior of <code>xml:lang</code>,
         see XML 1.0 (Fifth Edition)[[XML10]].</p>
-      <div class="issue">
-        <p>The I18N WG has existing best practices documentation which may or
-          may not be appropriate to subsume into this document. These include: </p>
+        
+   </section>
+   <section id="further-reading">
+      <h2>Further Reading</h2>
+        <p>The Internationalization WG has additional best practices and other references, such as articles on language tag choice. These include: </p>
         <ul>
-          <li><a href="https://www.w3.org/International/questions/qa-choosing-language-tags">Choosing
-              a Language Tag</a></li>
-          <li><a href="https://www.w3.org/International/articles/language-tags/">Language
-              Tags in HTML and XML</a></li>
-          <li><a href="https://www.w3.org/International/questions/qa-no-language">Tagging
-              text with no language</a></li>
+		  <li><a href="https://www.w3.org/TR/string-meta">Strings on the Web: Language and Direction Metadata</a> [[STRING-META]]</li>
+          <li><a href="https://www.w3.org/International/questions/qa-choosing-language-tags">Choosing a Language Tag</a></li>
+          <li><a href="https://www.w3.org/International/articles/language-tags/">Language Tags in HTML and XML</a></li>
+          <li><a href="https://www.w3.org/International/questions/qa-no-language">Tagging text with no language</a></li>
         </ul>
-      </div>
     </section>
     
     <!-- In the latest revision, I think all of these are now in the BP section
