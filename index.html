@@ -85,18 +85,17 @@
     <section id="introduction">
       <h2>Introduction</h2>
       
-        <p>This document provides <a href="#best-practices">best practices</a> for specification authors who need to define <a>language tags</a>[[BCP47]] in their document formats or protocols, including common operations such as <a>language negotiation</a>. It also provides recommendations for how to specify locale-affected behavior and defines core terminology that specifications might need to refer to these behaviors or capabilities.</p>
+        <p>This document provides <a href="#best-practices">best practices</a> for specification authors who need to identify <a>natural language</a> values in their document formats or protocols via the use of <a>language tags</a> [[BCP47]], including common operations such as <a>language negotiation</a>. It also provides recommendations for how to specify <a>locale-aware</a> or <a>internationalized</a> behavior and defines core terminology that specifications might need to refer to these behaviors or capabilities.</p>
 
         <p>Tags for identifying the <a>natural language</a> of content or the <a>international preferences</a> of users are one of the fundamental building blocks of the Web. The <a>language tags</a> found in Web and Internet formats and protocols are defined by [[BCP47]]. Consistent use of language tags provides applications the ability to perform language-specific formatting or processing. For example, a user-agent might use the language to select an appropriate font for displaying text or a Web page designer might style text differently in one language than in another.</p>
         
-        <p><a>Language tags</a> can also be used to identify <a>international preferences</a> associated with a given piece of content or user because these preferences are linked to the natural language, regional association, or culture of the end user. Such preferences are applied to processes such as presenting numbers, dates, or times; sorting lists linguistically; providing defaults for items such as the presentation of a calendar, or common units of measurement; selecting between 12- vs. 24-hour time presentation; and many other details that users might find too tedious to set individually. Collectively, these preferences are usually called a <a>locale</a>.</p>
+        <p>Many of the core standards for the Web include support for <a>language tags</a>; these include the <code>xml:lang</code> attribute in [[XML10]], the <code>lang</code> and <code>hreflang</code> atttributes in [[HTML]], the <code>language</code> property in [[XSL10]], and the <code>:lang</code> pseudo-class in CSS [[CSS3-SELECTORS]]. </p>
         
-        <p>Many of the core standards for the Web provide ready-made support for <a>language tags</a>; these include the <code>xml:lang</code> attribute in [[XML10]], the <code>lang</code> and <code>hreflang</code> atttributes in [[HTML]], the <code>language</code> property in [[XSL10]], and the <code>:lang</code> pseudo-class in CSS [[CSS3-SELECTORS]]. The JavaScript language  supports <a>internationalization</a> using <a>Unicode locales</a> as the basis for the APIs found in [[ECMA402]].</p>
+        <p><a>Language tags</a> can also be used to identify <a>international preferences</a> associated with a given piece of content or user because these preferences are linked to the natural language, regional association, or culture of the end user. Such preferences are applied to processes such as presenting numbers, dates, or times; sorting lists linguistically; providing defaults for items such as the presentation of a calendar, or common units of measurement; selecting between 12- vs. 24-hour time presentation; and many other details that users might find too tedious to set individually. Collectively, these preferences are usually called a <a>locale</a>. The extensions to [[BCP47]] that define <a>Unicode locales</a> [[CLDR]] provide the basis for <a>interationalization</a> APIs on the Web, notably the JavaScript language uses <a>Unicode locales</a> as the basis for the APIs found in [[ECMA402]].</p>
       
         <p>Document formats and protocols often need to provide metadata about the <a>natural language</a> of content or perform <a></a>language negotiation</a> when selecting appropriate content on the Web. For more information and best practices related to the specification and use of language tags as metadata, see [[STRING-META]].</p>
         
     </section>
-
 
       <section id="i18n-terminology">
         <h3>What are Internationalization and Localization?</h3>
@@ -110,7 +109,7 @@
           formatting choices that software must employ to correctly process or
           present information exchanged with that user.</p>
           
-        <p><dfn id="internationalization" data-lt="internationalization|I18N">Internationalization</dfn> The design and development of a product that is enabled for target audiences that vary in culture, region, or language. Internationalization is sometimes abbreviated <code>I18N</code> because there are eighteen letters between the "i" and the "n" in the English word.</p>
+        <p><dfn id="internationalization" data-lt="internationalization|I18N|internationalized">Internationalization</dfn> The design and development of a product that is enabled for target audiences that vary in culture, region, or language. Internationalization is sometimes abbreviated <code>I18N</code> because there are eighteen letters between the "i" and the "n" in the English word.</p>
         
         <p>There are many kinds of international preferences that may be offered
           on the Web in order for the content or service to be considered usable
@@ -138,7 +137,7 @@
           
         <p>HTML for example uses the <code>lang</code> attribute to indicate the language of segments of content. XML uses the <code>xml:lang</code> attribute for the same purpose.</p>
         
-        <p><dfn data-lt="localization|localized">Localization</dfn> The tailoring of a system to the individual cultural expectations of a specific target market or group of individuals. Localization includes, but is not limited to, the translation of user-facing text and messages. Localization is sometimes abbreviated as <dfn>L10N</dfn> because there are ten letters between the "L" and the "N" in the English word. When a particular set of content and preferences corresponding to a specific set of international preferences is operationally available, then the system is said to be <em>localized</em>.</p>
+        <p><dfn data-lt="localization|localized|L10N">Localization</dfn> The tailoring of a system to the individual cultural expectations of a specific target market or group of individuals. Localization includes, but is not limited to, the translation of user-facing text and messages. Localization is sometimes abbreviated as <code>L10N</code> because there are ten letters between the "L" and the "N" in the English word. When a particular set of content and preferences corresponding to a specific set of international preferences is operationally available, then the system is said to be <em>localized</em>.</p>
           
         <p><dfn id="locale">Locale</dfn> A collection of international preferences, generally related to a language and geographic region, that is passed in APIs or set in the operating environment to get culturally affected behavior from a system or process. Usually a locale is identified by an id or shorthand token, such as a language tag.</p>
         
@@ -162,7 +161,7 @@
       <section id="language-terminology">
         <h3>Languages, Language Tags and Matching of Language Tags</h3>
         
-        <p>This document uses the term <dfn title="language">language</dfn> to
+        <p>This document uses the term <dfn>language</dfn> to
           refer to what is sometimes called a <em><dfn>natural language</dfn></em>: the
           spoken, written, or signed communications used by human beings.</p>
         <p>There are many ways that languages might be identified and many
