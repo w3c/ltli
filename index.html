@@ -7,22 +7,22 @@
     <script class="remove">
       var respecConfig = {
           specStatus: "ED",
-	        edDraftURI: "https://w3c.github.io/ltli/",
+	      edDraftURI: "https://w3c.github.io/ltli/",
           shortName:  "ltli",
           editors: [
                 {   name:       "Addison Phillips",
                     company:    "Amazon.com"
-	    },
-	              {   name: "Felix Sasaki",
-		                company: "W3C"
-            }
+	            },
+	            {   name: "Felix Sasaki",
+		            company: "Invited Expert"
+                }
           ],
           // if you wish the publication date to be other than today, set this
           //publishDate:  "2015-04-23",
 		  noRecTrack: true,
 	
           previousMaturity: "WD",
-          previousPublishDate:  "2006-06-12",
+          previousPublishDate:  "2015-04-23",
           wg:           "Internationalization Working Group",
           wgURI:        "https://www.w3.org/International/core/",
           wgPublicList: "www-international",
@@ -77,7 +77,7 @@ localBiblio:  {
         
         <p><a>Language tags</a> can also be used to identify <a>international preferences</a> associated with a given piece of content or user because these preferences are linked to the natural language, regional association, or culture of the end user. Such preferences are applied to processes such as presenting numbers, dates, or times; sorting lists linguistically; providing defaults for items such as the presentation of a calendar, or common units of measurement; selecting between 12- vs. 24-hour time presentation; and many other details that users might find too tedious to set individually. Collectively, these preferences are usually called a <a>locale</a>.</p>
         
-        <p>This document describes best practices for the adoption and use of [[BCP47]] language tags for the identification of <a>natural language</a> content as well as the use of language tags to represent the locale preferences of the user or content author. It describes how document formats, specifications, and implementations should handle the language tags described by [[BCP47]], as well as data structures that extend these tags to describe <a>international preferences</a> (see also sec. 3.1 in [[WS-I18N-SCENARIOS]]). </p>
+        <p>This document describes best practices for the adoption and use of [[BCP47]] language tags for the identification of <a>natural language</a> content as well as the use of language tags to represent the locale preferences of the user or content author. It describes how document formats, specifications, and implementations should handle the language tags described by [[BCP47]], as well as data structures that extend these tags to describe <a>international preferences</a>.</p>
         
         <p>Identification of language and locale has a broad range of applications within the World Wide Web. Existing standards which make use of language identification include the <code>xml:lang</code> attribute in [[XML10]], the <code>lang</code> and <code>hreflang</code> atttributes in [[HTML]], the <code>language</code> property in [[XSL10]], and the <code>:lang</code> pseudo-class in CSS [[CSS3-SELECTORS]]. Document formats and protocols often need to identify and exchange information about the <a>natural language</a> of content or perform <a>language negotiation</a> when selecting appropriate content on the Web. For more information and best practices related to this type of language metadata, see [[STRING-META]].</p>
  
@@ -237,36 +237,45 @@ localBiblio:  {
           
         <section id="defining">
 	    <h3>How to Define Language Tags and How to Reference Language Tag Standards</h3>
-        <p class="advisement">Specifications for the Web that require language identification MUST refer to [[BCP47]]. </p>
+        <p class="advisement" id="ltli-bcp47-refer">Specifications for the Web that require language identification MUST refer to [[BCP47]]. </p>
         
-        <p class="advisement">Specifications SHOULD NOT refer to specific component RFCs.</p>
+        <p class="advisement" id="ltli-no-rfc-refs">Specifications SHOULD NOT refer to specific component RFCs.</p>
         <p>The "BCP" nomenclature refers to the current set of RFCs that form the "best current practice". At the time this document was published, [[BCP47]] consisted of two RFCs: <cite>Tags for the Identification of Languages </cite>[[RFC5646]] and <cite>Matching of Language Tags</cite> [[RFC4647]].</p>
         
-        <p class="advisement">Formulations such as "<span class="quote">RFC 5646 or its successor</span>" MAY be used, but only in cases where the specific document version is necessary.</p>
+        <p class="advisement" id="ltli-successor-ref">Formulations such as "<span class="quote">RFC 5646 or its successor</span>" MAY be used, but only in cases where the specific document version is necessary.</p>
         <p>While this style of reference was once popular, using the
           BCP reference is more accurate. Since the grammar of language tags has
           been fixed since [[RFC4646]], referring to the BCP will not incur
           additional compliance risk to most implementations.</p>
           
-        <p class="advisement">Specifications MUST NOT reference obsolete versions of [[BCP47]], such as [[RFC1766]] or [[RFC3066]].</p>
-        <p class="advisement">Specifications that need to preserve compatibility with obsolete versions of [[BCP47]] MUST reference the production <code>obs-language-tag</code> in [[BCP47]].</p>
+        <p class="advisement" id="ltli-no-obsolete-refs">Specifications MUST NOT reference obsolete versions of [[BCP47]], such as [[RFC1766]] or [[RFC3066]].</p>
+        
+        <p class="advisement" id="ltli-obs-language-tag-ref">Specifications that need to preserve compatibility with obsolete versions of [[BCP47]] MUST reference the production <code>obs-language-tag</code> in [[BCP47]].</p>
         <p>Beginning with [[RFC4646]], [[BCP47]] defined a more complex, machine-readable syntax for language tags. Some specifications might desire or require compatibility with the older language tag grammar found in previous versions of BCP47 (specifically [[RFC1766]] and [[RFC3066]]). This grammar was more permissive and is described in [[BCP47]] as the ABNF production <code>obs-language-tag</code>. [[RFC4646]], which introduced the current grammar for language tags, is itself obsolete.</p>
         
-        <p class="advisement">Specifications MAY reference registered extensions to [[BCP47]] as necessary.</p>
+        <p class="advisement" id="ltli-bcp47-extension-ref">Specifications MAY reference registered extensions to [[BCP47]] as necessary.</p>
         <p>In particular, [[RFC6067]] defines the <cite>BCP 47 Extension U</cite>, also known as "Unicode Locales". This extension to [[BCP47]] provides additional subtag sequences for selecting specific locale variations.</p>
         
-        <p class="advisement">Specifications SHOULD require that language tags be <a>well-formed</a>.</p>
-        <p class="advisement">Specifications MAY require that language tags be <a>valid</a>.</p>
+        <p class="advisement" id="ltli-well-formed-req">Specifications SHOULD require that language tags be <a>well-formed</a>.</p>
+        <p class="advisement" id="ltli-valid-req">Specifications MAY require that language tags be <a>valid</a>.</p>
         
         <p>Checking if a tag is <a>valid</a> requires access to or a copy of the registry plus additional runtime logic. While content authors are advised to choose, generate, and exchange only valid values, language tag matching and other common language tag operations are designed so that validity checking is not needed. Features or functions that need to understand the specific semantic content of subtags are the main reason that a specification would normatively require <a>valid</a> tags as part of the protocol or document format.</p>
         
-        <p class="advisement">Specifications SHOULD require content authors use <a>valid</a> language tags.</p>
-        <p class="advisement">Content validators SHOULD check if content uses <a>valid</a> language tags where feasible.</p>
+        <p class="advisement" id="ltli-valid-content-req">Specifications SHOULD require content authors use <a>valid</a> language tags.</p>
+        <p class="advisement" id="ltli-validator-req">Content validators SHOULD check if content uses <a>valid</a> language tags where feasible.</p>
+        
+        <p class="advisement" id="ltli-range-type-req">Specifications that define language tag matching or <a>language negotiation</a> MUST specify whether language ranges used are a <a>basic language range</a> or an <a>extended language range</a>.</p>
+        
+        <p class="advisement" id="ltli-matching-result-ref">Specifications that define language tag matching MUST specify whether the results of a matching operation contains a single result (<em>lookup</em> as defined in [[RFC4647]]), or a possibly-empty (zero or more) set of results (<em>filtering</em> as defined in [[RFC4647]]).</p>
+        
+        <p class="advisement" id="ltli-matching-type-ref">Specifications that define language tag matching MUST specify the matching algorithms available and the selection mechanism.</p>
+        
+        <p>For example, JavaScript and [[CLDR]] provide a "best fit" algorithm which can be tailored by implementers.</p>
         
       </section>
     </section>
 
-    <section id="locale_vs">
+    <section id="locale-vs-language">
       <h3>Locale versus Natural Language</h3>
       <p>This document defines locale identifiers for use in Web technologies.
         Historically, language tags [[BCP47]] have been used as locale
@@ -313,7 +322,9 @@ localBiblio:  {
         </ul>
       </div>
     </section>
-    <section id="tags_v_values">
+    
+    <!-- In the latest revision, I think all of these are now in the BP section
+    <section id="tags-vs-values">
       <h2>Language Tags and Locale Values</h2>
 
       <p>The following requirements are formulated for specifications which deal
@@ -350,6 +361,10 @@ localBiblio:  {
           and locale identification.</p>
       </div>
     </section>
+    
+    -->
+ 
+      <!-- Testing removing this section
  
       <section id="choice">
         <h3>Choice of Language Tag</h3>
@@ -432,33 +447,8 @@ localBiblio:  {
         </section>
 
     </section>
-    <section class="appendix" id="ws-scenario">
-      <h3>Application Scenario: Web Services Internationalization</h3>
-      <p class="issue">This section was part of the original LTLI document and exists to address items identified in [[WS-I18N-REQ]]. It refers to this document as a "specification" (which it no longer is). Removing this section is probably the next step.</p>
-      
-      <p>In order to enable multi-locale operation of Web services and to create the ability for locale negotiation, this specification describes a standardized method for identifying locales and locale and/or language tags on the Web, including non-normative guidelines for implementation. This is called out in Requirement <code>R005</code> of <cite>Requirements for the Internationalization of Web Services</cite> [[WS-I18N-REQ]]. The mechanism for language and locale identification which is defined in this specification will be used in a future version of the description of Web services Internationalization in <cite>Web Services Internationalization (WS-I18N)</cite>[[WS-I18N]].</p>
-      <p>Further application scenarios of this specification encompass, for example, the standards mentioned in the <a href="#introduction">Introduction</a>. Scenarios can be divided in four areas:</p>
-      <ul>
-        <li>
-          <p>Definition of values for language tags</p>
-        </li>
-        <li>
-          <p>Definition of values for locale identifiers</p>
-        </li>
-        <li>
-          <p>Definition of matching schemes for language tags</p>
-        </li>
-        <li>
-          <p>Definition of matching schemes for locale identifiers</p>
-        </li>
-      </ul>
-      <p>As for matching of language tags, many specifications already define
-        operations using matching. An example is the language pseudo-class <code>:lang</code>
-        defined in <a href="http://www.w3.org/TR/2005/WD-CSS21-20050613/selector.html#lang">sec.
-          5.11.4</a> of [[CSS21]]. It matches elements based on their language.
-        This specification formulates requirements on such operations, based on
-        [[RFC4647]].</p>
-    </section>
+    -->
+
     <section class="appendix" id="revisionlog">
       <h3>Revision Log</h3>
       <p>The following changes were made since the revision of 2015-04-23.</p>
@@ -466,6 +456,7 @@ localBiblio:  {
 		  <li>As this document is targetting Note status, removed mention of "normative" and "informative" and converted all references to standard ones.</li>
 		  <li>Restructured document to be more accessible. Some sections were reordered.</li>
 		  <li>Changed "conformance" to "best practices".</li>
+		  <li>Removed the WS-I18N appendix.</li>
       </ul>
       <p>The following changes were made since the revision of 2006-06-20.</p>
       <ul>
