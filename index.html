@@ -41,6 +41,11 @@
 		    "Valerie Young",
 		    "Isaac Durazo"
         ]},
+        
+    "ECMA262": {
+		title:"ECMAScript Language Specification",
+		href:"https://tc39.es/ecma262/"
+	},
 
     "CLDR": {
 	    title:    "Common Locale Data Repository",
@@ -91,7 +96,7 @@
         
         <p>Many of the core standards for the Web include support for <a>language tags</a>; these include the <code>xml:lang</code> attribute in [[XML10]], the <code>lang</code> and <code>hreflang</code> atttributes in [[HTML]], the <code>language</code> property in [[XSL10]], and the <code>:lang</code> pseudo-class in CSS [[CSS3-SELECTORS]]. </p>
         
-        <p><a>Language tags</a> can also be used to identify <a>international preferences</a> associated with a given piece of content or user because these preferences are linked to the natural language, regional association, or culture of the end user. Such preferences are applied to processes such as presenting numbers, dates, or times; sorting lists linguistically; providing defaults for items such as the presentation of a calendar, or common units of measurement; selecting between 12- vs. 24-hour time presentation; and many other details that users might find too tedious to set individually. Collectively, these preferences are usually called a <a>locale</a>. The extensions to [[BCP47]] that define <a>Unicode locales</a> [[CLDR]] provide the basis for <a>interationalization</a> APIs on the Web, notably the JavaScript language uses <a>Unicode locales</a> as the basis for the APIs found in [[ECMA402]].</p>
+        <p><a>Language tags</a> can also be used to identify <a>international preferences</a> associated with a given piece of content or user because these preferences are linked to the natural language, regional association, or culture of the end user. Such preferences are applied to processes such as presenting numbers, dates, or times; sorting lists linguistically; providing defaults for items such as the presentation of a calendar, or common units of measurement; selecting between 12- vs. 24-hour time presentation; and many other details that users might find too tedious to set individually. Collectively, these preferences are usually called a <a>locale</a>. The extensions to [[BCP47]] that define <a>Unicode locales</a> [[CLDR]] provide the basis for <a>internationalization</a> APIs on the Web, notably the JavaScript language [[ECMA262]] uses <a>Unicode locales</a> as the basis for the APIs found in [[ECMA402]].</p>
       
         <p>Document formats and protocols often need to provide metadata about the <a>natural language</a> of content or perform <a></a>language negotiation</a> when selecting appropriate content on the Web. For more information and best practices related to the specification and use of language tags as metadata, see [[STRING-META]].</p>
         
@@ -149,7 +154,7 @@
         
         <p><dfn data-lt="common locale data repository|CLDR">Common Locale Data Repository</dfn> or <em>CLDR</em> [[CLDR]] is a Unicode Consortium project that defines, collects, and curates sets of <a>locale</a> data needed to <a>enable</a> systems or operating environments. CLDR data and it's locale model are widely adopted, particularly in browsers.</p>
         
-        <p><dfn>Unicode Locale</dfn>. A language tag extension [[RFC6067]] and additional processing rules defined by [[CLDR]] to support <a>locales</a> defined by Unicode. Unicode locales provide the ability to specify in a language tag a number of the international preference variations that users or content authors might wish to specify directly. The language tag extension uses the <code>-u-</code> subtag. These identifiers are identical to language tags, but apply additional rules about the content of certain language tags. Unicode Locales increasingly form the basis for <a>internationalization</a> on the Web, particularly as part of the <code>Intl</code> locale framework [[ECMA402]] in JavaScript.</p>
+        <p><dfn>Unicode Locale</dfn>. A language tag extension [[RFC6067]] and additional processing rules defined by [[CLDR]] to support <a>locales</a> defined by Unicode. Unicode locales provide the ability to specify in a language tag a number of the international preference variations that users or content authors might wish to specify directly. The language tag extension uses the <code>-u-</code> subtag. These identifiers are identical to language tags, but apply additional rules about the content of certain language tags. Unicode Locales increasingly form the basis for <a>internationalization</a> on the Web, particularly as part of the <code>Intl</code> locale framework [[ECMA402]] in JavaScript. [[ECMA262]]</p>
         
         <p>Unicode's [[CLDR]] project also maintains [[RFC6497]], which defines a [[BCP47]] registered extension (using the <code>-t-</code> subtag) which describes <em>transformations</em> (generally text transformations, such as transliteration between scripts).</p>
         
@@ -246,40 +251,42 @@
            <p class="advisement">Best practices appear with a different background color and decoration like this.</p>
         </aside>
           
-        <p class="advisement" id="ltli-bcp47-refer">Specifications for the Web that require language identification MUST refer to [[BCP47]]. </p>
+        <p class="advisement" id="ltli-bcp47-refer"><a href="#ltli-bcp47-refer" class="self">&#x200B;</a>Specifications for the Web that require language identification MUST refer to [[BCP47]]. </p>
         
-        <p class="advisement" id="ltli-no-rfc-refs">Specifications SHOULD NOT refer to specific component RFCs.</p>
+        <p class="advisement" id="ltli-no-rfc-refs"><a href="#ltli-no-rfc-refs" class="self">&#x200B;</a>Specifications SHOULD NOT refer to specific component RFCs.</p>
+        
         <p>The "BCP" nomenclature refers to the current set of RFCs that form the "best current practice". At the time this document was published, [[BCP47]] consisted of two RFCs: <cite>Tags for the Identification of Languages </cite>[[RFC5646]] and <cite>Matching of Language Tags</cite> [[RFC4647]].</p>
         
-        <p class="advisement" id="ltli-successor-ref">Formulations such as "<span class="quote">RFC 5646 or its successor</span>" MAY be used, but only in cases where the specific document version is necessary.</p>
+        <p class="advisement" id="ltli-successor-ref"><a href="#ltli-successor-ref" class="self">&#x200B;</a>Formulations such as "<span class="quote">RFC 5646 or its successor</span>" MAY be used, but only in cases where the specific document version is necessary.</p>
         <p>While this style of reference was once popular, using the
           BCP reference is more accurate. Since the grammar of language tags has
           been fixed since [[RFC4646]], referring to the BCP will not incur
           additional compliance risk to most implementations.</p>
           
-        <p class="advisement" id="ltli-no-obsolete-refs">Specifications MUST NOT reference obsolete versions of [[BCP47]], such as [[RFC1766]] or [[RFC3066]].</p>
+        <p class="advisement" id="ltli-no-obsolete-refs"><a href="#ltli-no-obsolete-refs" class="self">&#x200B;</a>Specifications MUST NOT reference obsolete versions of [[BCP47]], such as [[RFC1766]] or [[RFC3066]].</p>
         
-        <p class="advisement" id="ltli-obs-language-tag-ref">Specifications that need to preserve compatibility with obsolete versions of [[BCP47]] MUST reference the production <code>obs-language-tag</code> in [[BCP47]].</p>
+        <p class="advisement" id="ltli-obs-language-tag-ref"><a href="#ltli-obs-language-tag-ref" class="self">&#x200B;</a>Specifications that need to preserve compatibility with obsolete versions of [[BCP47]] MUST reference the production <code>obs-language-tag</code> in [[BCP47]].</p>
+        
         <p>Beginning with [[RFC4646]], [[BCP47]] defined a more complex, machine-readable syntax for language tags. Some specifications might desire or require compatibility with the older language tag grammar found in previous versions of BCP47 (specifically [[RFC1766]] and [[RFC3066]]). This grammar was more permissive and is described in [[BCP47]] as the ABNF production <code>obs-language-tag</code>. [[RFC4646]], which introduced the current grammar for language tags, is itself obsolete.</p>
         
-        <p class="advisement" id="ltli-bcp47-extension-ref">Specifications MAY reference registered extensions to [[BCP47]] as necessary.</p>
+        <p class="advisement" id="ltli-bcp47-extension-ref"><a href="#ltli-bcp47-extension-ref" class="self">&#x200B;</a>Specifications MAY reference registered extensions to [[BCP47]] as necessary.</p>
         <p>In particular, [[RFC6067]] defines the <cite>BCP 47 Extension U</cite>, also known as "Unicode Locales". This extension to [[BCP47]] provides additional subtag sequences for selecting specific locale variations.</p>
         
-        <p class="advisement" id="ltli-well-formed-req">Specifications SHOULD require that language tags be <a>well-formed</a>.</p>
-        <p class="advisement" id="ltli-valid-req">Specifications MAY require that language tags be <a>valid</a>.</p>
+        <p class="advisement" id="ltli-well-formed-req"><a href="#ltli-well-formed-req" class="self">&#x200B;</a>Specifications SHOULD require that language tags be <a>well-formed</a>.</p>
+        <p class="advisement" id="ltli-valid-req"><a href="#ltli-valid-req" class="self">&#x200B;</a>Specifications MAY require that language tags be <a>valid</a>.</p>
         
         <p>Checking if a tag is <a>valid</a> requires access to or a copy of the registry plus additional runtime logic. While content authors are advised to choose, generate, and exchange only valid values, language tag matching and other common language tag operations are designed so that validity checking is not needed. Features or functions that need to understand the specific semantic content of subtags are the main reason that a specification would normatively require <a>valid</a> tags as part of the protocol or document format.</p>
         
-        <p class="advisement" id="ltli-valid-content-req">Specifications SHOULD require content authors use <a>valid</a> language tags.</p>
-        <p class="advisement" id="ltli-validator-req">Content validators SHOULD check if content uses <a>valid</a> language tags where feasible.</p>
+        <p class="advisement" id="ltli-valid-content-req"><a href="#ltli-valid-content-req" class="self">&#x200B;</a>Specifications SHOULD require content authors use <a>valid</a> language tags.</p>
+        <p class="advisement" id="ltli-validator-req"><a href="#ltli-validator-req" class="self">&#x200B;</a>Content validators SHOULD check if content uses <a>valid</a> language tags where feasible.</p>
         
-        <p class="advisement" id="ltli-range-type-req">Specifications that define language tag matching or <a>language negotiation</a> MUST specify whether language ranges used are a <a>basic language range</a> or an <a>extended language range</a>.</p>
+        <p class="advisement" id="ltli-range-type-req"><a href="#ltli-range-type-req" class="self">&#x200B;</a>Specifications that define language tag matching or <a>language negotiation</a> MUST specify whether language ranges used are a <a>basic language range</a> or an <a>extended language range</a>.</p>
         
-        <p class="advisement" id="ltli-matching-result-ref">Specifications that define language tag matching MUST specify whether the results of a matching operation contains a single result (<em>lookup</em> as defined in [[RFC4647]]), or a possibly-empty (zero or more) set of results (<em>filtering</em> as defined in [[RFC4647]]).</p>
+        <p class="advisement" id="ltli-matching-result-ref"><a href="#ltli-matching-result-ref" class="self">&#x200B;</a>Specifications that define language tag matching MUST specify whether the results of a matching operation contains a single result (<em>lookup</em> as defined in [[RFC4647]]), or a possibly-empty (zero or more) set of results (<em>filtering</em> as defined in [[RFC4647]]).</p>
         
-        <p class="advisement" id="ltli-matching-type-ref">Specifications that define language tag matching MUST specify the matching algorithms available and the selection mechanism.</p>
+        <p class="advisement" id="ltli-matching-type-ref"><a href="#ltli-matching-type-ref" class="self">&#x200B;</a>Specifications that define language tag matching MUST specify the matching algorithms available and the selection mechanism.</p>
         
-        <p>For example, JavaScript and [[CLDR]] provide a "best fit" algorithm which can be tailored by implementers.</p>
+        <p>For example, JavaScript internationalization [[ECMA402]] and [[CLDR]] provide a "best fit" algorithm which can be tailored by implementers.</p>
         
     </section>
 
