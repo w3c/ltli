@@ -91,6 +91,7 @@ a.self {
     opacity: 0.5;
 	color: #999;
 	text-decoration: none;
+	display: inline;
 }
 
 a.self:visited {
@@ -106,4 +107,8 @@ a.self:hover {
 	font-weight: normal;
 	font-style: italic;
 	font-size: 80%;
+}
+
+.advisement {
+    position: relative;
 }
