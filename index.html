@@ -30,23 +30,6 @@
           github: "w3c/ltli",
 
     localBiblio:  {
-
-	"ECMA402": {
-		title:"ECMAScript Internationalization API",
-		href:"https://www.ecma-international.org/publications/standards/Ecma-402.htm",
-		publisher:"ECMA International",
-		authors: [
-		    "Shane F. Carr",
-		    "Leo Balter",
-		    "Valerie Young",
-		    "Isaac Durazo"
-        ]},
-        
-    "ECMA262": {
-		title:"ECMAScript Language Specification",
-		href:"https://tc39.es/ecma262/"
-	},
-
     "CLDR": {
 	    title:    "Common Locale Data Repository",
 	    href:     "https://cldr.unicode.org",
@@ -96,7 +79,7 @@
         
         <p>Many of the core standards for the Web include support for <a>language tags</a>; these include the <code>xml:lang</code> attribute in [[XML10]], the <code>lang</code> and <code>hreflang</code> atttributes in [[HTML]], the <code>language</code> property in [[XSL10]], and the <code>:lang</code> pseudo-class in CSS [[CSS3-SELECTORS]]. </p>
         
-        <p><a>Language tags</a> can also be used to identify <a>international preferences</a> associated with a given piece of content or user because these preferences are linked to the natural language, regional association, or culture of the end user. Such preferences are applied to processes such as presenting numbers, dates, or times; sorting lists linguistically; providing defaults for items such as the presentation of a calendar, or common units of measurement; selecting between 12- vs. 24-hour time presentation; and many other details that users might find too tedious to set individually. Collectively, these preferences are usually called a <a>locale</a>. The extensions to [[BCP47]] that define <a>Unicode locales</a> [[CLDR]] provide the basis for <a>internationalization</a> APIs on the Web, notably the JavaScript language [[ECMA262]] uses <a>Unicode locales</a> as the basis for the APIs found in [[ECMA402]].</p>
+        <p><a>Language tags</a> can also be used to identify <a>international preferences</a> associated with a given piece of content or user because these preferences are linked to the natural language, regional association, or culture of the end user. Such preferences are applied to processes such as presenting numbers, dates, or times; sorting lists linguistically; providing defaults for items such as the presentation of a calendar, or common units of measurement; selecting between 12- vs. 24-hour time presentation; and many other details that users might find too tedious to set individually. Collectively, these preferences are usually called a <a>locale</a>. The extensions to [[BCP47]] that define <a>Unicode locales</a> [[CLDR]] provide the basis for <a>internationalization</a> APIs on the Web, notably the JavaScript language [[ECMASCRIPT]] uses <a>Unicode locales</a> as the basis for the APIs found in [[ECMA-402]].</p>
       
         <p>Document formats and protocols often need to provide metadata about the <a>natural language</a> of content or perform <a></a>language negotiation</a> when selecting appropriate content on the Web. For more information and best practices related to the specification and use of language tags as metadata, see [[STRING-META]].</p>
         
@@ -154,7 +137,7 @@
         
         <p><dfn data-lt="common locale data repository|CLDR">Common Locale Data Repository</dfn> or <em>CLDR</em> [[CLDR]] is a Unicode Consortium project that defines, collects, and curates sets of <a>locale</a> data needed to <a>enable</a> systems or operating environments. CLDR data and it's locale model are widely adopted, particularly in browsers.</p>
         
-        <p><dfn>Unicode Locale</dfn>. A language tag extension [[RFC6067]] and additional processing rules defined by [[CLDR]] to support <a>locales</a> defined by Unicode. Unicode locales provide the ability to specify in a language tag a number of the international preference variations that users or content authors might wish to specify directly. The language tag extension uses the <code>-u-</code> subtag. These identifiers are identical to language tags, but apply additional rules about the content of certain language tags. Unicode Locales increasingly form the basis for <a>internationalization</a> on the Web, particularly as part of the <code>Intl</code> locale framework [[ECMA402]] in JavaScript. [[ECMA262]]</p>
+        <p><dfn>Unicode Locale</dfn>. A language tag extension [[RFC6067]] and additional processing rules defined by [[CLDR]] to support <a>locales</a> defined by Unicode. Unicode locales provide the ability to specify in a language tag a number of the international preference variations that users or content authors might wish to specify directly. The language tag extension uses the <code>-u-</code> subtag. These identifiers are identical to language tags, but apply additional rules about the content of certain language tags. Unicode Locales increasingly form the basis for <a>internationalization</a> on the Web, particularly as part of the <code>Intl</code> locale framework [[ECMA-402]] in JavaScript. [[ECMASCRIPT]]</p>
         
         <p>Unicode's [[CLDR]] project also maintains [[RFC6497]], which defines a [[BCP47]] registered extension (using the <code>-t-</code> subtag) which describes <em>transformations</em> (generally text transformations, such as transliteration between scripts).</p>
         
@@ -251,7 +234,7 @@
            <p class="advisement">Best practices appear with a different background color and decoration like this.</p>
         </aside>
           
-        <p class="advisement" id="ltli-bcp47-refer"><a href="#ltli-bcp47-refer" class="self">&#x200B;</a>Specifications for the Web that require language identification MUST refer to [[BCP47]]. </p>
+        <p class="advisement" id="ltli-bcp47-refer"><a class="self" href="#ltli-bcp47-refer">&#x200B;</a>Specifications for the Web that require language identification MUST refer to [[BCP47]]. </p>
         
         <p class="advisement" id="ltli-no-rfc-refs"><a href="#ltli-no-rfc-refs" class="self">&#x200B;</a>Specifications SHOULD NOT refer to specific component RFCs.</p>
         
@@ -286,46 +269,11 @@
         
         <p class="advisement" id="ltli-matching-type-ref"><a href="#ltli-matching-type-ref" class="self">&#x200B;</a>Specifications that define language tag matching MUST specify the matching algorithms available and the selection mechanism.</p>
         
-        <p>For example, JavaScript internationalization [[ECMA402]] and [[CLDR]] provide a "best fit" algorithm which can be tailored by implementers.</p>
+        <p>For example, JavaScript internationalization [[ECMA-402]] and [[CLDR]] provide a "best fit" algorithm which can be tailored by implementers.</p>
         
     </section>
 
-    <section id="locale-vs-language">
-      <h3>Locale versus Natural Language</h3>
-      <p>This document defines locale identifiers for use in Web technologies.
-        Historically, language tags [[BCP47]] have been used as locale
-        identifiers by many programming languages or operating environments,
-        which is natural since locale identifiers usually share certain core
-        features related to natural language and country/region. This
-        specification defines locale identifiers that specific implementations
-        can map to their features to Web standards in order to create
-        functional, interoperable applications.</p>
-      <p>The minimal requirement is the ability to specify the natural language;
-        thus there is industry convergence on the use of [[BCP47]] as the core
-        of a locale identifier. For example, [[CLDR]] uses [[BCP47]] as the
-        core of a locale identifier, and provides syntax for extensions for
-        non-linguistic information, such as preferred currency. This extension
-        [[RFC6067]] is defined as a formal extension of [[BCP47]], making
-        Unicode locale identifiers synonymous with language tags in most
-        contexts.</p>
-      <p>A major difference between language tags and locale identifiers is the
-        meaning of the region code. In both language tags and locales, the
-        region code indicates variation in language (as with regional dialects)
-        or presentation and format (such as number or date formats). In a
-        locale, the region code is also sometimes used to indicate the physical
-        location, market, legal, or other governing policies for the user. </p>
-      <p>The language tag may be available in several places. In HTTP, there is
-        an Accept-Language header field which can be used. MIME has a
-        Content-Language header which contains a language tag. In XML, there is
-        an attribute which can be defined for elements called <code>xml:lang</code>.
-        <code>xml:lang</code> marks all the contents and attribute values of the
-        corresponding element as belonging to the language identified. What that
-        means for processing those contents varies from application to
-        application. </p>
-      <p>For more detailed information on the behavior of <code>xml:lang</code>,
-        see XML 1.0 (Fifth Edition)[[XML10]].</p>
-        
-   </section>
+      
    <section id="further-reading">
       <h2>Further Reading</h2>
         <p>The Internationalization WG has additional best practices and other references, such as articles on language tag choice. These include: </p>
@@ -337,138 +285,12 @@
         </ul>
     </section>
     
-    <!-- In the latest revision, I think all of these are now in the BP section
-    <section id="tags-vs-values">
-      <h2>Language Tags and Locale Values</h2>
-
-      <p>The following requirements are formulated for specifications which deal
-        with language tags and locale values or matching schemes.</p>
-      <ol class="depth1">
-        <li>
-          <p>Specifications that make use of language tags or locale values MUST
-            meet the conformance criteria defined for "well-formed" processors,
-            as defined in sec. 2.2.9 of [[RFC5646]].</p>
-        </li>
-        <li>
-          <p>Specifications that make use of language tags or locale values MAY
-            validate these values. If they do so, they MUST meet the conformance
-            criteria defined for "validating" processors, as defined in sec.
-            2.2.9 of [[RFC5646]].</p>
-        </li>
-        <li>
-          <p>Specifications that define operations on language tags or locale
-            values using matching MUST use either a basic language range or an
-            extended language range.</p>
-        </li>
-        <li>
-          <p>Specifications that define operations on language tags or locale
-            values using matching MUST specify whether the resulting language
-            priority list contains a single result (<em>lookup</em> as defined
-            in [[RFC4647]]), or a possible empty set of results (<em>filtering</em>
-            as defined in [[RFC4647]]).</p>
-        </li>
-      </ol>
-      <div class="note">
-        <p>Note: Many specifications created before [[RFC5646]] and
-          [[RFC4647]] are conformant to these criteria. The purpose of the
-          criteria is to provide a stable source for requirements for language
-          and locale identification.</p>
-      </div>
-    </section>
-    
-    -->
- 
-      <!-- Testing removing this section
- 
-      <section id="choice">
-        <h3>Choice of Language Tag</h3>
-        <p class="note">General guidelines for the choice of language tags are
-          described by articles maintained by the Internationalization Working
-          Group.</p>
-        <p>When choosing a language tag or locale identifier, use the shortest
-          tag that conveys useful meaning. For example, the phrase <q lang="de">Guten
-            Tag, Welt!</q> could use either of the tags <code>de</code> or the
-          tag <code>de-DE-1996-u-cu-EUR-nu-latn</code>. While either tag is
-          valid and identifies the text, the later tag is overly specific.</p>
-        <section id="script_subtags">
-          <h4>Use of Script subtags</h4>
-          <p>Script subtags SHOULD NOT be used except in where necessary to
-            distinguish specific varieties of language that normally vary in
-            script. For these languages, the use of the script subtag is
-            RECOMMENDED. Some languages that are known to vary in script
-            include:</p>
-          <table style="width: 100%; border: 6px solid gray">
-            <thead>
-              <tr>
-                <th>Language</th>
-                <th>Language Tag Prefix</th>
-                <th>Common Scripts</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Chinese languages</td>
-                <td>zh</td>
-                <td>Hans, Hant</td>
-              </tr>
-              <tr>
-                <td>Serbian</td>
-                <td>sr</td>
-                <td>Cyrl, Latn</td>
-              </tr>
-              <tr>
-                <td>Azerbaijani</td>
-                <td>az<br>
-                </td>
-                <td>Cyrl, Latn, Arab</td>
-              </tr>
-              <tr>
-                <td>Bambara</td>
-                <td>bm</td>
-                <td>Latn, Nkoo, Arab</td>
-              </tr>
-              <tr>
-                <td>Tamazight</td>
-                <td>tzm</td>
-                <td>Latn, Tfng, Arab</td>
-              </tr>
-              <tr>
-                <td>Hausa</td>
-                <td>ha</td>
-                <td>Latn, Arab</td>
-              </tr>
-              <tr>
-                <td>Uzbek</td>
-                <td>uz</td>
-                <td>Cyrl, Latn</td>
-              </tr>
-              <tr>
-                <td><em>more needed</em><br>
-                </td>
-                <td><br>
-                </td>
-                <td><br>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-        <section id="nonspecific_values">
-          <h4>Use of Non-specific Language Tags</h4>
-          <h5>Use of <code>mul</code></h5>
-          <h5>Use of <code>zxx</code></h5>
-          <h5>Use of <code>und</code></h5>
-        </section>
-
-    </section>
-    -->
-
-    <section class="appendix" id="revisionlog">
+     <section class="appendix" id="revisionlog">
       <h3>Revision Log</h3>
       <p>The following changes were made since the revision of 2015-04-23.</p>
       <ul>
 		  <li>As this document is targetting Note status, removed mention of "normative" and "informative" and converted all references to standard ones.</li>
-		  <li>Restructured document to be more accessible. Some sections were reordered.</li>
+		  <li>Restructured document to be more accessible. Some sections were reordered or removed.</li>
 		  <li>Changed "conformance" to "best practices".</li>
 		  <li>Removed the WS-I18N appendix.</li>
       </ul>

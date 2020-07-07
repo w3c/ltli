@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 .unicode {
 	font-style: normal
 }
@@ -90,12 +92,15 @@ a.self {
 	color: #999;
 	text-decoration: none;
 }
+
 a.self:visited {
 	color: #999;
 }
+
 a.self:hover {
 	color: red;
 }
+
 .self::after {
 	content:  attr(href); 	
 	font-weight: normal;
