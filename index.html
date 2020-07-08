@@ -177,7 +177,7 @@
           few additional concepts defined by [[RFC4647]]. In this document, we
           adopt the following terminology:</p>
           
-        <p>[[BCP47]] defines different levels of conformance. See <a href="https://tools.ietf.org/html/bcp47#section-2.2.9">classes of conformance</a> in [[BCP47]] for specifics. For language tags, the levels of conformance correspond to type of validation that an implementation applies to language tag values.</p>
+        <p>[[BCP47]] defines two different levels of conformance. See <a href="https://tools.ietf.org/html/bcp47#section-2.2.9">classes of conformance</a> in [[BCP47]] for specifics. For language tags, the levels of conformance correspond to type of checking that an implementation applies to language tag values.</p>
         
         <p>A <dfn data-lt="well-formed|well-formed language tag">well-formed language tag</dfn> follows the grammar defined in [[BCP47]]. That is, it is structurally correct, consisting of ASCII letters and digit <a>subtags</a> of the prescribed length, separated by hyphens.</p>
         <p>A <dfn data-lt="valid|valid language tag">valid language tag</dfn> has been checked to ensure that each of the subtags appears in the <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">Language Subtag Registry</a> hosted by IANA.</p>
@@ -262,6 +262,7 @@
         
         <p class="advisement" id="ltli-valid-content-req"><a href="#ltli-valid-content-req" class="self">&#x200B;</a>Specifications SHOULD require content authors use <a>valid</a> language tags.</p>
         <p class="advisement" id="ltli-validator-req"><a href="#ltli-validator-req" class="self">&#x200B;</a>Content validators SHOULD check if content uses <a>valid</a> language tags where feasible.</p>
+		<p class="advisement" id="ltli-language-information-in-uris-req"><a href="#ltli-language-information-in-uris-req" class="self">&#x200B;</a>Applications (e.g. in the realm of RDF) that provide language information as part of URIs SHOULD use [[BCP47]].</p>
         
         <p class="advisement" id="ltli-range-type-req"><a href="#ltli-range-type-req" class="self">&#x200B;</a>Specifications that define language tag matching or <a>language negotiation</a> MUST specify whether language ranges used are a <a>basic language range</a> or an <a>extended language range</a>.</p>
         
