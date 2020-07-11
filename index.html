@@ -142,21 +142,56 @@
         <p>Unicode's [[CLDR]] project maintains both [[BCP47]] extensions related to Unicode locales. The Unicode locale language tag extension [[RFC6067]] uses the <code>-u-</code> subtag, and provides subtags for selecting different locale-based formats and behaviors.</p>
         
         <aside class="example">
-			<p>Here are a few selected examples of Unicode locale variations. In the first example, the language tag <code>hi-IN</code> (Hindi, India) is extended to select between Latin and Devanagari digit shapes. Similarly the tag <code>ar</code> is extended to select between Latin and Arabic digit shapes.</p>
-			<p>In the second example, the language tag <code>th</code> (Thai) is extended to select between the Greogrian and Thai Buddhist calendar systems.</p>
+			<p>Here are a few selected examples of Unicode locale variations.</p>
+			<p>In the first example, the value <code>123456789.5678</code> is formatted using the locale rules represented by the various language tags. Notice how the <code>u</code> extension and its <code>nu</code> keyword are used to select  between Latin and Devanagari digit shapes in the Hindi-as-used-in-India (<code>hi-IN</code>) locale and between Latin and Arabic script digit shaps in the Arabic (<code>ar</code>) locale.</p>
+
 			<table>
+				<thead>
+					<tr><th>Variation Type</th><th>Value</th><th>Language Tag</th><th>Formatted Value</th></tr>
+				</thead>
 				<tbody>
 					<tr>
-						<td>nu</td>
-						<td>Numbering System</td>
-						<td>hi-IN-u-nu-latn<br>hi-IN-u-nu-deva<br>ar-u-nu-latn<br>ar-u-nu-arab</td>
-						<td>12,34,56,789.5678<br>१२,३४,५६,७८९.५६७८<br>123,456,789.5678<br><span dir=rtl>١٢٣٬٤٥٦٬٧٨٩٫٥٦٧٨</span></td>
+						<td rowspan=6>Numbering System</td>
+						<td rowspan=6><code>123456789.5678</code></td>
+						<td>en-US</td>
+						<td>123,456,789.5678</td>
+					<tr><td>de</td><td>123.456.789,5678</td></tr>
+					<tr>
+						<td>hi-IN-u-nu-latn</td>
+						<td>12,34,56,789.5678</td>
+					</tr>
+					<tr><td>hi-IN-u-nu-deva</td><td>१२,३४,५६,७८९.५६७८</td>
+					<tr><td>ar-u-nu-latn</td><td>123,456,789.5678</td>
+					<tr><td>ar-u-nu-arab</td><td>١٢٣٬٤٥٦٬٧٨٩٫٥٦٧٨</td>
+                 </tbody>
+             </table>
+             <p>In the second example, the date value corresponding to July 11th, 2020 on the Gregorian calendar, is formatting using various different locales. Here, for example, the language tag for Thai (<code>th</code>) is extended to select between the Greogrian (<code>-u-ca-gregory</code>) and Thai Buddhist (<code>-u-ca-buddhist</code>) calendar systems. Other examples show the Japanese Imperial calendar and one type of Islamic calendar. Notice in the last example that the calendar is not restricted to a specific locale: here we show the Islamic calendar system in an English locale.</p>
+             <table>
+				<thead>
+					<tr><th>Variation Type</th><th>Value</th><th>Language Tag</th><th>Formatted Value</th></tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td rowspan=5>Calendar</td>
+						<td rowspan=5><code>2020-07-11T12:00:00Z</code></td>
+						<td>th-u-ca-gregory</td>
+						<td>11 ก.ค. 2020</td>
 					</tr>
 					<tr>
-						<td>ca</td>
-						<td>Calendar</td>
-						<td>th-u-ca-greogri<br>th-u-ca-buddhist</td>
-						<td>11 ก.ค. 2020<br>11 ก.ค. 2563</td>
+						<td>th-u-ca-buddhist</td>
+					    <td>11 ก.ค. 2563</td>
+					</tr>
+					<tr>
+						<td>ja-u-ca-japanese</td>
+						<td>令和2年7月11日</td>
+					</tr>
+					<tr>
+						<td>ar-u-ca-islamic</td>
+						<td dir=rtl>٢٠ ذو القعدة ١٤٤١ هـ</td>
+					</tr>
+                    <tr>
+						<td>en-u-ca-islamic</td>
+						<td>Dhuʻl-Q. 20, 1441 AH</td>
 					</tr>
 				</tbody>
 			</table>
