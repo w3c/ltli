@@ -135,11 +135,36 @@
         
         <p>Historically, locales were identified by the programming language or operating environment of the user. This application-specific identifier was often inferred from language tags. For example, an implementation could map a language tag from an existing protocol, such as HTTP's Accept-Language header, to its locale model.</p>
         
-        <p><dfn data-lt="common locale data repository|CLDR">Common Locale Data Repository</dfn> or <em>CLDR</em> [[CLDR]] is a Unicode Consortium project that defines, collects, and curates sets of <a>locale</a> data needed to <a>enable</a> systems or operating environments. CLDR data and it's locale model are widely adopted, particularly in browsers.</p>
+        <p><dfn data-lt="common locale data repository|CLDR">Common Locale Data Repository</dfn> or <em>CLDR</em> [[CLDR]] is a Unicode Consortium project that defines, collects, and curates sets of <a>locale</a> data needed to <a>enable</a> systems or operating environments. CLDR data and its locale model are widely adopted, particularly in browsers.</p>
         
-        <p><dfn>Unicode Locale</dfn>. A language tag extension [[RFC6067]] and additional processing rules defined by [[CLDR]] to support <a>locales</a> defined by Unicode. Unicode locales provide the ability to specify in a language tag a number of the international preference variations that users or content authors might wish to specify directly. The language tag extension uses the <code>-u-</code> subtag. These identifiers are identical to language tags, but apply additional rules about the content of certain language tags. Unicode Locales increasingly form the basis for <a>internationalization</a> on the Web, particularly as part of the <code>Intl</code> locale framework [[ECMA-402]] in JavaScript. [[ECMASCRIPT]]</p>
+        <p><dfn>Unicode Locale</dfn>. A combination of language tag extensions ([[RFC6067]], [[RFC6497]]) and additional processing rules defined by [[CLDR]] to support <a>locales</a>. A Unicode locale provides the ability to specify in a language tag international preference variations that go beyond linguistic or regional variation or to select formatting behavior or content when there are multiple options.  Unicode locale identifiers are identical to language tags, but apply additional rules about the content of certain language tags. Unicode Locales increasingly form the basis for <a>internationalization</a> on the Web, particularly as part of the <code>Intl</code> locale framework [[ECMA-402]] in JavaScript [[ECMASCRIPT]].</p>
         
-        <p>Unicode's [[CLDR]] project also maintains [[RFC6497]], which defines a [[BCP47]] registered extension (using the <code>-t-</code> subtag) which describes <em>transformations</em> (generally text transformations, such as transliteration between scripts).</p>
+        <p>Unicode's [[CLDR]] project maintains both [[BCP47]] extensions related to Unicode locales. The Unicode locale language tag extension [[RFC6067]] uses the <code>-u-</code> subtag, and provides subtags for selecting different locale-based formats and behaviors.</p>
+        
+        <aside class="example">
+			<p>Here are a few selected examples of Unicode locale variations. In the first example, the language tag <code>hi-IN</code> (Hindi, India) is extended to select between Latin and Devanagari digit shapes. Similarly the tag <code>ar</code> is extended to select between Latin and Arabic digit shapes.</p>
+			<p>In the second example, the language tag <code>th</code> (Thai) is extended to select between the Greogrian and Thai Buddhist calendar systems.</p>
+			<table>
+				<tbody>
+					<tr>
+						<td>nu</td>
+						<td>Numbering System</td>
+						<td>hi-IN-u-nu-latn<br>hi-IN-u-nu-deva<br>ar-u-nu-latn<br>ar-u-nu-arab</td>
+						<td>12,34,56,789.5678<br>१२,३४,५६,७८९.५६७८<br>123,456,789.5678<br><span dir=rtl>١٢٣٬٤٥٦٬٧٨٩٫٥٦٧٨</span></td>
+					</tr>
+					<tr>
+						<td>ca</td>
+						<td>Calendar</td>
+						<td>th-u-ca-greogri<br>th-u-ca-buddhist</td>
+						<td>11 ก.ค. 2020<br>11 ก.ค. 2563</td>
+					</tr>
+				</tbody>
+			</table>
+        </aside>
+        
+        <p>The Transformed Content extension [[RFC6497]], which uses the <code>-t-</code> subtag, provides subtags for text transformations, such as transliteration between scripts.</p>
+        
+        <p>It is important to remember that every <a>Unicode locale</a> identifier is <em>also</em> a valid and well-formed [[BCP47]] language tag.</p>
         
         <p class="note">Some preferences are individual and are left to content authors, service providers, operating environments, or user agents to define and manage on behalf of the user.</p>
         
@@ -181,16 +206,13 @@
         
         <p>A <dfn data-lt="well-formed|well-formed language tag">well-formed language tag</dfn> follows the grammar defined in [[BCP47]]. That is, it is structurally correct, consisting of ASCII letters and digit <a>subtags</a> of the prescribed length, separated by hyphens.</p>
         <p>A <dfn data-lt="valid|valid language tag">valid language tag</dfn> has been checked to ensure that each of the subtags appears in the <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">Language Subtag Registry</a> hosted by IANA.</p>
+        
+        <p>A <dfn data-lt="canonical tag|Unicode locale identifier">canonical tag</dfn> is a language tag that also conforms to the additional rules for <em>Unicode locale identifiers</em> found in [[CLDR]] (see <a href="https://www.unicode.org/reports/tr35/#Unicode_locale_identifier">Section 3</a>).</p>
           
         <p>A <dfn title="language-range">language range</dfn> is a string
           similar in structure to a language tag that is used for "identifying
           sets of language tags that share specific attributes".</p>
-        <p>A <dfn title="language-priority-list">language priority list</dfn>
-          is a collection of one or more language ranges identifying the user's
-          language preferences for use in matching. As the name suggests, such
-          lists are normally ordered or weighted according to the user's
-          preferences. The HTTP [[RFC2616]] <code>Accept-Language</code> [[RFC3282]]
-          header is an example of one kind of language priority list.</p>
+        <p>A <dfn>language priority list</dfn> is a collection of one or more language ranges identifying the user's language preferences for use in matching. As the name suggests, such lists are normally ordered or weighted according to the user's preferences. The HTTP [[RFC2616]] <code>Accept-Language</code> [[RFC3282]] header is an example of one kind of language  priority list.</p>
         <p>A <dfn title="basic-language-range">basic language range</dfn> is
           simply a language tag used to express a language preference. An <dfn
 
@@ -215,11 +237,9 @@
               <p><code>de-Latn-DE-1996</code></p>
             </li>
           </ul>
-          <p><code>"en; fr; zh-Hant"</code> is a language priority list. It
-            would be read as "<span class="quote">English before French before
-              Chinese as written in the Traditional script</span>". Note that
-            the syntax shown is only an example, since it depends on the
-            protocol, application, or implementation that uses the list.</p>
+          <p><code>"en; fr; zh-Hant"</code> is a language priority list. It would be read as "<span class="quote">English before French before Chinese as written in the Traditional script</span>". Note that the syntax shown is only an example, since it depends on the protocol, application, or implementation that uses the list.</p>
+          
+          <p>Some <a>language priority lists</a>, such as the <code>Accept-Language</code> [[RFC3282]] header mentioned earlier, provide "weights" for values appearing in the list. Such weighting cannot be depended on for anything other than ordering the list.</p>
         </aside>
       </section>
       
@@ -273,6 +293,8 @@
         <p class="advisement" id="ltli-matching-type-ref"><a href="#ltli-matching-type-ref" class="self">&#x200B;</a>Specifications that define language tag matching MUST specify the matching algorithms available and the selection mechanism.</p>
         
         <p>For example, JavaScript internationalization [[ECMA-402]] and [[CLDR]] provide a "best fit" algorithm which can be tailored by implementers.</p>
+        
+        <p class="advisement" id="ltli-keep-extensions"><a href="#ltli-keep-extensions">&#x200B;</a>Specifications SHOULD NOT restrict the length of language tags or permit or encourage the removal of extensions.</p>
         
     </section>
 
