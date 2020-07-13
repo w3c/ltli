@@ -329,7 +329,13 @@
         
         <p>Checking if a tag is <a>valid</a> requires access to or a copy of the registry plus additional runtime logic. While content authors are advised to choose, generate, and exchange only valid values, language tag matching and other common language tag operations are designed so that validity checking is not needed. Features or functions that need to understand the specific semantic content of subtags are the main reason that a specification would normatively require <a>valid</a> tags as part of the protocol or document format.</p>
         
-        <p class="advisement" id="ltli-canonical-req"><a class="self" href="#ltli-canonical-req">&#x200B;</a>Content authors and implementations SHOULD use language tags that are <a>canonical Unicode locale identifiers</a> and SHOULD normalize language tags that they consume using the rules for producing canonical tags.</p>
+        <p class="advisement" id="ltli-canonical-author-req"><a class="self" href="#ltli-canonical-author-req">&#x200B;</a>Content authors SHOULD choose language tags that are <a>canonical Unicode locale identifiers</a>.</p>
+        
+        <p>The additional content restrictions and normalization steps found in <a href="https://www.unicode.org/reports/tr35/#Canonical_Unicode_Locale_Identifiers">Section 3</a> of [[LDML]] provide for better interoperability and consistency than that afforded by [[BCP47]] directly.</p>
+
+        <p class="advisement" id="ltli-canonical-impl-req"><a class="self" href="#ltli-canonical-impl-req">&#x200B;</a>Implementations SHOULD only emit language tags that are <a>canonical Unicode locale identifiers</a> and SHOULD normalize language tags that they consume using the rules for producing canonical tags.</p>
+        
+        <p>As above, the additional content restrictions and normalization steps found in <a href="https://www.unicode.org/reports/tr35/#Canonical_Unicode_Locale_Identifiers">Section 3</a> of [[LDML]] provide for better interoperability and consistency than that afforded by [[BCP47]] directly. This best practice should not be interpreted as meaning that implementations need to support, generate, process, or understand either of [[CLDR]]'s extensions.</p>
         
         <p class="advisement" id="ltli-valid-content-req"><a href="#ltli-valid-content-req" class="self">&#x200B;</a>Specifications SHOULD require content authors use <a>valid</a> language tags.</p>
         <p class="advisement" id="ltli-validator-req"><a href="#ltli-validator-req" class="self">&#x200B;</a>Content validators SHOULD check if content uses <a>valid</a> language tags where feasible.</p>
