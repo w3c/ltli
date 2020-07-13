@@ -154,15 +154,26 @@
 						<td rowspan=6>Numbering System</td>
 						<td rowspan=6><code>123456789.5678</code></td>
 						<td>en-US</td>
-						<td>123,456,789.5678</td>
-					<tr><td>de</td><td>123.456.789,5678</td></tr>
+						<td lang="en-US">123,456,789.5678</td>
+					<tr>
+						<td>de</td>
+						<td lang="de">123.456.789,5678</td></tr>
 					<tr>
 						<td>hi-IN-u-nu-latn</td>
-						<td>12,34,56,789.5678</td>
+						<td lang="hi">12,34,56,789.5678</td>
 					</tr>
-					<tr><td>hi-IN-u-nu-deva</td><td>१२,३४,५६,७८९.५६७८</td>
-					<tr><td>ar-u-nu-latn</td><td>123,456,789.5678</td>
-					<tr><td>ar-u-nu-arab</td><td>١٢٣٬٤٥٦٬٧٨٩٫٥٦٧٨</td>
+					<tr>
+						<td>hi-IN-u-nu-deva</td>
+						<td lang="hi-IN-u-nu-deva">१२,३४,५६,७८९.५६७८</td>
+					</tr>
+					<tr>
+						<td>ar-u-nu-latn</td>
+						<td dir=rtl lang="ar-u-nu-latn">123,456,789.5678</td>
+					</tr>
+					<tr>
+						<td>ar-u-nu-arab</td>
+						<td dir=rtl lang="ar-u-nu-arab">١٢٣٬٤٥٦٬٧٨٩٫٥٦٧٨</td>
+					</tr>
                  </tbody>
              </table>
              <p>In the second example, the date value corresponding to 11 July 2020 on the Gregorian calendar is formatted using various different locales. Here, for example, the language tag for Thai (<code>th</code>) is extended to select between the Greogrian (<code>-u-ca-gregory</code>) and Thai Buddhist (<code>-u-ca-buddhist</code>) calendar systems. Other examples show the Japanese Imperial calendar and one type of Islamic calendar. Notice in the last example that the calendar is not restricted to a specific locale: here we show the Islamic calendar system in an English locale.</p>
@@ -175,23 +186,23 @@
 						<td rowspan=5>Calendar</td>
 						<td rowspan=5><code>2020-07-11T12:00:00Z</code></td>
 						<td>th-u-ca-gregory</td>
-						<td>11 ก.ค. 2020</td>
+						<td lang="th-u-ca-gregory">11 ก.ค. 2020</td>
 					</tr>
 					<tr>
 						<td>th-u-ca-buddhist</td>
-					    <td>11 ก.ค. 2563</td>
+					    <td lang="th-u-ca-buddhist">11 ก.ค. 2563</td>
 					</tr>
 					<tr>
 						<td>ja-u-ca-japanese</td>
-						<td>令和2年7月11日</td>
+						<td lang="ja-u-ca-japanese">令和2年7月11日</td>
 					</tr>
 					<tr>
 						<td>ar-u-ca-islamic</td>
-						<td dir=rtl>٢٠ ذو القعدة ١٤٤١ هـ</td>
+						<td dir=rtl lang="ar-u-ca-islamic">٢٠ ذو القعدة ١٤٤١ هـ</td>
 					</tr>
                     <tr>
 						<td>en-u-ca-islamic</td>
-						<td>Dhuʻl-Q. 20, 1441 AH</td>
+						<td lang="en-u-ca-islamic">Dhuʻl-Q. 20, 1441 AH</td>
 					</tr>
 				</tbody>
 			</table>
