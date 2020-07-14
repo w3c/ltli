@@ -248,13 +248,13 @@
           few additional concepts defined by [[RFC4647]]. In this document, we
           adopt the following terminology:</p>
           
+        <p>The <dfn data-lt="iana language subtag registry|subtag registry|registry|lstr">IANA Language Subtag Registry</dfn> is a machine-readable text file available via IANA which contains a comprehensive list of all of the subtags valid in language tags. (Link: <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">Registry</a>)</p>
+          
         <p>[[BCP47]] defines two different levels of conformance. See <a href="https://tools.ietf.org/html/bcp47#section-2.2.9">classes of conformance</a> in [[BCP47]] for specifics. For language tags, the levels of conformance correspond to type of checking that an implementation applies to language tag values.</p>
         
         <p>A <dfn data-lt="well-formed|well-formed language tag">well-formed language tag</dfn> follows the grammar defined in [[BCP47]]. That is, it is structurally correct, consisting of ASCII letters and digit <a>subtags</a> of the prescribed length, separated by hyphens.</p>
         
         <p>A <dfn data-lt="valid|valid language tag">valid language tag</dfn> has been checked to ensure that each of the subtags appears in the <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">Language Subtag Registry</a> hosted by IANA.</p>
-        
-        <p></p>
         
         <p>A <dfn data-lt="canonical Unicode locale identifier|canonical tag|canonical locale">canonical Unicode locale identifier</dfn> is a <a>well-formed</a> language tag that also conforms to the additional rules for <em>Unicode locale identifiers</em> found in [[CLDR]] (see <a href="https://www.unicode.org/reports/tr35/#Unicode_locale_identifier">Section 3</a>). <a>Unicode locales</a> define additional conformance criteria and normalization steps beyond that found in [[BCP47]] that help make language tags more consistent and interoperable.</p>
           
@@ -339,6 +339,11 @@
         
         <p class="advisement" id="ltli-valid-content-req"><a href="#ltli-valid-content-req" class="self">&#x200B;</a>Specifications SHOULD require content authors use <a>valid</a> language tags.</p>
         <p class="advisement" id="ltli-validator-req"><a href="#ltli-validator-req" class="self">&#x200B;</a>Content validators SHOULD check if content uses <a>valid</a> language tags where feasible.</p>
+        
+        <p class="advisement" id="ltli-no-subsidiary-stds"><a href="#ltli-no-subsidiary-stds" class="self">&#x200B;</a>Specifications SHOULD NOT reference [[BCP47]]'s underlying standards that contribute to the <a>IANA Language Subtag Registry</a>, such as ISO639, ISO15924, ISO3066, or UN M.49.</p>
+        
+        <p>Some standards might directly consume one of [[BCP47]]'s contributory standards, in which case a reference is wholly appropriate. However, in most cases, the purpose of the reference is to specify a valid list of codes and their meanings. [[BCP47]]'s <a>subtag registry</a> is stabilized and resolves ambiguity in a number of useful ways and so should be the preferred source for this type of reference.</p>
+        
 		<p class="advisement" id="ltli-language-information-in-uris-req"><a href="#ltli-language-information-in-uris-req" class="self">&#x200B;</a>Applications that provide language information as part of URIs (e.g. in the realm of RDF) SHOULD use [[BCP47]].</p>
 		
 		<p>Currently, URIs expressing language information often use values from parts of ISO 639. This leads to situations in which there are ambiguities about what the proper value should be, e.g. for German <code>de</code> from ISO 639-1 or <code>ger</code> from ISO 639-2. By using BCP 47 and its language sub tag registry, such ambiguities can be avoided, e.g. for German, the registry contains only <code>de</code>.</p>
@@ -353,8 +358,6 @@
         
         <p class="advisement" id="ltli-keep-extensions"><a class="self" href="#ltli-keep-extensions">&#x200B;</a>Specifications SHOULD NOT restrict the length of language tags or permit or encourage the removal of extensions.</p>
         
-        <p class="advisement" id="ltli-use-locale-fallback"><a class="self" href="#ltli-use-locale-fallback">&#x200B;</a>Specifications that define content selection based on language tags SHOULD </p>
-       
     </section>
 
       
