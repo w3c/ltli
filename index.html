@@ -221,33 +221,38 @@
         <aside class="example">
 			<p>Suppose your application needs to collect and store a <a>data value</a>. The system can use a <a>locale-neutral</a> format for storing and exchanging the value: schema languages such as [[XMLSCHEMA11-2]] or data formats such as [[JSON]] provide ready made types for this purpose. When the user is entering or editing the value, however, the user expects to interact with a more human friendly format. For example, if your application needed to input a user's birth date and the value they were trying to enter were <code>2020-01-31</code>:</p>
 			
+			<p>The input field might look like this in HTML:</p>
+			<pre>&lt;input type="date" id="birthDate" value="2020-01-31" lang=&#x2026; &gt;</em></pre>
+			
+			<p>The <code>lang</code> attribute here should control the display and formatting of the value, including the expected input pattern. <em>Note that this guidance is at odds with what browsers do at the time this document was published.</em></p>
+			
 			<table>
 				<thead>
-					<th>Input</th>
-					<th>HTML</th>
-					<th>Output</th>
-					<th>Format Pattern</th>
+					<th style="width:15%">Value</th>
+					<th style="width:22%">Language Tag</th>
+					<th style="width:23%">Display</th>
+					<th style="width:30%">Input Format Pattern</th>
 				</thead>
 				<tbody>
 				</tbody>
 				   <tr>
 				    <td rowspan=4><code>2020-01-31</code></td>
-				    <td>&lt;input type=date lang=<em>en-GB</em> ...&gt;</td>
+				    <td>en-GB</td>
 				    <td>31/01/2020</td>
 				    <td>dd/MM/yyyy</td>
 				   </tr>
 				   <tr>
-					 <td>&lt;input type=date lang=<em>en-US</em> ...&gt;</td>
+					 <td>en-US</td>
 				   	 <td>01/31/2020</td>
 				     <td>MM/dd/yyyy</td>
 				   </tr>
 				   <tr>
-					 <td>&lt;input type=date lang=<em>fr-FR</em> ...&gt;</td>
+					 <td>fr-FR</td>
 				   	 <td>31-01-2020</td>
 				     <td>dd-MM-yyyy</td>
 				   </tr>
 				   <tr>
-					 <td>&lt;input type=date lang=<em>zh-Hans-CN</em> ...&gt;</td>
+					 <td>zh-Hans-CN</td>
 				   	 <td>2020-01-31</td>
 				     <td>yyyy-MM-dd</td>
 				   </tr>
