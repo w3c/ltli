@@ -141,7 +141,7 @@
         
         <p>Unicode's [[CLDR]] project maintains both [[BCP47]] extensions related to Unicode locales. The Unicode locale language tag extension [[RFC6067]] uses the <code>-u-</code> subtag, and provides subtags for selecting different locale-based formats and behaviors.</p>
         
-        <aside class="example">
+        <aside class="example" id="example-locale-variation">
 			<p>Here are a few selected examples of Unicode locale variations.</p>
 			<p>In the first example, the value <code>123456789.5678</code> is formatted using the locale rules represented by the various language tags. Notice how the <code>u</code> extension and its <code>nu</code> keyword are used to select  between Latin and Devanagari digit shapes in the Hindi-as-used-in-India (<code>hi-IN</code>) locale and between Latin and Arabic script digit shaps in the Arabic (<code>ar</code>) locale.</p>
 
@@ -213,6 +213,46 @@
         <p>It is important to remember that every <a>Unicode locale</a> identifier is <em>also</em> a <a>well-formed</a> [[BCP47]] language tag.</p>
         
         <p class="note">Some preferences are individual and are left to content authors, service providers, operating environments, or user agents to define and manage on behalf of the user.</p>
+        
+        <p>In this document, <dfn data-lt="data values|data value">data values</dfn> are any data type used in a document format or application other than <a>natural language</a> string values. These often correspond to date types such as numbers, dates, booleans, etc. Note that on the Web many data values are serialized as strings.</p>
+        
+        <p>A <a>data value</a> is said to be <dfn>locale-neutral</dfn> when it is stored or exchanged in a format that is not specifically appropriate any given language, locale, or culture and which can be interpreted unambiguously for presentation in a <a>locale aware</a> way. A locale-neutral representation might itself be linked to a specific cultural preference, but such linkages should be minimized. An example of this are the ISO8601 serializations of date/time values. Many of these are linked to the Gregorian calendar, but the format, field order, separators, and visual appearance are not specifically suitable to any locale (they are intended to be machine readable) and, as shown in the <a href="#example-locale-variation">example</a> above, the value can be converted for display into any calendar or locale.</p>
+        
+        <aside class="example">
+			<p>Suppose your application needs to collect and store a <a>data value</a>. The system can use a <a>locale-neutral</a> format for storing and exchanging the value: schema languages such as [[XMLSCHEMA11-2]] or data formats such as [[JSON]] provide ready made types for this purpose. When the user is entering or editing the value, however, the user expects to interact with a more human friendly format. For example, if your application needed to input a user's birth date and the value they were trying to enter were <code>2020-01-31</code>:</p>
+			
+			<table>
+				<thead>
+					<th>Input</th>
+					<th>HTML</th>
+					<th>Output</th>
+					<th>Format Pattern</th>
+				</thead>
+				<tbody>
+				</tbody>
+				   <tr>
+				    <td rowspan=4><code>2020-01-31</code></td>
+				    <td>&lt;input type=date lang=<em>en-GB</em> ...&gt;</td>
+				    <td>31/01/2020</td>
+				    <td>dd/MM/yyyy</td>
+				   </tr>
+				   <tr>
+					 <td>&lt;input type=date lang=<em>en-US</em> ...&gt;</td>
+				   	 <td>01/31/2020</td>
+				     <td>MM/dd/yyyy</td>
+				   </tr>
+				   <tr>
+					 <td>&lt;input type=date lang=<em>fr-FR</em> ...&gt;</td>
+				   	 <td>31-01-2020</td>
+				     <td>dd-MM-yyyy</td>
+				   </tr>
+				   <tr>
+					 <td>&lt;input type=date lang=<em>zh-Hans-CN</em> ...&gt;</td>
+				   	 <td>2020-01-31</td>
+				     <td>yyyy-MM-dd</td>
+				   </tr>
+			</table>
+        </aside>
         
         <p><dfn>Language negotiation</dfn> is the process of matching a user's <a>international preferences</a> to available localized resources, content, or processing. The user's preferences are usually expressed as a <a>locale</a> or prioritized list of locales. When negotiating the language, the system follows some sort of algorithm to get the best matching content or functionality from the available resources. In many cases the language negotiation algorithm uses <dfn data-lt="locale fallback|fallback">locale fallback</dfn> that proceeds from more-specific resources to more-general ones following a deterministic pattern.</p>
       </section>
@@ -358,6 +398,19 @@
         
         <p class="advisement" id="ltli-keep-extensions"><a class="self" href="#ltli-keep-extensions">&#x200B;</a>Specifications SHOULD NOT restrict the length of language tags or permit or encourage the removal of extensions.</p>
         
+        <p class="advisement" id="ltli-format-like-doc-language"><a class="self" href="#ltli-format-like-doc-language">&#x200B;</a>Specifications that present <a>data values</a> in a document format SHOULD require that data is formatted according to the language of the surrounding content.</p>
+        
+        <p>When data values are present to the user as part of a document or application, the document or application forms the "context" where the data is being viewed. Content authors or application developers need a way to make the data values seem like a natural part of the experience and need a way to control the presentation. This is indicated by the <a>language tag</a> of the context in which the content appears: usually <a>enabled</a> implementations interpret the tag as a <a>locale</a> in order to accomplish this. Using the runtime locale or localization of the user-agent as the locale for presenting data values should only be a last resort.</p>
+        
+        <p class="advisement" id="ltli-input-like-doc-language"><a class="self" href="#ltli-input-like-doc-language">&#x200B;</a>Specifications that present forms or receive input of <a>data values</a> in a document format or application SHOULD require that the values be presented to the user <a>localized</a> in the format of the language of the content or markup immediately surrounding the value.</p>
+        
+        <p class="advisement" id="ltli-input-locale-neutrality"><a class="self" href="#ltli-input-locale-neutrality">&#x200B;</a>Specifications that present, exchange, or allow the input of <a>data values</a> MUST use a <a>locale-neutral</a> format for storage and interchange.</p>
+        
+        <p class="advisement" id="ltli-impl-input-like-doc-language"><a class="self" href="#ltli-impl-input-like-doc-language">&#x200B;</a>Implementations SHOULD present <a>data values</a> in a document format or application using a format consistent with the language of the surrounding content and are encouraged to provide controls which are <a>localized</a> to the same <a>locale</a> for input or editing.</p>
+        
+        <p>Users expect form fields and other data inputs to use a presentation for <a>data values</a> that is consistent with the document or application where the values appear. User's usually expect their input to match the document's context rather than the user-agent or operating environments and input validation, prompting, or controls are also thus consistent with the content. This gives content authors the ability to create a wholly localized customer experience and is generally in keeping with customer expectations.</p>
+        
+       
     </section>
 
       
