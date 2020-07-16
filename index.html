@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Language Tags and Locale Identifiers for the World Wide Web</title>
-    <script src="https://www.w3.org/Tools/respec/respec-w3c-common" async="" class="remove"></script>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" async="" class="remove"></script>
     <script class="remove">
       var respecConfig = {
           specStatus: "ED",
@@ -135,13 +135,129 @@
         
         <p>Historically, locales were identified by the programming language or operating environment of the user. This application-specific identifier was often inferred from language tags. For example, an implementation could map a language tag from an existing protocol, such as HTTP's Accept-Language header, to its locale model.</p>
         
-        <p><dfn data-lt="common locale data repository|CLDR">Common Locale Data Repository</dfn> or <em>CLDR</em> [[CLDR]] is a Unicode Consortium project that defines, collects, and curates sets of <a>locale</a> data needed to <a>enable</a> systems or operating environments. CLDR data and it's locale model are widely adopted, particularly in browsers.</p>
+        <p><dfn data-lt="common locale data repository|CLDR">Common Locale Data Repository</dfn> or <em>CLDR</em> [[CLDR]] is a Unicode Consortium project that defines, collects, and curates sets of <a>locale</a> data needed to <a>enable</a> systems or operating environments. CLDR data and its locale model are widely adopted, particularly in browsers.</p>
         
-        <p><dfn>Unicode Locale</dfn>. A language tag extension [[RFC6067]] and additional processing rules defined by [[CLDR]] to support <a>locales</a> defined by Unicode. Unicode locales provide the ability to specify in a language tag a number of the international preference variations that users or content authors might wish to specify directly. The language tag extension uses the <code>-u-</code> subtag. These identifiers are identical to language tags, but apply additional rules about the content of certain language tags. Unicode Locales increasingly form the basis for <a>internationalization</a> on the Web, particularly as part of the <code>Intl</code> locale framework [[ECMA-402]] in JavaScript. [[ECMASCRIPT]]</p>
+        <p><dfn>Unicode Locale</dfn>. A combination of language tag extensions ([[RFC6067]], [[RFC6497]]) and additional processing rules defined by [[CLDR]] to support <a>locales</a>. A Unicode locale provides the ability to specify in a language tag international preference variations that go beyond linguistic or regional variation or to select formatting behavior or content when there are multiple options.  Unicode locale identifiers are identical to language tags, but apply additional rules about the content of certain language tags. Unicode Locales increasingly form the basis for <a>internationalization</a> on the Web, particularly as part of the <code>Intl</code> locale framework [[ECMA-402]] in JavaScript [[ECMASCRIPT]].</p>
         
-        <p>Unicode's [[CLDR]] project also maintains [[RFC6497]], which defines a [[BCP47]] registered extension (using the <code>-t-</code> subtag) which describes <em>transformations</em> (generally text transformations, such as transliteration between scripts).</p>
+        <p>Unicode's [[CLDR]] project maintains both [[BCP47]] extensions related to Unicode locales. The Unicode locale language tag extension [[RFC6067]] uses the <code>-u-</code> subtag, and provides subtags for selecting different locale-based formats and behaviors.</p>
+        
+        <aside class="example" id="example-locale-variation">
+			<p>Here are a few selected examples of Unicode locale variations.</p>
+			<p>In the first example, the value <code>123456789.5678</code> is formatted using the locale rules represented by the various language tags. Notice how the <code>u</code> extension and its <code>nu</code> keyword are used to select  between Latin and Devanagari digit shapes in the Hindi-as-used-in-India (<code>hi-IN</code>) locale and between Latin and Arabic script digit shaps in the Arabic (<code>ar</code>) locale.</p>
+
+			<table>
+				<thead>
+					<tr><th>Variation Type</th><th>Value</th><th>Language Tag</th><th>Formatted Value</th></tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td rowspan=6>Numbering System</td>
+						<td rowspan=6><code>123456789.5678</code></td>
+						<td>en-US</td>
+						<td lang="en-US">123,456,789.5678</td>
+					<tr>
+						<td>de</td>
+						<td lang="de">123.456.789,5678</td></tr>
+					<tr>
+						<td>hi-IN-u-nu-latn</td>
+						<td lang="hi">12,34,56,789.5678</td>
+					</tr>
+					<tr>
+						<td>hi-IN-u-nu-deva</td>
+						<td lang="hi-IN-u-nu-deva">१२,३४,५६,७८९.५६७८</td>
+					</tr>
+					<tr>
+						<td>ar-u-nu-latn</td>
+						<td dir=rtl lang="ar-u-nu-latn">123,456,789.5678</td>
+					</tr>
+					<tr>
+						<td>ar-u-nu-arab</td>
+						<td dir=rtl lang="ar-u-nu-arab">١٢٣٬٤٥٦٬٧٨٩٫٥٦٧٨</td>
+					</tr>
+                 </tbody>
+             </table>
+             <p>In the second example, the date value corresponding to 11 July 2020 on the Gregorian calendar is formatted using various different locales. Here, for example, the language tag for Thai (<code>th</code>) is extended to select between the Greogrian (<code>-u-ca-gregory</code>) and Thai Buddhist (<code>-u-ca-buddhist</code>) calendar systems. Other examples show the Japanese Imperial calendar and one type of Islamic calendar. Notice in the last example that the calendar is not restricted to a specific locale: here we show the Islamic calendar system in an English locale.</p>
+             <table>
+				<thead>
+					<tr><th>Variation Type</th><th>Value</th><th>Language Tag</th><th>Formatted Value</th></tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td rowspan=5>Calendar</td>
+						<td rowspan=5><code>2020-07-11T12:00:00Z</code></td>
+						<td>th-u-ca-gregory</td>
+						<td lang="th-u-ca-gregory">11 ก.ค. 2020</td>
+					</tr>
+					<tr>
+						<td>th-u-ca-buddhist</td>
+					    <td lang="th-u-ca-buddhist">11 ก.ค. 2563</td>
+					</tr>
+					<tr>
+						<td>ja-u-ca-japanese</td>
+						<td lang="ja-u-ca-japanese">令和2年7月11日</td>
+					</tr>
+					<tr>
+						<td>ar-u-ca-islamic</td>
+						<td dir=rtl lang="ar-u-ca-islamic">٢٠ ذو القعدة ١٤٤١ هـ</td>
+					</tr>
+                    <tr>
+						<td>en-u-ca-islamic</td>
+						<td lang="en-u-ca-islamic">Dhuʻl-Q. 20, 1441 AH</td>
+					</tr>
+				</tbody>
+			</table>
+        </aside>
+        
+        <p>The Transformed Content extension [[RFC6497]], which uses the <code>-t-</code> subtag, provides subtags for text transformations, such as transliteration between scripts.</p>
+        
+        <p>It is important to remember that every <a>Unicode locale</a> identifier is <em>also</em> a <a>well-formed</a> [[BCP47]] language tag.</p>
         
         <p class="note">Some preferences are individual and are left to content authors, service providers, operating environments, or user agents to define and manage on behalf of the user.</p>
+        
+        <p>In this document, <dfn data-lt="data values|data value">data values</dfn> are any data type used in a document format or application other than <a>natural language</a> string values. These often correspond to date types such as numbers, dates, booleans, etc. Note that on the Web many data values are serialized as strings.</p>
+        
+        <p>A <a>data value</a> is said to be <dfn>locale-neutral</dfn> when it is stored or exchanged in a format that is not specifically appropriate any given language, locale, or culture and which can be interpreted unambiguously for presentation in a <a>locale aware</a> way. A locale-neutral representation might itself be linked to a specific cultural preference, but such linkages should be minimized. An example of this are the ISO8601 serializations of date/time values. Many of these are linked to the Gregorian calendar, but the format, field order, separators, and visual appearance are not specifically suitable to any locale (they are intended to be machine readable) and, as shown in the <a href="#example-locale-variation">example</a> above, the value can be converted for display into any calendar or locale.</p>
+        
+        <aside class="example">
+			<p>Suppose your application needs to collect and store a <a>data value</a>. The system can use a <a>locale-neutral</a> format for storing and exchanging the value: schema languages such as [[XMLSCHEMA11-2]] or data formats such as [[JSON]] provide ready made types for this purpose. When the user is entering or editing the value, however, the user expects to interact with a more human friendly format. For example, if your application needed to input a user's birth date and the value they were trying to enter were <code>2020-01-31</code>:</p>
+			
+			<p>The input field might look like this in HTML:</p>
+			<pre>&lt;input type="date" id="birthDate" value="2020-01-31" lang=&#x2026; &gt;</em></pre>
+			
+			<p>The <code>lang</code> attribute here should control the display and formatting of the value, including the expected input pattern. <em>Note that this guidance is at odds with what browsers do at the time this document was published.</em></p>
+			
+			<table>
+				<thead>
+					<th style="width:15%">Value</th>
+					<th style="width:22%">Language Tag</th>
+					<th style="width:23%">Display</th>
+					<th style="width:30%">Input Format Pattern</th>
+				</thead>
+				<tbody>
+				</tbody>
+				   <tr>
+				    <td rowspan=4><code>2020-01-31</code></td>
+				    <td>en-GB</td>
+				    <td>31/01/2020</td>
+				    <td>dd/MM/yyyy</td>
+				   </tr>
+				   <tr>
+					 <td>en-US</td>
+				   	 <td>01/31/2020</td>
+				     <td>MM/dd/yyyy</td>
+				   </tr>
+				   <tr>
+					 <td>fr-FR</td>
+				   	 <td>31-01-2020</td>
+				     <td>dd-MM-yyyy</td>
+				   </tr>
+				   <tr>
+					 <td>zh-Hans-CN</td>
+				   	 <td>2020-01-31</td>
+				     <td>yyyy-MM-dd</td>
+				   </tr>
+			</table>
+        </aside>
         
         <p><dfn>Language negotiation</dfn> is the process of matching a user's <a>international preferences</a> to available localized resources, content, or processing. The user's preferences are usually expressed as a <a>locale</a> or prioritized list of locales. When negotiating the language, the system follows some sort of algorithm to get the best matching content or functionality from the available resources. In many cases the language negotiation algorithm uses <dfn data-lt="locale fallback|fallback">locale fallback</dfn> that proceeds from more-specific resources to more-general ones following a deterministic pattern.</p>
       </section>
@@ -177,20 +293,20 @@
           few additional concepts defined by [[RFC4647]]. In this document, we
           adopt the following terminology:</p>
           
+        <p>The <dfn data-lt="iana language subtag registry|subtag registry|registry|lstr">IANA Language Subtag Registry</dfn> is a machine-readable text file available via IANA which contains a comprehensive list of all of the subtags valid in language tags. (Link: <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">Registry</a>)</p>
+          
         <p>[[BCP47]] defines two different levels of conformance. See <a href="https://tools.ietf.org/html/bcp47#section-2.2.9">classes of conformance</a> in [[BCP47]] for specifics. For language tags, the levels of conformance correspond to type of checking that an implementation applies to language tag values.</p>
         
         <p>A <dfn data-lt="well-formed|well-formed language tag">well-formed language tag</dfn> follows the grammar defined in [[BCP47]]. That is, it is structurally correct, consisting of ASCII letters and digit <a>subtags</a> of the prescribed length, separated by hyphens.</p>
+        
         <p>A <dfn data-lt="valid|valid language tag">valid language tag</dfn> has been checked to ensure that each of the subtags appears in the <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">Language Subtag Registry</a> hosted by IANA.</p>
+        
+        <p>A <dfn data-lt="canonical Unicode locale identifier|canonical tag|canonical locale">canonical Unicode locale identifier</dfn> is a <a>well-formed</a> language tag that also conforms to the additional rules for <em>Unicode locale identifiers</em> found in [[CLDR]] (see <a href="https://www.unicode.org/reports/tr35/#Unicode_locale_identifier">Section 3</a>). <a>Unicode locales</a> define additional conformance criteria and normalization steps beyond that found in [[BCP47]] that help make language tags more consistent and interoperable.</p>
           
         <p>A <dfn title="language-range">language range</dfn> is a string
           similar in structure to a language tag that is used for "identifying
           sets of language tags that share specific attributes".</p>
-        <p>A <dfn title="language-priority-list">language priority list</dfn>
-          is a collection of one or more language ranges identifying the user's
-          language preferences for use in matching. As the name suggests, such
-          lists are normally ordered or weighted according to the user's
-          preferences. The HTTP [[RFC2616]] <code>Accept-Language</code> [[RFC3282]]
-          header is an example of one kind of language priority list.</p>
+        <p>A <dfn>language priority list</dfn> is a collection of one or more language ranges identifying the user's language preferences for use in matching. As the name suggests, such lists are normally ordered or weighted according to the user's preferences. The HTTP [[RFC2616]] <code>Accept-Language</code> [[RFC3282]] header is an example of one kind of language  priority list.</p>
         <p>A <dfn title="basic-language-range">basic language range</dfn> is
           simply a language tag used to express a language preference. An <dfn
 
@@ -215,12 +331,10 @@
               <p><code>de-Latn-DE-1996</code></p>
             </li>
           </ul>
-          <p><code>"en; fr; zh-Hant"</code> is a language priority list. It
-            would be read as "<span class="quote">English before French before
-              Chinese as written in the Traditional script</span>". Note that
-            the syntax shown is only an example, since it depends on the
-            protocol, application, or implementation that uses the list.</p>
+          <p><code>"en; fr; zh-Hant"</code> is a language priority list. It would be read as "<span class="quote">English before French before Chinese as written in the Traditional script</span>". Note that the syntax shown is only an example, since it depends on the protocol, application, or implementation that uses the list.</p>
         </aside>
+                  
+        <p>Some <a>language priority lists</a>, such as the <code>Accept-Language</code> [[RFC3282]] header mentioned earlier, provide "weights" for values appearing in the list. Such weighting cannot be depended on for anything other than ordering the list.</p>
       </section>
       
 
@@ -260,11 +374,24 @@
         
         <p>Checking if a tag is <a>valid</a> requires access to or a copy of the registry plus additional runtime logic. While content authors are advised to choose, generate, and exchange only valid values, language tag matching and other common language tag operations are designed so that validity checking is not needed. Features or functions that need to understand the specific semantic content of subtags are the main reason that a specification would normatively require <a>valid</a> tags as part of the protocol or document format.</p>
         
+        <p class="advisement" id="ltli-canonical-author-req"><a class="self" href="#ltli-canonical-author-req">&#x200B;</a>Content authors SHOULD choose language tags that are <a>canonical Unicode locale identifiers</a>.</p>
+        
+        <p>The additional content restrictions and normalization steps found in <a href="https://www.unicode.org/reports/tr35/#Canonical_Unicode_Locale_Identifiers">Section 3</a> of [[LDML]] provide for better interoperability and consistency than that afforded by [[BCP47]] directly.</p>
+
+        <p class="advisement" id="ltli-canonical-impl-req"><a class="self" href="#ltli-canonical-impl-req">&#x200B;</a>Implementations SHOULD only emit language tags that are <a>canonical Unicode locale identifiers</a> and SHOULD normalize language tags that they consume using the rules for producing canonical tags.</p>
+        
+        <p>As above, the additional content restrictions and normalization steps found in <a href="https://www.unicode.org/reports/tr35/#Canonical_Unicode_Locale_Identifiers">Section 3</a> of [[LDML]] provide for better interoperability and consistency than that afforded by [[BCP47]] directly. This best practice should not be interpreted as meaning that implementations need to support, generate, process, or understand either of [[CLDR]]'s extensions.</p>
+        
         <p class="advisement" id="ltli-valid-content-req"><a href="#ltli-valid-content-req" class="self">&#x200B;</a>Specifications SHOULD require content authors use <a>valid</a> language tags.</p>
         <p class="advisement" id="ltli-validator-req"><a href="#ltli-validator-req" class="self">&#x200B;</a>Content validators SHOULD check if content uses <a>valid</a> language tags where feasible.</p>
+        
+        <p class="advisement" id="ltli-no-subsidiary-stds"><a href="#ltli-no-subsidiary-stds" class="self">&#x200B;</a>Specifications SHOULD NOT reference [[BCP47]]'s underlying standards that contribute to the <a>IANA Language Subtag Registry</a>, such as ISO639, ISO15924, ISO3066, or UN M.49.</p>
+        
+        <p>Some standards might directly consume one of [[BCP47]]'s contributory standards, in which case a reference is wholly appropriate. However, in most cases, the purpose of the reference is to specify a valid list of codes and their meanings. [[BCP47]]'s <a>subtag registry</a> is stabilized and resolves ambiguity in a number of useful ways and so should be the preferred source for this type of reference.</p>
+        
 		<p class="advisement" id="ltli-language-information-in-uris-req"><a href="#ltli-language-information-in-uris-req" class="self">&#x200B;</a>Applications that provide language information as part of URIs (e.g. in the realm of RDF) SHOULD use [[BCP47]].</p>
 		
-		    <p>Currently, URIs expressing language information often use values from parts of ISO 639. This leads to situations in which there are ambiguities about what the proper value should be, e.g. for German <code>de</code> from ISO 639-1 or <code>ger</code> from ISO 639-2. By using BCP 47 and its language sub tag registry, such ambiguities can be avoided, e.g. for German, the registry contains only <code>de</code>.</p>
+		<p>Currently, URIs expressing language information often use values from parts of ISO 639. This leads to situations in which there are ambiguities about what the proper value should be, e.g. for German <code>de</code> from ISO 639-1 or <code>ger</code> from ISO 639-2. By using BCP 47 and its language sub tag registry, such ambiguities can be avoided, e.g. for German, the registry contains only <code>de</code>.</p>
         
         <p class="advisement" id="ltli-range-type-req"><a href="#ltli-range-type-req" class="self">&#x200B;</a>Specifications that define language tag matching or <a>language negotiation</a> MUST specify whether language ranges used are a <a>basic language range</a> or an <a>extended language range</a>.</p>
         
@@ -274,6 +401,21 @@
         
         <p>For example, JavaScript internationalization [[ECMA-402]] and [[CLDR]] provide a "best fit" algorithm which can be tailored by implementers.</p>
         
+        <p class="advisement" id="ltli-keep-extensions"><a class="self" href="#ltli-keep-extensions">&#x200B;</a>Specifications SHOULD NOT restrict the length of language tags or permit or encourage the removal of extensions.</p>
+        
+        <p class="advisement" id="ltli-format-like-doc-language"><a class="self" href="#ltli-format-like-doc-language">&#x200B;</a>Specifications that present <a>data values</a> in a document format SHOULD require that data is formatted according to the language of the surrounding content.</p>
+        
+        <p>When data values are present to the user as part of a document or application, the document or application forms the "context" where the data is being viewed. Content authors or application developers need a way to make the data values seem like a natural part of the experience and need a way to control the presentation. This is indicated by the <a>language tag</a> of the context in which the content appears: usually <a>enabled</a> implementations interpret the tag as a <a>locale</a> in order to accomplish this. Using the runtime locale or localization of the user-agent as the locale for presenting data values should only be a last resort.</p>
+        
+        <p class="advisement" id="ltli-input-like-doc-language"><a class="self" href="#ltli-input-like-doc-language">&#x200B;</a>Specifications that present forms or receive input of <a>data values</a> in a document format or application SHOULD require that the values be presented to the user <a>localized</a> in the format of the language of the content or markup immediately surrounding the value.</p>
+        
+        <p class="advisement" id="ltli-input-locale-neutrality"><a class="self" href="#ltli-input-locale-neutrality">&#x200B;</a>Specifications that present, exchange, or allow the input of <a>data values</a> MUST use a <a>locale-neutral</a> format for storage and interchange.</p>
+        
+        <p class="advisement" id="ltli-impl-input-like-doc-language"><a class="self" href="#ltli-impl-input-like-doc-language">&#x200B;</a>Implementations SHOULD present <a>data values</a> in a document format or application using a format consistent with the language of the surrounding content and are encouraged to provide controls which are <a>localized</a> to the same <a>locale</a> for input or editing.</p>
+        
+        <p>Users expect form fields and other data inputs to use a presentation for <a>data values</a> that is consistent with the document or application where the values appear. User's usually expect their input to match the document's context rather than the user-agent or operating environments and input validation, prompting, or controls are also thus consistent with the content. This gives content authors the ability to create a wholly localized customer experience and is generally in keeping with customer expectations.</p>
+        
+       
     </section>
 
       
