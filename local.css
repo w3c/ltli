@@ -112,3 +112,23 @@ a.self:hover {
 .advisement {
     position: relative;
 }
+
+.definition {
+    position: relative;
+    background-color: #efefef;
+    padding: 0.5em;
+    border: 0.5em;
+    border-left: 6pt solid green;
+    border-right: 6pt solid green;
+    margin: 1em auto;
+}
+    
+.issue-example {
+    position: relative;
+    background: #FBE9E9;
+    padding: 0.5em;
+    border: 0.5em;
+    border-left: 6pt solid #E05252;
+    border-right: 6pt solid #E05252;
+    margin: 1em auto;
+}

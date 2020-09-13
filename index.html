@@ -52,7 +52,7 @@
   </head>
   <body>
     <section id="abstract">
-      <p>This document describes the best practices for the identification of the natural language of content in document formats, specifications, and implementations on the Web. It also describes how languge tags are used to indicate user's locale preferences, which are used to process or display data values and other information on the Web.</p>
+      <p>This document provides definitions and best practices related to the identification of the natural language of content in document formats, specifications, and implementations on the Web. It describes how language tags are used to indicate a user's locale preferences which, in turn, are used to process, format, and display data values and other information.</p>
     </section>
     <section id="sotd">
       <p>This is an updated Public Working Draft of "Language Tags and Locale
@@ -72,33 +72,30 @@
     </section>
     <section id="introduction">
       <h2>Introduction</h2>
-      
-        <p>This document provides <a href="#best-practices">best practices</a> for specification authors who need to identify <a>natural language</a> values in their document formats or protocols via the use of <a>language tags</a> [[BCP47]], including common operations such as <a>language negotiation</a>. It also provides recommendations for how to specify <a>locale-aware</a> or <a>internationalized</a> behavior and defines core terminology that specifications might need to refer to these behaviors or capabilities.</p>
 
-        <p>Tags for identifying the <a>natural language</a> of content or the <a>international preferences</a> of users are one of the fundamental building blocks of the Web. The <a>language tags</a> found in Web and Internet formats and protocols are defined by [[BCP47]]. Consistent use of language tags provides applications the ability to perform language-specific formatting or processing. For example, a user-agent might use the language to select an appropriate font for displaying text or a Web page designer might style text differently in one language than in another.</p>
+        <p>Language tags and locales are one of the fundamental building blocks of <a>internationalization</a> of the Web. In this document you will find definitions for much of the basic terminology related to this aspect of <a>I18N</a>.</p>      
         
-        <p>Many of the core standards for the Web include support for <a>language tags</a>; these include the <code>xml:lang</code> attribute in [[XML10]], the <code>lang</code> and <code>hreflang</code> atttributes in [[HTML]], the <code>language</code> property in [[XSL10]], and the <code>:lang</code> pseudo-class in CSS [[CSS3-SELECTORS]]. </p>
+        <p>This document also provides terminology and best practices needed by specification authors for the identification of <a>natural language</a> values in document formats or protocols and which are recommended by the Internationalization (I18N) Working Group. These (and many other) best practices, along with links to supporting materials, can also be found in the <cite>Internationalization Best Practices for Spec Developers</cite> [[INTERNATIONAL-SPECS]]. In addition to the best practices found here, additional best practices relating to language metadata on the Web can be found in [[STRING-META]].</p>
         
-        <p><a>Language tags</a> can also be used to identify <a>international preferences</a> associated with a given piece of content or user because these preferences are linked to the natural language, regional association, or culture of the end user. Such preferences are applied to processes such as presenting numbers, dates, or times; sorting lists linguistically; providing defaults for items such as the presentation of a calendar, or common units of measurement; selecting between 12- vs. 24-hour time presentation; and many other details that users might find too tedious to set individually. Collectively, these preferences are usually called a <a>locale</a>. The extensions to [[BCP47]] that define <a>Unicode locales</a> [[CLDR]] provide the basis for <a>internationalization</a> APIs on the Web, notably the JavaScript language [[ECMASCRIPT]] uses <a>Unicode locales</a> as the basis for the APIs found in [[ECMA-402]].</p>
-      
-        <p>Document formats and protocols often need to provide metadata about the <a>natural language</a> of content or perform <a></a>language negotiation</a> when selecting appropriate content on the Web. For more information and best practices related to the specification and use of language tags as metadata, see [[STRING-META]].</p>
+        <aside class="note">
+           <p>In this document [[RFC2119]] keywords have their usual meaning. Best practices and definitions are set off from the remainder of the text with special formatting.</p>
+           <p class="advisement">Best practices appear with a different background color and decoration like this.</p>
+           <p class="definition">Definitions appear with a different background color and decoration like this.</p>
+           <p class="issue-example">Gaps or recommendations for future work appear with a different background color and decoration like this.</p>
+        </aside>
+         
         
     </section>
 
       <section id="i18n-terminology">
-        <h3>What are Internationalization and Localization?</h3>
-        <p>Users who speak different languages or come from different cultural
-          backgrounds usually require software and services that are adapted to
-          correctly process information using their native languages, writing
-          systems, measurement systems, calendars, and other linguistic rules
-          and cultural conventions.</p>
-        <p><dfn id="international-preferences">International Preferences</dfn> A
-          user's particular set of cultural conventions, language, and
-          formatting choices that software must employ to correctly process or
-          present information exchanged with that user.</p>
-          
-        <p><dfn id="internationalization" data-lt="internationalization|I18N|internationalized">Internationalization</dfn> The design and development of a product that is enabled for target audiences that vary in culture, region, or language. Internationalization is sometimes abbreviated <code>I18N</code> because there are eighteen letters between the "i" and the "n" in the English word.</p>
+        <h3>Locales and Internationalization</h3>
         
+        <p><em>This section defines basic terminology related to internationalization and localization.</em></p>
+        
+        <p>Users who speak different languages or come from different cultural backgrounds usually require software and services that are adapted to correctly process information using their native languages, writing systems, measurement systems, calendars, and other linguistic rules and cultural conventions.</p>
+          
+        <p class="definition"><dfn id="international-preferences">International Preferences</dfn> A user's particular set of language and formatting preferences and associated cultural conventions that software can employ to correctly process or present information exchanged with that user.</p>
+          
         <p>There are many kinds of international preferences that may be offered
           on the Web in order for the content or service to be considered usable
           and acceptable by users around the world. Some of these preferences
@@ -121,23 +118,23 @@
         </ul>
         ... and many more. </p>
         
-        <p>Because there are a large number of preferences, software systems (operating environments and programming languages) often use an identifier that combines natural language and other information, such as region or country, as a shorthand indicator for collections of preferences that typify categories of users that share certain cultural preferences.</p>
-          
-        <p>HTML for example uses the <code>lang</code> attribute to indicate the language of segments of content. XML uses the <code>xml:lang</code> attribute for the same purpose.</p>
+        <p class="definition"><dfn id="internationalization" data-lt="internationalization|I18N|internationalized">Internationalization</dfn> The design and development of a product that is enabled for target audiences that vary in culture, region, or language. Internationalization is sometimes abbreviated <code>I18N</code> because there are eighteen letters between the "i" and the "n" in the English word.</p>
         
-        <p><dfn data-lt="localization|localized|L10N">Localization</dfn> The tailoring of a system to the individual cultural expectations of a specific target market or group of individuals. Localization includes, but is not limited to, the translation of user-facing text and messages. Localization is sometimes abbreviated as <code>L10N</code> because there are ten letters between the "L" and the "N" in the English word. When a particular set of content and preferences corresponding to a specific set of international preferences is operationally available, then the system is said to be <em>localized</em>.</p>
+        <p class="definition"><dfn data-lt="localization|localized|L10N">Localization</dfn> The tailoring of a system to the individual cultural expectations of a specific target market or group of individuals. Localization includes, but is not limited to, the translation of user-facing text and messages. Localization is sometimes abbreviated as <code>L10N</code> because there are ten letters between the "L" and the "N" in the English word. When a particular set of content and preferences corresponding to a specific set of international preferences is operationally available, then the system is said to be <em>localized</em>.</p>
           
-        <p><dfn id="locale">Locale</dfn> A collection of international preferences, generally related to a language and geographic region, that is passed in APIs or set in the operating environment to get culturally affected behavior from a system or process. Usually a locale is identified by an id or shorthand token, such as a language tag.</p>
+        <p class="definition"><dfn id="locale" data-lt="locale|locales">Locale</dfn> A collection of international preferences, generally related to a language and geographic region, that is passed in APIs or set in the operating environment to get culturally affected behavior from a system or process. Usually a locale is identified by an id or shorthand token, such as a language tag.</p>
         
-        <p>Generally, systems that are internationalized can support a wide range of locales (collections of languages and locally-tailored behaviors and defaults) in order to meet the international preferences of many kinds of users. When a particular system can respond to changes in the locale by trying to load different resources or by performing culturally appropriate formatting, we say that this system is <dfn data-lt="locale aware|locale-aware|enabled|enable">locale-aware</dfn> or <em>enabled</em>.</p>
+        <p class="definition"><dfn data-lt="locale aware|locale-aware">Locale-aware</dfn> or <dfn data-lt="enabled|enable">Enabled.</dfn> A system that can respond to changes in the <a>locale</a> with culturally and language-specific behavior or content. Generally, systems that are internationalized can support a wide range of <a>locales</a> in order to meet the <a>international preferences</a> of many kinds of users.</p>
         
         <p><a>Language tags</a> can provide information about the language, script, region, and various specially-registered variants using subtags. But sometimes there are international preferences that do not correlate directly with any of these. For example, many cultures have more than one way of sorting content items, and so the appropriate sort ordering cannot always be inferred from the language tag by itself. Thus a German language user might want to choose between the sort ordering used in a dictionary versus that used in a phone book.</p>
         
         <p>Historically, locales were identified by the programming language or operating environment of the user. This application-specific identifier was often inferred from language tags. For example, an implementation could map a language tag from an existing protocol, such as HTTP's Accept-Language header, to its locale model.</p>
         
-        <p><dfn data-lt="common locale data repository|CLDR">Common Locale Data Repository</dfn> or <em>CLDR</em> [[CLDR]] is a Unicode Consortium project that defines, collects, and curates sets of <a>locale</a> data needed to <a>enable</a> systems or operating environments. CLDR data and its locale model are widely adopted, particularly in browsers.</p>
+        <p class="definition"><dfn data-lt="common locale data repository|CLDR">Common Locale Data Repository</dfn> or <em>CLDR</em> [[CLDR]] is a Unicode Consortium project that defines, collects, and curates sets of <a>locale</a> data needed to <a>enable</a> systems or operating environments. CLDR data and its locale model are widely adopted, particularly in browsers.</p>
         
-        <p><dfn>Unicode Locale</dfn>. A combination of language tag extensions ([[RFC6067]], [[RFC6497]]) and additional processing rules defined by [[CLDR]] to support <a>locales</a>. A Unicode locale provides the ability to specify in a language tag international preference variations that go beyond linguistic or regional variation or to select formatting behavior or content when there are multiple options.  Unicode locale identifiers are identical to language tags, but apply additional rules about the content of certain language tags. Unicode Locales increasingly form the basis for <a>internationalization</a> on the Web, particularly as part of the <code>Intl</code> locale framework [[ECMA-402]] in JavaScript [[ECMASCRIPT]].</p>
+        <p class="definition"><dfn>Unicode Locale</dfn>. A combination of language tag extensions ([[RFC6067]], [[RFC6497]]) and additional processing rules defined by [[CLDR]] to support <a>locales</a>.</p>
+        
+        <p>A Unicode locale provides the ability to specify in a language tag international preference variations that go beyond linguistic or regional variation or to select formatting behavior or content when there are multiple options.  Unicode locale identifiers are identical to language tags, but apply additional rules about the content of certain language tags. Unicode Locales increasingly form the basis for <a>internationalization</a> on the Web, particularly as part of the <code>Intl</code> locale framework [[ECMA-402]] in JavaScript [[ECMASCRIPT]].</p>
         
         <p>Unicode's [[CLDR]] project maintains both [[BCP47]] extensions related to Unicode locales. The Unicode locale language tag extension [[RFC6067]] uses the <code>-u-</code> subtag, and provides subtags for selecting different locale-based formats and behaviors.</p>
         
@@ -147,7 +144,12 @@
 
 			<table>
 				<thead>
-					<tr><th>Variation Type</th><th>Value</th><th>Language Tag</th><th>Formatted Value</th></tr>
+					<tr>
+						<th style="width:20%">Variation Type</th>
+					    <th style="width:20%">Value</th>
+					    <th style="width:20%">Language Tag</th>
+					    <th style="width:25%">Formatted Value</th>
+					</tr>
 				</thead>
 				<tbody>
 					<tr>
@@ -179,7 +181,12 @@
              <p>In the second example, the date value corresponding to 11 July 2020 on the Gregorian calendar is formatted using various different locales. Here, for example, the language tag for Thai (<code>th</code>) is extended to select between the Greogrian (<code>-u-ca-gregory</code>) and Thai Buddhist (<code>-u-ca-buddhist</code>) calendar systems. Other examples show the Japanese Imperial calendar and one type of Islamic calendar. Notice in the last example that the calendar is not restricted to a specific locale: here we show the Islamic calendar system in an English locale.</p>
              <table>
 				<thead>
-					<tr><th>Variation Type</th><th>Value</th><th>Language Tag</th><th>Formatted Value</th></tr>
+					<tr>
+						<th>Variation Type</th>
+					    <th>Value</th>
+					    <th>Language Tag</th>
+					    <th>Formatted Value</th>
+					</tr>
 				</thead>
 				<tbody>
 					<tr>
@@ -214,9 +221,11 @@
         
         <p class="note">Some preferences are individual and are left to content authors, service providers, operating environments, or user agents to define and manage on behalf of the user.</p>
         
-        <p>In this document, <dfn data-lt="data values|data value">data values</dfn> are any data type used in a document format or application other than <a>natural language</a> string values. These often correspond to date types such as numbers, dates, booleans, etc. Note that on the Web many data values are serialized as strings.</p>
+        <p class="definition"><dfn data-lt="data values|data value">Data value</dfn>. In this document, <a>data values</a> are any data type used in a document format or application other than <a>natural language</a> string values. These often correspond to date types such as numbers, dates, booleans, etc. Note that on the Web many data values are serialized as strings.</p>
         
-        <p>A <a>data value</a> is said to be <dfn>locale-neutral</dfn> when it is stored or exchanged in a format that is not specifically appropriate any given language, locale, or culture and which can be interpreted unambiguously for presentation in a <a>locale aware</a> way. A locale-neutral representation might itself be linked to a specific cultural preference, but such linkages should be minimized. An example of this are the ISO8601 serializations of date/time values. Many of these are linked to the Gregorian calendar, but the format, field order, separators, and visual appearance are not specifically suitable to any locale (they are intended to be machine readable) and, as shown in the <a href="#example-locale-variation">example</a> above, the value can be converted for display into any calendar or locale.</p>
+        <p class="definition"><dfn>Locale-neutral</dfn>. A <a>data value</a> is said to be <a>locale-neutral</a> when it is stored or exchanged in a format that is not specifically appropriate any given language, locale, or culture and which can be interpreted unambiguously for presentation in a <a>locale aware</a> way.</p>
+        
+        <p>A locale-neutral representation might itself be linked to a specific cultural preference, but such linkages should be minimized. An example of this are the ISO8601 serializations of date/time values. Many of these are linked to the Gregorian calendar, but the format, field order, separators, and visual appearance are not specifically suitable to any locale (they are intended to be machine readable) and, as shown in the <a href="#example-locale-variation">example</a> above, the value can be converted for display into any calendar or locale.</p>
         
         <aside class="example">
 			<p>Suppose your application needs to collect and store a <a>data value</a>. The system can use a <a>locale-neutral</a> format for storing and exchanging the value: schema languages such as [[XMLSCHEMA11-2]] or data formats such as [[JSON]] provide ready made types for this purpose. When the user is entering or editing the value, however, the user expects to interact with a more human friendly format. For example, if your application needed to input a user's birth date and the value they were trying to enter were <code>2020-01-31</code>:</p>
@@ -259,60 +268,112 @@
 			</table>
         </aside>
         
-        <p><dfn>Language negotiation</dfn> is the process of matching a user's <a>international preferences</a> to available localized resources, content, or processing. The user's preferences are usually expressed as a <a>locale</a> or prioritized list of locales. When negotiating the language, the system follows some sort of algorithm to get the best matching content or functionality from the available resources. In many cases the language negotiation algorithm uses <dfn data-lt="locale fallback|fallback">locale fallback</dfn> that proceeds from more-specific resources to more-general ones following a deterministic pattern.</p>
+        <p class="definition"><dfn>Language negotiation</dfn> is the process of matching a user's <a>international preferences</a> to available localized resources, content, or processing.</p>
+        
+        <p>A user's preferences are usually expressed as a <a>locale</a> or prioritized list of locales. When negotiating the language, the system follows some sort of algorithm to get the best matching content or functionality from the available resources. In many cases the language negotiation algorithm uses <dfn data-lt="locale fallback|fallback">locale fallback</dfn> that proceeds from more-specific resources to more-general ones following a deterministic pattern.</p>
+        
+        <p class="advisement" id="ltli-format-like-doc-language"><a class="self" href="#ltli-format-like-doc-language">&#x200B;</a>Specifications that present <a>data values</a> in a document format SHOULD require that data is formatted according to the language of the surrounding content.</p>
+        
+        <p>When data values are present to the user as part of a document or application, the document or application forms the "context" where the data is being viewed. Content authors or application developers need a way to make the data values seem like a natural part of the experience and need a way to control the presentation. This is indicated by the <a>language tag</a> of the context in which the content appears: usually <a>enabled</a> implementations interpret the tag as a <a>locale</a> in order to accomplish this. Using the runtime locale or localization of the user-agent as the locale for presenting data values should only be a last resort.</p>
+        
+        <p class="advisement" id="ltli-input-like-doc-language"><a class="self" href="#ltli-input-like-doc-language">&#x200B;</a>Specifications that present forms or receive input of <a>data values</a> in a document format or application SHOULD require that the values be presented to the user <a>localized</a> in the format of the language of the content or markup immediately surrounding the value.</p>
+        
+        <p class="advisement" id="ltli-input-locale-neutrality"><a class="self" href="#ltli-input-locale-neutrality">&#x200B;</a>Specifications that present, exchange, or allow the input of <a>data values</a> MUST use a <a>locale-neutral</a> format for storage and interchange.</p>
+        
+        <p class="advisement" id="ltli-impl-input-like-doc-language"><a class="self" href="#ltli-impl-input-like-doc-language">&#x200B;</a>Implementations SHOULD present <a>data values</a> in a document format or application using a format consistent with the language of the surrounding content and are encouraged to provide controls which are <a>localized</a> to the same <a>locale</a> for input or editing.</p>
+        
+        <p>Users expect form fields and other data inputs to use a presentation for <a>data values</a> that is consistent with the document or application where the values appear. User's usually expect their input to match the document's context rather than the user-agent or operating environments and input validation, prompting, or controls are also thus consistent with the content. This gives content authors the ability to create a wholly localized customer experience and is generally in keeping with customer expectations.</p>
       </section>
       
       <section id="language-terminology">
-        <h3>Languages, Language Tags and Matching of Language Tags</h3>
+        <h3>Languages and Language Tags</h3>
         
-        <p>This document uses the term <dfn>language</dfn> to
-          refer to what is sometimes called a <em><dfn>natural language</dfn></em>: the
-          spoken, written, or signed communications used by human beings.</p>
-        <p>There are many ways that languages might be identified and many
-          reasons that software might need to identify the language of content
-          on the Web. Document formats and protocols on the Web generally use
-          the identifiers used in most other parts of the Internet, consisting
-          of the language tags defined in [[BCP47]].</p>
-        <p>[[BCP47]] is a multipart document consisting, at the time this
-          document was published, of two separate RFCs. The first part, called <em>Tags
-            for Identifying Languages</em> [[RFC5646]], defines the grammar,
-          form, and terminology of language tags. The second part, called <em>Matching
-            of Language Tags</em> [[RFC4647]], describes several schemes for
-          matching, comparing, and selecting content using language tags and
-          includes useful terminology related to comparison of language
-          preferences to tagged content.</p>
-        <p>A <dfn data-lt="language tag|language tags">language tag</dfn> is a string used as an identifier for a language. In this document, the term <em>language tag</em> always refers explicitly to a [[BCP47]] language tag. These language tags consist of one or more subtags.</p>
-        <p>A <dfn data-lt="subtag|subtags">subtag</dfn> is a sequence of ASCII letters or
-          digits separated from other subtags by the hyphen-minus character and
-          identifying a specific element of meaning withing the overall language
-          tag. In [[BCP47]], subtags can consist of upper or lowercase ASCII
-          letters (the case carries no distinction) or ASCII digits. Subtags are
-          limited to no more than eight characters (although additional length
-          restrictions apply depending on the specific use of the subtag).</p>
-        <p>Selecting content or behavior based on the language tag requires a
-          few additional concepts defined by [[RFC4647]]. In this document, we
-          adopt the following terminology:</p>
+        <p>Tags for identifying the <a>natural language</a> of content or the <a>international preferences</a> of users are one of the fundamental building blocks of the Web. The <a>language tags</a> found in Web and Internet formats and protocols are defined by [[BCP47]]. Consistent use of language tags provides applications the ability to perform language-specific formatting or processing. For example, a user-agent might use the language to select an appropriate font for displaying text or a Web page designer might style text differently in one language than in another.</p>
+        
+        <p>Many of the core standards for the Web include support for <a>language tags</a>; these include the <code>xml:lang</code> attribute in [[XML10]], the <code>lang</code> and <code>hreflang</code> atttributes in [[HTML]], the <code>language</code> property in [[XSL10]], and the <code>:lang</code> pseudo-class in CSS [[CSS3-SELECTORS]].</p>
+        
+        <p><a>Language tags</a> can also be used to identify <a>international preferences</a> associated with a given piece of content or user because these preferences are linked to the natural language, regional association, or culture of the end user. Such preferences are applied to processes such as presenting numbers, dates, or times; sorting lists linguistically; providing defaults for items such as the presentation of a calendar, or common units of measurement; selecting between 12- vs. 24-hour time presentation; and many other details that users might find too tedious to set individually. Collectively, these preferences are usually called a <a>locale</a>. The extensions to [[BCP47]] that define <a>Unicode locales</a> [[CLDR]] provide the basis for <a>internationalization</a> APIs on the Web, notably the JavaScript language [[ECMASCRIPT]] uses <a>Unicode locales</a> as the basis for the APIs found in [[ECMA-402]].</p>
+        
+        <p class="definition">A <dfn>language</dfn> in this document refers to a <em><dfn>natural language</dfn></em>: the spoken, written, or signed communications used by human beings.</p>
+        
+        <p>There are many ways that languages might be identified and many reasons that software might need to identify the language of content on the Web. Document formats and protocols on the Web generally use the identifiers used in most other parts of the Internet, consisting of the language tags defined in [[BCP47]].</p>
+        
+        <p>[[BCP47]] is a multipart document consisting, at the time this document was published, of two separate RFCs. The first part, called <em>Tags for Identifying Languages</em> [[RFC5646]], defines the grammar, form, and terminology of language tags. The second part, called <em>Matching of Language Tags</em> [[RFC4647]], describes several schemes for atching, comparing, and selecting content using language tags and includes useful terminology related to comparison of language preferences to tagged content.</p>
           
-        <p>The <dfn data-lt="iana language subtag registry|subtag registry|registry|lstr">IANA Language Subtag Registry</dfn> is a machine-readable text file available via IANA which contains a comprehensive list of all of the subtags valid in language tags. (Link: <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">Registry</a>)</p>
+        <p class="definition">A <dfn data-lt="language tag|language tags">language tag</dfn> is a string used as an identifier for a language. In this document, the term <em>language tag</em> always refers explicitly to a [[BCP47]] language tag. These language tags consist of one or more subtags.</p>
+        
+        <p class="advisement" id="ltli-bcp47-refer"><a class="self" href="#ltli-bcp47-refer">&#x200B;</a>Specifications for the Web that require language identification MUST refer to [[BCP47]]. </p>
+        
+        <p class="advisement" id="ltli-no-rfc-refs"><a href="#ltli-no-rfc-refs" class="self">&#x200B;</a>Specifications SHOULD NOT refer to specific component RFCs.</p>
+        
+        <p>The "BCP" nomenclature refers to the current set of RFCs that form the "best current practice". At the time this document was published, [[BCP47]] consisted of two RFCs: <cite>Tags for the Identification of Languages </cite>[[RFC5646]] and <cite>Matching of Language Tags</cite> [[RFC4647]].</p>
+        
+        <p class="advisement" id="ltli-successor-ref"><a href="#ltli-successor-ref" class="self">&#x200B;</a>Formulations such as "<span class="quote">RFC 5646 or its successor</span>" MAY be used, but only in cases where the specific document version is necessary.</p>
+        
+        <p>While this style of reference was once popular, using the BCP reference is more accurate. Since the grammar of language tags has been fixed since [[RFC4646]], referring to the BCP will not incur additional compliance risk to most implementations.</p>
+        
+        <p class="advisement" id="ltli-no-obsolete-refs"><a href="#ltli-no-obsolete-refs" class="self">&#x200B;</a>Specifications MUST NOT reference obsolete versions of [[BCP47]], such as [[RFC1766]] or [[RFC3066]].</p>
+        
+        <p class="advisement" id="ltli-obs-language-tag-ref"><a href="#ltli-obs-language-tag-ref" class="self">&#x200B;</a>Specifications that need to preserve compatibility with obsolete versions of [[BCP47]] MUST reference the production <code>obs-language-tag</code> in [[BCP47]].</p>
+        
+        <p>Beginning with [[RFC4646]], [[BCP47]] defined a more complex, machine-readable syntax for language tags. Some specifications might desire or require compatibility with the older language tag grammar found in previous versions of BCP47 (specifically [[RFC1766]] and [[RFC3066]]). This grammar was more permissive and is described in [[BCP47]] as the ABNF production <code>obs-language-tag</code>. [[RFC4646]], which introduced the current grammar for language tags, is itself obsolete.</p>
+        
+        <p class="advisement" id="ltli-language-information-in-uris-req"><a href="#ltli-language-information-in-uris-req" class="self">&#x200B;</a>Applications that provide language information as part of URIs (e.g. in the realm of RDF) SHOULD use [[BCP47]].</p>
+		
+		<p>Currently, URIs expressing language information often use values from parts of ISO 639. This leads to situations in which there are ambiguities about what the proper value should be, e.g. for German <code>de</code> from ISO 639-1 or <code>ger</code> from ISO 639-2. By using BCP 47 and its language sub tag registry, such ambiguities can be avoided, e.g. for German, the registry contains only <code>de</code>.</p>
+
+        <p class="advisement" id="ltli-keep-extensions"><a class="self" href="#ltli-keep-extensions">&#x200B;</a>Specifications SHOULD NOT restrict the length of language tags or permit or encourage the removal of extensions.</p>
+        
+        <p class="definition">A <dfn data-lt="subtag|subtags">subtag</dfn> is a sequence of ASCII letters or digits separated from other subtags by the hyphen-minus character and identifying a specific element of meaning withing the overall language tag. In [[BCP47]], subtags can consist of upper or lowercase ASCII letters (the case carries no distinction) or ASCII digits. Subtags are limited to no more than eight characters (although additional length restrictions apply depending on the specific use of the subtag).</p>
+        
+        <p>Selecting content or behavior based on the language tag requires a few additional concepts defined by [[RFC4647]]. In this document, we adopt the following terminology:</p>
+          
+        <p class="definition">The <dfn data-lt="iana language subtag registry|subtag registry|registry|lstr">IANA Language Subtag Registry</dfn> is a machine-readable text file available via IANA which contains a comprehensive list of all of the subtags valid in language tags. (Link: <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">Registry</a>)</p>
+        
+        <p class="advisement" id="ltli-no-subsidiary-stds"><a href="#ltli-no-subsidiary-stds" class="self">&#x200B;</a>Specifications SHOULD NOT reference [[BCP47]]'s underlying standards that contribute to the <a>IANA Language Subtag Registry</a>, such as ISO639, ISO15924, ISO3066, or UN M.49.</p>
+        
+        <p>Some standards might directly consume one of [[BCP47]]'s contributory standards, in which case a reference is wholly appropriate. However, in most cases, the purpose of the reference is to specify a valid list of codes and their meanings. [[BCP47]]'s <a>subtag registry</a> is stabilized and resolves ambiguity in a number of useful ways and so should be the preferred source for this type of reference.</p>
           
         <p>[[BCP47]] defines two different levels of conformance. See <a href="https://tools.ietf.org/html/bcp47#section-2.2.9">classes of conformance</a> in [[BCP47]] for specifics. For language tags, the levels of conformance correspond to type of checking that an implementation applies to language tag values.</p>
         
-        <p>A <dfn data-lt="well-formed|well-formed language tag">well-formed language tag</dfn> follows the grammar defined in [[BCP47]]. That is, it is structurally correct, consisting of ASCII letters and digit <a>subtags</a> of the prescribed length, separated by hyphens.</p>
+        <p class="definition">A <dfn data-lt="well-formed|well-formed language tag">well-formed language tag</dfn> follows the grammar defined in [[BCP47]]. That is, it is structurally correct, consisting of ASCII letters and digit <a>subtags</a> of the prescribed length, separated by hyphens.</p>
         
-        <p>A <dfn data-lt="valid|valid language tag">valid language tag</dfn> has been checked to ensure that each of the subtags appears in the <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">Language Subtag Registry</a> hosted by IANA.</p>
+        <p class="definition">A <dfn data-lt="valid|valid language tag">valid language tag</dfn> has been checked to ensure that each of the subtags appears in the <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">Language Subtag Registry</a> hosted by IANA.</p>
         
-        <p>A <dfn data-lt="canonical Unicode locale identifier|canonical tag|canonical locale">canonical Unicode locale identifier</dfn> is a <a>well-formed</a> language tag that also conforms to the additional rules for <em>Unicode locale identifiers</em> found in [[CLDR]] (see <a href="https://www.unicode.org/reports/tr35/#Unicode_locale_identifier">Section 3</a>). <a>Unicode locales</a> define additional conformance criteria and normalization steps beyond that found in [[BCP47]] that help make language tags more consistent and interoperable.</p>
-          
-        <p>A <dfn title="language-range">language range</dfn> is a string
-          similar in structure to a language tag that is used for "identifying
-          sets of language tags that share specific attributes".</p>
-        <p>A <dfn>language priority list</dfn> is a collection of one or more language ranges identifying the user's language preferences for use in matching. As the name suggests, such lists are normally ordered or weighted according to the user's preferences. The HTTP [[RFC2616]] <code>Accept-Language</code> [[RFC3282]] header is an example of one kind of language  priority list.</p>
-        <p>A <dfn title="basic-language-range">basic language range</dfn> is
-          simply a language tag used to express a language preference. An <dfn
+        <p class="advisement" id="ltli-well-formed-req"><a href="#ltli-well-formed-req" class="self">&#x200B;</a>Specifications SHOULD require that language tags be <a>well-formed</a>.</p>
+        
+        <p class="advisement" id="ltli-valid-req"><a href="#ltli-valid-req" class="self">&#x200B;</a>Specifications MAY require that language tags be <a>valid</a>.</p>
+        
+        <p class="advisement" id="ltli-valid-content-req"><a href="#ltli-valid-content-req" class="self">&#x200B;</a>Specifications SHOULD require content authors use <a>valid</a> language tags.</p>
+        
+        <p>Note that this is stricter than what is recommended for implementations.</p>
+        
+        <p class="advisement" id="ltli-validator-req"><a href="#ltli-validator-req" class="self">&#x200B;</a>Content validators SHOULD check if content uses <a>valid</a> language tags where feasible.</p>
+        
+        <p>Checking if a tag is <a>valid</a> requires access to or a copy of the <a>registry</a> plus additional runtime logic. While content authors are advised to choose, generate, and exchange only valid values, language tag matching and other common language tag operations are designed so that validity checking is not needed. Features or functions that need to understand the specific semantic content of subtags are the main reason that a specification would normatively require <a>valid</a> tags as part of the protocol or document format.</p>
 
-            title="extended-language-range">extended language range</dfn> allows
-          a more expressive set of language preference through the use of a
-          wildcard subtag <q><code>*</code></q>.</p>
+        
+        <p class="definition">A <dfn data-lt="canonical Unicode locale identifier|canonical tag|canonical locale">canonical Unicode locale identifier</dfn> is a <a>well-formed</a> language tag that also conforms to the additional rules for <em>Unicode locale identifiers</em> found in [[CLDR]] (see <a href="https://www.unicode.org/reports/tr35/#Unicode_locale_identifier">Section 3</a>). <a>Unicode locales</a> define additional conformance criteria and normalization steps beyond that found in [[BCP47]] that help make language tags more consistent and interoperable.</p>
+        
+        <p class="advisement" id="ltli-bcp47-extension-ref"><a href="#ltli-bcp47-extension-ref" class="self">&#x200B;</a>Specifications MAY reference registered extensions to [[BCP47]] as necessary.</p>
+        
+        <p>In particular, [[RFC6067]] defines the <cite>BCP 47 Extension U</cite>, also known as "Unicode Locales". This extension to [[BCP47]] provides additional subtag sequences for selecting specific locale variations.</p>
+        
+        <p class="advisement" id="ltli-canonical-author-req"><a class="self" href="#ltli-canonical-author-req">&#x200B;</a>Content authors SHOULD choose language tags that are <a>canonical Unicode locale identifiers</a>.</p>
+        
+        <p>The additional content restrictions and normalization steps found in <a href="https://www.unicode.org/reports/tr35/#Canonical_Unicode_Locale_Identifiers">Section 3</a> of [[LDML]] provide for better interoperability and consistency than that afforded by [[BCP47]] directly.</p>
+
+        <p class="advisement" id="ltli-canonical-impl-req"><a class="self" href="#ltli-canonical-impl-req">&#x200B;</a>Implementations SHOULD only emit language tags that are <a>canonical Unicode locale identifiers</a> and SHOULD normalize language tags that they consume using the rules for producing canonical tags.</p>
+        
+        <p>As above, the additional content restrictions and normalization steps found in <a href="https://www.unicode.org/reports/tr35/#Canonical_Unicode_Locale_Identifiers">Section 3</a> of [[LDML]] provide for better interoperability and consistency than that afforded by [[BCP47]] directly. This best practice should not be interpreted as meaning that implementations need to support, generate, process, or understand either of [[CLDR]]'s extensions.</p>
+
+          
+        <p class="definition">A <dfn title="language-range">language range</dfn> is a string similar in structure to a language tag that is used for "identifying sets of language tags that share specific attributes".</p>
+        
+        <p class="definition">A <dfn>language priority list</dfn> is a collection of one or more language ranges identifying the user's language preferences for use in matching. As the name suggests, such lists are normally ordered or weighted according to the user's preferences. The HTTP [[RFC2616]] <code>Accept-Language</code> [[RFC3282]] header is an example of one kind of language  priority list.</p>
+        
+        <p class="definition">A <dfn title="basic-language-range">basic language range</dfn> is simply a language tag used to express a language preference. An <dfn title="extended-language-range">extended language range</dfn> allows a more expressive set of language preference through the use of a wildcard subtag <q><code>*</code></q>.</p>
+        
         <aside class="example">
           <p>Basic versus extended language range and language priority list</p>
           <p>The string <code>de-de</code> is a basic language range. It
@@ -335,63 +396,6 @@
         </aside>
                   
         <p>Some <a>language priority lists</a>, such as the <code>Accept-Language</code> [[RFC3282]] header mentioned earlier, provide "weights" for values appearing in the list. Such weighting cannot be depended on for anything other than ordering the list.</p>
-      </section>
-      
-
-      <section id="best-practices">
-        <h2>Best Practices and Recommendations</h2>
-        
-        <p>This section provides specification authors and implementers with best practices recommended by the Internationalization (I18N) Working Group. These (and many other) best practices, along with links to supporting materials, can also be found in the <cite>Internationalization Best Practices for Spec Developers</cite> [[INTERNATIONAL-SPECS]]. In addition to the best practices found here, additional best practices relating to language metadata on the Web can be found in [[STRING-META]].</p>
-        
-        <aside class="note">
-           <p>In this section [[RFC2119]] keywords have their usual meaning. We differentiate <em>best practices</em>, which should be adopted by all specifications and <em>recommendations</em>, which require additional standardization or which are speculative prior to adoption.</p>
-           <p class="advisement">Best practices appear with a different background color and decoration like this.</p>
-        </aside>
-          
-        <p class="advisement" id="ltli-bcp47-refer"><a class="self" href="#ltli-bcp47-refer">&#x200B;</a>Specifications for the Web that require language identification MUST refer to [[BCP47]]. </p>
-        
-        <p class="advisement" id="ltli-no-rfc-refs"><a href="#ltli-no-rfc-refs" class="self">&#x200B;</a>Specifications SHOULD NOT refer to specific component RFCs.</p>
-        
-        <p>The "BCP" nomenclature refers to the current set of RFCs that form the "best current practice". At the time this document was published, [[BCP47]] consisted of two RFCs: <cite>Tags for the Identification of Languages </cite>[[RFC5646]] and <cite>Matching of Language Tags</cite> [[RFC4647]].</p>
-        
-        <p class="advisement" id="ltli-successor-ref"><a href="#ltli-successor-ref" class="self">&#x200B;</a>Formulations such as "<span class="quote">RFC 5646 or its successor</span>" MAY be used, but only in cases where the specific document version is necessary.</p>
-        <p>While this style of reference was once popular, using the
-          BCP reference is more accurate. Since the grammar of language tags has
-          been fixed since [[RFC4646]], referring to the BCP will not incur
-          additional compliance risk to most implementations.</p>
-          
-        <p class="advisement" id="ltli-no-obsolete-refs"><a href="#ltli-no-obsolete-refs" class="self">&#x200B;</a>Specifications MUST NOT reference obsolete versions of [[BCP47]], such as [[RFC1766]] or [[RFC3066]].</p>
-        
-        <p class="advisement" id="ltli-obs-language-tag-ref"><a href="#ltli-obs-language-tag-ref" class="self">&#x200B;</a>Specifications that need to preserve compatibility with obsolete versions of [[BCP47]] MUST reference the production <code>obs-language-tag</code> in [[BCP47]].</p>
-        
-        <p>Beginning with [[RFC4646]], [[BCP47]] defined a more complex, machine-readable syntax for language tags. Some specifications might desire or require compatibility with the older language tag grammar found in previous versions of BCP47 (specifically [[RFC1766]] and [[RFC3066]]). This grammar was more permissive and is described in [[BCP47]] as the ABNF production <code>obs-language-tag</code>. [[RFC4646]], which introduced the current grammar for language tags, is itself obsolete.</p>
-        
-        <p class="advisement" id="ltli-bcp47-extension-ref"><a href="#ltli-bcp47-extension-ref" class="self">&#x200B;</a>Specifications MAY reference registered extensions to [[BCP47]] as necessary.</p>
-        <p>In particular, [[RFC6067]] defines the <cite>BCP 47 Extension U</cite>, also known as "Unicode Locales". This extension to [[BCP47]] provides additional subtag sequences for selecting specific locale variations.</p>
-        
-        <p class="advisement" id="ltli-well-formed-req"><a href="#ltli-well-formed-req" class="self">&#x200B;</a>Specifications SHOULD require that language tags be <a>well-formed</a>.</p>
-        <p class="advisement" id="ltli-valid-req"><a href="#ltli-valid-req" class="self">&#x200B;</a>Specifications MAY require that language tags be <a>valid</a>.</p>
-        
-        <p>Checking if a tag is <a>valid</a> requires access to or a copy of the registry plus additional runtime logic. While content authors are advised to choose, generate, and exchange only valid values, language tag matching and other common language tag operations are designed so that validity checking is not needed. Features or functions that need to understand the specific semantic content of subtags are the main reason that a specification would normatively require <a>valid</a> tags as part of the protocol or document format.</p>
-        
-        <p class="advisement" id="ltli-canonical-author-req"><a class="self" href="#ltli-canonical-author-req">&#x200B;</a>Content authors SHOULD choose language tags that are <a>canonical Unicode locale identifiers</a>.</p>
-        
-        <p>The additional content restrictions and normalization steps found in <a href="https://www.unicode.org/reports/tr35/#Canonical_Unicode_Locale_Identifiers">Section 3</a> of [[LDML]] provide for better interoperability and consistency than that afforded by [[BCP47]] directly.</p>
-
-        <p class="advisement" id="ltli-canonical-impl-req"><a class="self" href="#ltli-canonical-impl-req">&#x200B;</a>Implementations SHOULD only emit language tags that are <a>canonical Unicode locale identifiers</a> and SHOULD normalize language tags that they consume using the rules for producing canonical tags.</p>
-        
-        <p>As above, the additional content restrictions and normalization steps found in <a href="https://www.unicode.org/reports/tr35/#Canonical_Unicode_Locale_Identifiers">Section 3</a> of [[LDML]] provide for better interoperability and consistency than that afforded by [[BCP47]] directly. This best practice should not be interpreted as meaning that implementations need to support, generate, process, or understand either of [[CLDR]]'s extensions.</p>
-        
-        <p class="advisement" id="ltli-valid-content-req"><a href="#ltli-valid-content-req" class="self">&#x200B;</a>Specifications SHOULD require content authors use <a>valid</a> language tags.</p>
-        <p class="advisement" id="ltli-validator-req"><a href="#ltli-validator-req" class="self">&#x200B;</a>Content validators SHOULD check if content uses <a>valid</a> language tags where feasible.</p>
-        
-        <p class="advisement" id="ltli-no-subsidiary-stds"><a href="#ltli-no-subsidiary-stds" class="self">&#x200B;</a>Specifications SHOULD NOT reference [[BCP47]]'s underlying standards that contribute to the <a>IANA Language Subtag Registry</a>, such as ISO639, ISO15924, ISO3066, or UN M.49.</p>
-        
-        <p>Some standards might directly consume one of [[BCP47]]'s contributory standards, in which case a reference is wholly appropriate. However, in most cases, the purpose of the reference is to specify a valid list of codes and their meanings. [[BCP47]]'s <a>subtag registry</a> is stabilized and resolves ambiguity in a number of useful ways and so should be the preferred source for this type of reference.</p>
-        
-		<p class="advisement" id="ltli-language-information-in-uris-req"><a href="#ltli-language-information-in-uris-req" class="self">&#x200B;</a>Applications that provide language information as part of URIs (e.g. in the realm of RDF) SHOULD use [[BCP47]].</p>
-		
-		<p>Currently, URIs expressing language information often use values from parts of ISO 639. This leads to situations in which there are ambiguities about what the proper value should be, e.g. for German <code>de</code> from ISO 639-1 or <code>ger</code> from ISO 639-2. By using BCP 47 and its language sub tag registry, such ambiguities can be avoided, e.g. for German, the registry contains only <code>de</code>.</p>
         
         <p class="advisement" id="ltli-range-type-req"><a href="#ltli-range-type-req" class="self">&#x200B;</a>Specifications that define language tag matching or <a>language negotiation</a> MUST specify whether language ranges used are a <a>basic language range</a> or an <a>extended language range</a>.</p>
         
@@ -400,23 +404,8 @@
         <p class="advisement" id="ltli-matching-type-ref"><a href="#ltli-matching-type-ref" class="self">&#x200B;</a>Specifications that define language tag matching MUST specify the matching algorithms available and the selection mechanism.</p>
         
         <p>For example, JavaScript internationalization [[ECMA-402]] and [[CLDR]] provide a "best fit" algorithm which can be tailored by implementers.</p>
-        
-        <p class="advisement" id="ltli-keep-extensions"><a class="self" href="#ltli-keep-extensions">&#x200B;</a>Specifications SHOULD NOT restrict the length of language tags or permit or encourage the removal of extensions.</p>
-        
-        <p class="advisement" id="ltli-format-like-doc-language"><a class="self" href="#ltli-format-like-doc-language">&#x200B;</a>Specifications that present <a>data values</a> in a document format SHOULD require that data is formatted according to the language of the surrounding content.</p>
-        
-        <p>When data values are present to the user as part of a document or application, the document or application forms the "context" where the data is being viewed. Content authors or application developers need a way to make the data values seem like a natural part of the experience and need a way to control the presentation. This is indicated by the <a>language tag</a> of the context in which the content appears: usually <a>enabled</a> implementations interpret the tag as a <a>locale</a> in order to accomplish this. Using the runtime locale or localization of the user-agent as the locale for presenting data values should only be a last resort.</p>
-        
-        <p class="advisement" id="ltli-input-like-doc-language"><a class="self" href="#ltli-input-like-doc-language">&#x200B;</a>Specifications that present forms or receive input of <a>data values</a> in a document format or application SHOULD require that the values be presented to the user <a>localized</a> in the format of the language of the content or markup immediately surrounding the value.</p>
-        
-        <p class="advisement" id="ltli-input-locale-neutrality"><a class="self" href="#ltli-input-locale-neutrality">&#x200B;</a>Specifications that present, exchange, or allow the input of <a>data values</a> MUST use a <a>locale-neutral</a> format for storage and interchange.</p>
-        
-        <p class="advisement" id="ltli-impl-input-like-doc-language"><a class="self" href="#ltli-impl-input-like-doc-language">&#x200B;</a>Implementations SHOULD present <a>data values</a> in a document format or application using a format consistent with the language of the surrounding content and are encouraged to provide controls which are <a>localized</a> to the same <a>locale</a> for input or editing.</p>
-        
-        <p>Users expect form fields and other data inputs to use a presentation for <a>data values</a> that is consistent with the document or application where the values appear. User's usually expect their input to match the document's context rather than the user-agent or operating environments and input validation, prompting, or controls are also thus consistent with the content. This gives content authors the ability to create a wholly localized customer experience and is generally in keeping with customer expectations.</p>
-        
-       
-    </section>
+
+      </section>
 
       
    <section id="further-reading">
