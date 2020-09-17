@@ -94,7 +94,7 @@
         
         <p>Users who speak different languages or come from different cultural backgrounds usually require software and services that are adapted to correctly process information using their native languages, writing systems, measurement systems, calendars, and other linguistic rules and cultural conventions.</p>
           
-        <p class="definition"><dfn id="international-preferences">International Preferences</dfn> A user's particular set of language and formatting preferences and associated cultural conventions that software can employ to correctly process or present information exchanged with that user.</p>
+        <p class="definition"><dfn id="international-preferences" data-lt="international preferences">International Preferences.</dfn> A user's particular set of language and formatting preferences and associated cultural conventions that software can employ to correctly process or present information exchanged with that user.</p>
           
         <p>There are many kinds of international preferences that may be offered
           on the Web in order for the content or service to be considered usable
@@ -118,19 +118,19 @@
         </ul>
         ... and many more. </p>
         
-        <p class="definition"><dfn id="internationalization" data-lt="internationalization|I18N|internationalized">Internationalization</dfn> The design and development of a product that is enabled for target audiences that vary in culture, region, or language. Internationalization is sometimes abbreviated <code>I18N</code> because there are eighteen letters between the "i" and the "n" in the English word.</p>
+        <p class="definition"><dfn id="internationalization" data-lt="internationalization|I18N|internationalized">Internationalization.</dfn> The design and development of a product that is enabled for target audiences that vary in culture, region, or language. Internationalization is sometimes abbreviated <code>I18N</code> because there are eighteen letters between the "i" and the "n" in the English word.</p>
         
-        <p class="definition"><dfn data-lt="localization|localized|L10N">Localization</dfn> The tailoring of a system to the individual cultural expectations of a specific target market or group of individuals. Localization includes, but is not limited to, the translation of user-facing text and messages. Localization is sometimes abbreviated as <code>L10N</code> because there are ten letters between the "L" and the "N" in the English word. When a particular set of content and preferences corresponding to a specific set of international preferences is operationally available, then the system is said to be <em>localized</em>.</p>
+        <p class="definition"><dfn data-lt="localization|localized|L10N">Localization.</dfn> The tailoring of a system to the individual cultural expectations of a specific target market or group of individuals. Localization includes, but is not limited to, the translation of user-facing text and messages. Localization is sometimes abbreviated as <code>L10N</code> because there are ten letters between the "L" and the "N" in the English word. When a particular set of content and preferences corresponding to a specific set of international preferences is operationally available, then the system is said to be <em>localized</em>.</p>
           
-        <p class="definition"><dfn id="locale" data-lt="locale|locales">Locale</dfn> A collection of international preferences, generally related to a language and geographic region, that is passed in APIs or set in the operating environment to get culturally affected behavior from a system or process. Usually a locale is identified by an id or shorthand token, such as a language tag.</p>
+        <p class="definition"><dfn id="locale" data-lt="locale|locales">Locale.</dfn> A collection of international preferences, generally related to a language and geographic region, that is passed in APIs or set in the operating environment to get culturally affected behavior from a system or process. Usually a locale is identified by an id or shorthand token, such as a language tag.</p>
         
-        <p class="definition"><dfn data-lt="locale aware|locale-aware">Locale-aware</dfn> or <dfn data-lt="enabled|enable">Enabled.</dfn> A system that can respond to changes in the <a>locale</a> with culturally and language-specific behavior or content. Generally, systems that are internationalized can support a wide range of <a>locales</a> in order to meet the <a>international preferences</a> of many kinds of users.</p>
+        <p class="definition"><dfn data-lt="locale aware|locale-aware|enabled|enable">Locale-aware</dfn> (or <em>Enabled</em>). A system that can respond to changes in the <a>locale</a> with culturally and language-specific behavior or content. Generally, systems that are internationalized can support a wide range of <a>locales</a> in order to meet the <a>international preferences</a> of many kinds of users.</p>
         
         <p><a>Language tags</a> can provide information about the language, script, region, and various specially-registered variants using subtags. But sometimes there are international preferences that do not correlate directly with any of these. For example, many cultures have more than one way of sorting content items, and so the appropriate sort ordering cannot always be inferred from the language tag by itself. Thus a German language user might want to choose between the sort ordering used in a dictionary versus that used in a phone book.</p>
         
         <p>Historically, locales were identified by the programming language or operating environment of the user. This application-specific identifier was often inferred from language tags. For example, an implementation could map a language tag from an existing protocol, such as HTTP's Accept-Language header, to its locale model.</p>
         
-        <p class="definition"><dfn data-lt="common locale data repository|CLDR">Common Locale Data Repository</dfn> or <em>CLDR</em> [[CLDR]] is a Unicode Consortium project that defines, collects, and curates sets of <a>locale</a> data needed to <a>enable</a> systems or operating environments. CLDR data and its locale model are widely adopted, particularly in browsers.</p>
+        <p class="definition"><dfn data-lt="common locale data repository|CLDR">Common Locale Data Repository</dfn> (or <em>[[CLDR]]</em>). The Common Locale Data Repository is a Unicode Consortium project that defines, collects, and curates sets of <a>locale</a> data needed to <a>enable</a> systems or operating environments. CLDR data and its locale model are widely adopted, particularly in browsers.</p>
         
         <p class="definition"><dfn>Unicode Locale</dfn>. A combination of language tag extensions ([[RFC6067]], [[RFC6497]]) and additional processing rules defined by [[CLDR]] to support <a>locales</a>.</p>
         
@@ -268,9 +268,11 @@
 			</table>
         </aside>
         
-        <p class="definition"><dfn>Language negotiation</dfn> is the process of matching a user's <a>international preferences</a> to available localized resources, content, or processing.</p>
+        <p class="definition"><dfn>Language negotiation</dfn>. The process of matching a user's <a>international preferences</a> to available locales, localized resources, content, or processing.</p>
         
-        <p>A user's preferences are usually expressed as a <a>locale</a> or prioritized list of locales. When negotiating the language, the system follows some sort of algorithm to get the best matching content or functionality from the available resources. In many cases the language negotiation algorithm uses <dfn data-lt="locale fallback|fallback">locale fallback</dfn> that proceeds from more-specific resources to more-general ones following a deterministic pattern.</p>
+        <p class="definition"><dfn data-lt="locale fallback|fallback">Locale fallback</dfn>. The process of searching for translated content, locale data, or other resources by "falling back" from more-specific resources to more-general ones following a deterministic pattern.</p>
+        
+        <p>A user's preferences are usually expressed as a <a>locale</a> or prioritized list of locales. When negotiating the language, the system follows some sort of algorithm to get the best matching content or functionality from the available resources. In many cases the language negotiation algorithm uses <a>locale fallback</a>.</p>
         
         <p class="advisement" id="ltli-format-like-doc-language"><a class="self" href="#ltli-format-like-doc-language">&#x200B;</a>Specifications that present <a>data values</a> in a document format SHOULD require that data is formatted according to the language of the surrounding content.</p>
         
@@ -294,13 +296,13 @@
         
         <p><a>Language tags</a> can also be used to identify <a>international preferences</a> associated with a given piece of content or user because these preferences are linked to the natural language, regional association, or culture of the end user. Such preferences are applied to processes such as presenting numbers, dates, or times; sorting lists linguistically; providing defaults for items such as the presentation of a calendar, or common units of measurement; selecting between 12- vs. 24-hour time presentation; and many other details that users might find too tedious to set individually. Collectively, these preferences are usually called a <a>locale</a>. The extensions to [[BCP47]] that define <a>Unicode locales</a> [[CLDR]] provide the basis for <a>internationalization</a> APIs on the Web, notably the JavaScript language [[ECMASCRIPT]] uses <a>Unicode locales</a> as the basis for the APIs found in [[ECMA-402]].</p>
         
-        <p class="definition">A <dfn>language</dfn> in this document refers to a <em><dfn>natural language</dfn></em>: the spoken, written, or signed communications used by human beings.</p>
+        <p class="definition"><dfn data-lt="natural language|language">Natural Language</dfn> (or, in this document, just <em>language</em>). The spoken, written, or signed communications used by human beings.</p>
         
         <p>There are many ways that languages might be identified and many reasons that software might need to identify the language of content on the Web. Document formats and protocols on the Web generally use the identifiers used in most other parts of the Internet, consisting of the language tags defined in [[BCP47]].</p>
         
         <p>[[BCP47]] is a multipart document consisting, at the time this document was published, of two separate RFCs. The first part, called <em>Tags for Identifying Languages</em> [[RFC5646]], defines the grammar, form, and terminology of language tags. The second part, called <em>Matching of Language Tags</em> [[RFC4647]], describes several schemes for atching, comparing, and selecting content using language tags and includes useful terminology related to comparison of language preferences to tagged content.</p>
           
-        <p class="definition">A <dfn data-lt="language tag|language tags">language tag</dfn> is a string used as an identifier for a language. In this document, the term <em>language tag</em> always refers explicitly to a [[BCP47]] language tag. These language tags consist of one or more subtags.</p>
+        <p class="definition"><dfn data-lt="language tag|language tags">Language tag</dfn>. A string used as an identifier for a language. In this document, the term <em>language tag</em> always refers explicitly to a [[BCP47]] language tag. These language tags consist of one or more subtags.</p>
         
         <p class="advisement" id="ltli-bcp47-refer"><a class="self" href="#ltli-bcp47-refer">&#x200B;</a>Specifications for the Web that require language identification MUST refer to [[BCP47]]. </p>
         
@@ -324,11 +326,11 @@
 
         <p class="advisement" id="ltli-keep-extensions"><a class="self" href="#ltli-keep-extensions">&#x200B;</a>Specifications SHOULD NOT restrict the length of language tags or permit or encourage the removal of extensions.</p>
         
-        <p class="definition">A <dfn data-lt="subtag|subtags">subtag</dfn> is a sequence of ASCII letters or digits separated from other subtags by the hyphen-minus character and identifying a specific element of meaning withing the overall language tag. In [[BCP47]], subtags can consist of upper or lowercase ASCII letters (the case carries no distinction) or ASCII digits. Subtags are limited to no more than eight characters (although additional length restrictions apply depending on the specific use of the subtag).</p>
+        <p class="definition"><dfn data-lt="subtag|subtags">Subtag</dfn>. A sequence of ASCII letters or digits separated from other subtags by the hyphen-minus character and identifying a specific element of meaning withing the overall <a>language tag</a>. In [[BCP47]], subtags can consist of upper or lowercase ASCII letters (the case carries no distinction) or ASCII digits. Subtags are limited to no more than eight characters (although additional length restrictions apply depending on the specific use of the subtag).</p>
         
         <p>Selecting content or behavior based on the language tag requires a few additional concepts defined by [[RFC4647]]. In this document, we adopt the following terminology:</p>
           
-        <p class="definition">The <dfn data-lt="iana language subtag registry|subtag registry|registry|lstr">IANA Language Subtag Registry</dfn> is a machine-readable text file available via IANA which contains a comprehensive list of all of the subtags valid in language tags. (Link: <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">Registry</a>)</p>
+        <p class="definition"><dfn data-lt="iana language subtag registry|subtag registry|registry|lstr">IANA Language Subtag Registry</dfn>. A machine-readable text file available via IANA which contains a comprehensive list of all of the subtags valid in language tags. (Link: <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">Registry</a>)</p>
         
         <p class="advisement" id="ltli-no-subsidiary-stds"><a href="#ltli-no-subsidiary-stds" class="self">&#x200B;</a>Specifications SHOULD NOT reference [[BCP47]]'s underlying standards that contribute to the <a>IANA Language Subtag Registry</a>, such as ISO639, ISO15924, ISO3066, or UN M.49.</p>
         
@@ -336,9 +338,9 @@
           
         <p>[[BCP47]] defines two different levels of conformance. See <a href="https://tools.ietf.org/html/bcp47#section-2.2.9">classes of conformance</a> in [[BCP47]] for specifics. For language tags, the levels of conformance correspond to type of checking that an implementation applies to language tag values.</p>
         
-        <p class="definition">A <dfn data-lt="well-formed|well-formed language tag">well-formed language tag</dfn> follows the grammar defined in [[BCP47]]. That is, it is structurally correct, consisting of ASCII letters and digit <a>subtags</a> of the prescribed length, separated by hyphens.</p>
+        <p class="definition"><dfn data-lt="well-formed|well-formed language tag">Well-formed language tag</dfn>. A language tag that follows the grammar defined in [[BCP47]]. That is, it is structurally correct, consisting of ASCII letters and digit <a>subtags</a> of the prescribed length, separated by hyphens.</p>
         
-        <p class="definition">A <dfn data-lt="valid|valid language tag">valid language tag</dfn> has been checked to ensure that each of the subtags appears in the <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">Language Subtag Registry</a> hosted by IANA.</p>
+        <p class="definition"><dfn data-lt="valid|valid language tag">Valid language tag</dfn>. A language tag that is <a>well-formed</a> and has also been checked to ensure that each of the subtags appears in the <a>IANA Language Subtag Registry</a>.</p>
         
         <p class="advisement" id="ltli-well-formed-req"><a href="#ltli-well-formed-req" class="self">&#x200B;</a>Specifications SHOULD require that language tags be <a>well-formed</a>.</p>
         
@@ -353,7 +355,7 @@
         <p>Checking if a tag is <a>valid</a> requires access to or a copy of the <a>registry</a> plus additional runtime logic. While content authors are advised to choose, generate, and exchange only valid values, language tag matching and other common language tag operations are designed so that validity checking is not needed. Features or functions that need to understand the specific semantic content of subtags are the main reason that a specification would normatively require <a>valid</a> tags as part of the protocol or document format.</p>
 
         
-        <p class="definition">A <dfn data-lt="canonical Unicode locale identifier|canonical tag|canonical locale">canonical Unicode locale identifier</dfn> is a <a>well-formed</a> language tag that also conforms to the additional rules for <em>Unicode locale identifiers</em> found in [[CLDR]] (see <a href="https://www.unicode.org/reports/tr35/#Unicode_locale_identifier">Section 3</a>). <a>Unicode locales</a> define additional conformance criteria and normalization steps beyond that found in [[BCP47]] that help make language tags more consistent and interoperable.</p>
+        <p class="definition"><dfn data-lt="canonical Unicode locale identifier|canonical tag|canonical locale">Canonical Unicode locale identifier</dfn>. A <a>well-formed</a> language tag that also conforms to the additional rules for <em>Unicode locale identifiers</em> found in [[CLDR]] (see <a href="https://www.unicode.org/reports/tr35/#Unicode_locale_identifier">Section 3</a>). <a>Unicode locales</a> define additional conformance criteria and normalization steps beyond that found in [[BCP47]] that help make language tags more consistent and interoperable.</p>
         
         <p class="advisement" id="ltli-bcp47-extension-ref"><a href="#ltli-bcp47-extension-ref" class="self">&#x200B;</a>Specifications MAY reference registered extensions to [[BCP47]] as necessary.</p>
         
@@ -368,19 +370,18 @@
         <p>As above, the additional content restrictions and normalization steps found in <a href="https://www.unicode.org/reports/tr35/#Canonical_Unicode_Locale_Identifiers">Section 3</a> of [[LDML]] provide for better interoperability and consistency than that afforded by [[BCP47]] directly. This best practice should not be interpreted as meaning that implementations need to support, generate, process, or understand either of [[CLDR]]'s extensions.</p>
 
           
-        <p class="definition">A <dfn title="language-range">language range</dfn> is a string similar in structure to a language tag that is used for "identifying sets of language tags that share specific attributes".</p>
+        <p class="definition"><dfn data-lt="language range|range|language-range|language ranges">Language range</dfn>. A string similar in structure to a language tag that is used for "identifying sets of language tags that share specific attributes".</p>
         
-        <p class="definition">A <dfn>language priority list</dfn> is a collection of one or more language ranges identifying the user's language preferences for use in matching. As the name suggests, such lists are normally ordered or weighted according to the user's preferences. The HTTP [[RFC2616]] <code>Accept-Language</code> [[RFC3282]] header is an example of one kind of language  priority list.</p>
+        <p class="definition"><dfn>Language priority list</dfn>. A collection of one or more <a>language ranges</a> identifying the user's language preferences for use in matching. As the name suggests, such lists are normally ordered or weighted according to the user's preferences. The HTTP [[RFC2616]] <code>Accept-Language</code> [[RFC3282]] header is an example of one kind of language priority list.</p>
         
-        <p class="definition">A <dfn title="basic-language-range">basic language range</dfn> is simply a language tag used to express a language preference. An <dfn title="extended-language-range">extended language range</dfn> allows a more expressive set of language preference through the use of a wildcard subtag <q><code>*</code></q>.</p>
+        <p class="definition"><dfn data-lt="basic language range">Basic language range</dfn>. A <a>language range</a> consisting of a sequence of subtags separated by hyphens. That is, it is identical in appearance to a language tag.</p>
+        
+        <p class="definition"><dfn>Extended language range</dfn>. A <a>language range</a> consisting of a sequence of hyphen-separated subtags. In an extended language range, a subtag can either be a valid subtag or the wildcard subtag <q><code>*</code></q>, which matches any value.</p>
         
         <aside class="example">
           <p>Basic versus extended language range and language priority list</p>
-          <p>The string <code>de-de</code> is a basic language range. It
-            matches, for example, the language tag <code>de-DE-1996</code>, but
-            not the language tag <code>de-Deva</code>.</p>
-          <p>The string <code>de-*-DE</code> is an extended language range. It
-            matches all of the following tags:</p>
+          <p>The string <code>de-de</code> is a basic language range. It matches, for example, the language tag <code>de-DE-1996</code>, but not the language tag <code>de-Deva</code>.</p>
+          <p>The string <code>de-*-DE</code> is an extended language range. It matches all of the following tags:</p>
           <ul>
             <li>
               <p><code>de-DE</code></p>
@@ -421,11 +422,10 @@
     
      <section class="appendix" id="revisionlog">
       <h3>Revision Log</h3>
-      <p>The following changes were made since the revision of 2015-04-23.</p>
+      <p>Changes to this document following the <a href="http://www.w3.org/TR/2015/WD-ltli-20150423/">Working Draft</a> of 2015-04-23 are available via the <a href="https://github.com/w3c/ltli/commits/gh-pages">github commit log</a>. This document was significantly restructured since that revision. Notably:</p>
       <ul>
 		  <li>As this document is targetting Note status, removed mention of "normative" and "informative" and converted all references to standard ones.</li>
 		  <li>Restructured document to be more accessible. Some sections were reordered or removed.</li>
-		  <li>Changed "conformance" to "best practices".</li>
 		  <li>Removed the WS-I18N appendix.</li>
       </ul>
       <p>The following changes were made since the revision of 2006-06-20.</p>
