@@ -97,7 +97,7 @@
         
         <p class="advisement" id="ltli-bcp47-refer"><a class="self" href="#ltli-bcp47-refer">&#x200B;</a>Specifications for the Web that require language identification MUST refer to [[BCP47]]. </p>
         
-        <p class="advisement" id="ltli-no-rfc-refs"><a href="#ltli-no-rfc-refs" class="self">&#x200B;</a>Specifications SHOULD NOT refer to specific component RFCs of  [[BCP47]].</p>
+        <p class="advisement" id="ltli-no-rfc-refs"><a href="#ltli-no-rfc-refs" class="self">&#x200B;</a>Specifications SHOULD NOT refer to specific component RFCs of [[BCP47]].</p>
         
         <p>[[BCP47]] is a multipart document consisting, at the time this document was published, of two separate RFCs. The first part, called <em>Tags for Identifying Languages</em> [[RFC5646]], defines the grammar, form, and terminology of language tags. The second part, called <em>Matching of Language Tags</em> [[RFC4647]], describes several schemes for matching, comparing, and selecting content using language tags and includes useful terminology related to comparison of language preferences to tagged content.        </p>
 <p class="advisement" id="ltli-successor-ref"><a href="#ltli-successor-ref" class="self">&#x200B;</a>Formulations such as "<span class="quote">RFC 5646 or its successor</span>" MAY be used, but only in cases where the specific document version is necessary.</p>
@@ -203,10 +203,10 @@
         <p class="definition"><dfn id="international-preferences" data-lt="international preferences">International Preferences.</dfn> A user's particular set of language and formatting preferences and associated cultural conventions. Software can use these preferences to correctly process or present information exchanged with that user.</p>
           
         <p>Many kinds of <a>international preference</a> may be offered
-          on the Web in order for a content or service to be considered usable
+          on the Web in order for a content or a service to be considered usable
           and acceptable by users around the world. Some of these preferences
           might include:
-        <ul>
+      <ul>
           <li>Natural language for text processing, such as parsing, spell checking, and
             grammar checking;</li>
           <li>User interface language, which may include items like images,
@@ -228,7 +228,7 @@
         
         <p class="definition"><dfn data-lt="localization|localized|L10N">Localization</dfn>. The tailoring of a system to the individual cultural expectations of a specific target market or group of individuals. Localization includes, but is not limited to, the translation of user-facing text and messages. Localization is sometimes abbreviated as <code>l10n</code> because there are ten letters between the "L" and the "N" in the English word. When a particular set of content and preferences corresponding to a specific set of international preferences is operationally available, then the system is said to be <em>localized</em>.</p>
           
-        <p class="definition"><dfn id="locale" data-lt="locale|locales">Locale</dfn>. An identifier (such as a <a>language tag</a>) for a set of <a><a>international preferences</a></a>. Usually this identifier indicates the preferred language of the user and possibly includes other information, such as a geographic region (such as a country). A locale is passed in APIs or set in the operating environment to obtain culturally-affected behavior within a system or process.</p>
+        <p class="definition"><dfn id="locale" data-lt="locale|locales">Locale</dfn>. An identifier (such as a <a>language tag</a>) for a set of <a>international preferences</a>. Usually this identifier indicates the preferred language of the user and possibly includes other information, such as a geographic region (such as a country). A locale is passed in APIs or set in the operating environment to obtain culturally-affected behavior within a system or process.</p>
         
         <p class="definition"><dfn data-lt="locale aware|locale-aware|enabled|enable">Locale-aware</dfn> (or <em>Enabled</em>). A system that can respond to changes in the <a>locale</a> with culturally and language-specific behavior or content. Generally, systems that are internationalized can support a wide range of <a>locales</a> in order to meet the <a>international preferences</a> of many kinds of users.</p>
         
@@ -236,7 +236,7 @@
         
         <p>Historically, locales were identified by the programming language or operating environment of the user. This application-specific identifier was often inferred from language tags. For example, an implementation could map a language tag from an existing protocol, such as HTTP's Accept-Language header, to its locale model.</p>
         
-        <p class="definition"><dfn data-lt="common locale data repository|CLDR">Common Locale Data Repository</dfn> (or <em>[[CLDR]]</em>). The Common Locale Data Repository is a Unicode Consortium project that defines, collects, and curates sets of data needed to <a>enable locales in </a> systems or operating environments. CLDR data and its locale model are widely adopted, particularly in browsers.</p>
+        <p class="definition"><dfn data-lt="common locale data repository|CLDR">Common Locale Data Repository</dfn> (or <em>[[CLDR]]</em>). The Common Locale Data Repository is a Unicode Consortium project that defines, collects, and curates sets of data needed to enable <a>locales</a> in systems or operating environments. CLDR data and its locale model are widely adopted, particularly in browsers.</p>
         
         <p class="definition"><dfn data-lt="unicode locale|unicode locale identifier|unicode locale identifiers|unicode locales">Unicode Locale Identifier</dfn> or <em>Unicode Locale</em>. A <a>language tag</a> that follows the additional processing rules defined by [[CLDR]] in UTR#35 [[LDML]]. A Unicode Locale can include a combination of certain language tag extensions ([[RFC6067]], [[RFC6497]]), although it is not required to do so.</p>
         
@@ -347,7 +347,7 @@
         
         <p>Many specifications use a serialization scheme, such as those provided by [[XMLSCHEMA11-2]] or [[JSON-LD]], to provide a <a>locale neutral</a> encoding of <a>non-linguistic fields</a> in document formats or protocols.</p>
         
-        <p>A <a>locale-neutral</a> representation might itself be linked to a specific cultural preference, but such linkages should be minimized. For example, many of the ISO8601  date/time value serialisations are linked to the Gregorian calendar, but the format, field order, separators, and visual appearance are not specifically suitable to any locale (they are intended to be machine readable) and, as shown in the <a href="#example-locale-variation">example</a> above, the value can be converted for display into any calendar or locale.</p>
+        <p>A <a>locale-neutral</a> representation might itself be linked to a specific cultural preference, but such linkages should be minimized. For example, many of the ISO8601 date/time value serializations are linked to the Gregorian calendar, but the format, field order, separators, and visual appearance are not specifically suitable to any locale (they are intended to be machine readable) and, as shown in the <a href="#example-locale-variation">example</a> above, the value can be converted for display into any calendar or locale.</p>
         
         <aside class="example">
 			<p>Suppose your application needs to collect and store some value in a <a>field</a>. The system can use a <a>locale-neutral</a> format for storing and exchanging the value. For instance, schema languages such as [[XMLSCHEMA11-2]] or data formats such as [[JSON]] provide ready made types for this purpose. When the user is entering or editing the value, however, the user expects to interact with a more human friendly format. For example, if your application needed to input a user's birth date and the value they were trying to enter were <code>2020-01-31</code>:</p>
