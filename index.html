@@ -238,18 +238,19 @@
         
         <p class="definition"><dfn data-lt="common locale data repository|CLDR">Common Locale Data Repository</dfn> (or <em>[[CLDR]]</em>). The Common Locale Data Repository is a Unicode Consortium project that defines, collects, and curates sets of data needed to enable <a>locales</a> in systems or operating environments. CLDR data and its locale model are widely adopted, particularly in browsers.</p>
         
-        <p class="definition"><dfn data-lt="unicode locale|unicode locale identifier|unicode locale identifiers|unicode locales">Unicode Locale Identifier</dfn> or <em>Unicode Locale</em>. A <a>language tag</a> that follows the additional processing rules defined by [[CLDR]] in UTR#35 [[LDML]]. A Unicode Locale can include a combination of certain language tag extensions ([[RFC6067]], [[RFC6497]]), although it is not required to do so.</p>
+        <p class="definition"><dfn data-lt="unicode locale|unicode locale identifier|unicode locale identifiers|unicode locales">Unicode Locale Identifier</dfn> or <em>Unicode Locale</em>. A <a>language tag</a> that follows the additional rules and restrictions on subtag choice defined in UTR#35 [[LDML]]. Any valid Unicode locale identifier is also a <a>valid</a> [[BCP47]] <a>language tag</a>, but a few <a>valid</a> <a>language tags</a> are not also valid Unicode locale identifiers.</p>
         
-        <p>A Unicode locale provides the ability to specify in a <a>language tag</a> some <a>international preference</a> variations that go beyond linguistic or regional variation or to select formatting behavior or content when there are multiple options or user preferences within a given locale.  Unicode locale identifiers are well-formed [[BCP47]] language tags. [[CLDR]] also specifies some additional rules about the structure and content of the Unicode Locale's language tag as well as supplying specific interpretation of certain subtags. See <a href="https://www.unicode.org/reports/tr35/tr35.html#Unicode_locale_identifier">Section 3.2</a> of [[LDML]] for details. </p>
+        <p class="definition"><dfn data-lt="canonical Unicode locale identifier|canonical tag|canonical locale">Canonical Unicode locale identifier</dfn>. A <a>well-formed</a> language tag resulting from the application of the <a>Unicode locale identifier</a> canonicalization rules found in [[LDML]] (see <a href="https://www.unicode.org/reports/tr35/#Unicode_locale_identifier">Section 3</a>). This process converts any <a>valid</a> [[BCP47]] <a>language tag</a> into a valid <a>Unicode locale identifier</a>.  For example, deprecated subtags or irregular grandfathered tags are replaced with their preferred value from the <a>IANA language subtag registry</a>.</p>
+                
+        <p>[[CLDR]] defines and maintains two <a>language tag extensions</a> ([[RFC6067]] and [[RFC6497]]) that are related to <a>Unicode locale identifiers</a>. These extensions allow a <a>language tag</a> to express some <a>international preference</a> variations that go beyond linguistic or regional variation or to select formatting behavior or content when there are multiple options or user preferences within a given locale. <a>Unicode locale identifiers</a> are not required to include these extensions: they are only used when the locale being identified requires additional tailoring provided by one of these extensions. [[CLDR]] also applies specific interpretation of certain subtags when used as a locale identifier. See <a href="https://www.unicode.org/reports/tr35/tr35.html#Unicode_locale_identifier">Section 3.2</a> of [[LDML]] for details.</p>
         
-        <p>Unicode's [[CLDR]] project maintains both of the [[BCP47]] extensions related to Unicode locales. The Unicode locale language tag extension [[RFC6067]] uses the <code>-u-</code> subtag, and provides subtags for selecting different locale-based formats and behaviors. See <a href="https://www.unicode.org/reports/tr35/tr35.html#Locale_Extension_Key_and_Type_Data">Section 3.6</a> of [[LDML]] for details.</p>
+        <p>The <strong>Unicode locale <a>language tag extension</a></strong> [[RFC6067]] uses the <code>-u-</code> subtag, and provides subtags for selecting different locale-based formats and behaviors. See <a href="https://www.unicode.org/reports/tr35/tr35.html#Locale_Extension_Key_and_Type_Data">Section 3.6</a> of [[LDML]] for details.</p>
       
-        <p>The Transformed Content extension [[RFC6497]], which uses the <code>-t-</code> subtag, provides subtags for text transformations, such as transliteration between scripts. See <a href="https://www.unicode.org/reports/tr35/tr35.html#t_Extension">Section 3.7</a> of [[LDML]] for details.</p>
+        <p>The <strong>transformed content <a>language tag extension</a></strong> [[RFC6497]], which uses the <code>-t-</code> subtag, provides subtags for text transformations, such as transliteration between scripts. See <a href="https://www.unicode.org/reports/tr35/tr35.html#t_Extension">Section 3.7</a> of [[LDML]] for details.</p>
                 
         <p>Unicode Locales increasingly form the basis for <a>internationalization</a> on the Web, particularly as part of the <code>Intl</code> locale framework [[ECMA-402]] in JavaScript [[ECMASCRIPT]].</p>
         
-        <p class="definition"><dfn data-lt="canonical Unicode locale identifier|canonical tag|canonical locale">Canonical Unicode locale identifier</dfn>. A <a>well-formed</a> language tag that also conforms to the additional rules for <em>Unicode locale identifiers</em> found in [[CLDR]] (see <a href="https://www.unicode.org/reports/tr35/#Unicode_locale_identifier">Section 3</a>). <a>Unicode locales</a> define additional conformance criteria and normalization steps beyond that found in [[BCP47]] that help make language tags more consistent and interoperable.</p>
-        
+       
         <p class="advisement" id="ltli-canonical-author-req"><a class="self" href="#ltli-canonical-author-req">&#x200B;</a>Content authors SHOULD choose language tags that are <a>canonical Unicode locale identifiers</a>.</p>
         
         <p>The additional content restrictions and normalization steps found in <a href="https://www.unicode.org/reports/tr35/#Canonical_Unicode_Locale_Identifiers">Section 3</a> of [[LDML]] provide for better interoperability and consistency than that afforded by [[BCP47]] directly.</p>
@@ -271,7 +272,7 @@
 					<tr>
 						<th style="width:20%">Variation Type</th>
 					    <th style="width:20%">Value</th>
-					    <th style="width:20%">Language Tag</th>
+					    <th style="width:20%">Locale</th>
 					    <th style="width:25%">Formatted Value</th>
 					</tr>
 				</thead>
@@ -308,7 +309,7 @@
 					<tr>
 						<th>Variation Type</th>
 					    <th>Value</th>
-					    <th>Language Tag</th>
+					    <th>Locale</th>
 					    <th>Formatted Value</th>
 					</tr>
 				</thead>
