@@ -126,19 +126,19 @@
           
         <p>[[BCP47]] defines two different levels of conformance. See <a href="https://tools.ietf.org/html/bcp47#section-2.2.9">classes of conformance</a> in [[BCP47]] for specifics. For language tags, the levels of conformance correspond to type of checking that an implementation applies to language tag values.</p>
         
-        <p class="definition"><dfn data-lt="well-formed|well-formed language tag">Well-formed language tag</dfn>. A language tag that follows the grammar defined in [[BCP47]]. That is, it is structurally correct, consisting of ASCII letters and digit <a>subtags</a> of the prescribed length, separated by hyphens.</p>
+        <p class="definition"><dfn data-lt="well-formed|well-formed language tag|well-formed language tags">Well-formed language tag</dfn>. A language tag that follows the grammar defined in [[BCP47]]. That is, it is structurally correct, consisting of ASCII letters and digit <a>subtags</a> of the prescribed length, separated by hyphens.</p>
         
-        <p class="definition"><dfn data-lt="valid|valid language tag">Valid language tag</dfn>. A language tag that is <a>well-formed</a> and has also been checked to ensure that each of the subtags appears in the <a>IANA Language Subtag Registry</a>.</p>
+        <p class="definition"><dfn data-lt="valid|valid language tag|valid language tags">Valid language tag</dfn>. A language tag that is <a>well-formed</a> and has also been checked to ensure that each of the subtags appears in the <a>IANA Language Subtag Registry</a>.</p>
         
         <p class="advisement" id="ltli-well-formed-req"><a href="#ltli-well-formed-req" class="self">&#x200B;</a>Specifications SHOULD require that language tags be <a>well-formed</a>.</p>
         
         <p class="advisement" id="ltli-valid-req"><a href="#ltli-valid-req" class="self">&#x200B;</a>Specifications MAY require that language tags be <a>valid</a>.</p>
         
-        <p class="advisement" id="ltli-valid-content-req"><a href="#ltli-valid-content-req" class="self">&#x200B;</a>Specifications SHOULD require that content authors use <a>valid</a> language tags.</p>
+        <p class="advisement" id="ltli-valid-content-req"><a href="#ltli-valid-content-req" class="self">&#x200B;</a>Specifications SHOULD require that content authors use <a>valid language tags</a>.</p>
         
         <p>Note that this is stricter than what is recommended for implementations.</p>
         
-        <p class="advisement" id="ltli-validator-req"><a href="#ltli-validator-req" class="self">&#x200B;</a>Content validators SHOULD check if content uses <a>valid</a> language tags where feasible.</p>
+        <p class="advisement" id="ltli-validator-req"><a href="#ltli-validator-req" class="self">&#x200B;</a>Content validators SHOULD check if content uses <a>valid language tags</a> where feasible.</p>
         
         <p>Checking if a tag is <a>valid</a> requires access to or a copy of the <a>registry</a> plus additional runtime logic. While content authors are advised to choose, generate, and exchange only valid values, language tag matching and other common language tag operations are designed so that validity checking is not needed. Features or functions that need to understand the specific semantic content of subtags are the main reason that a specification would normatively require <a>valid</a> tags as part of the protocol or document format.</p>
         
@@ -237,9 +237,9 @@
         
         <p class="definition"><dfn data-lt="common locale data repository|CLDR">Common Locale Data Repository</dfn> (or <em>[[CLDR]]</em>). The Common Locale Data Repository is a Unicode Consortium project that defines, collects, and curates sets of data needed to enable <a>locales</a> in systems or operating environments. CLDR data and its locale model are widely adopted, particularly in browsers.</p>
         
-        <p class="definition"><dfn data-lt="unicode locale|unicode locale identifier|unicode locale identifiers|unicode locales">Unicode Locale Identifier</dfn> or <em>Unicode Locale</em>. A <a>language tag</a> that follows the additional rules and restrictions on subtag choice defined in UTR#35 [[LDML]]. Any valid Unicode locale identifier is also a <a>valid</a> [[BCP47]] <a>language tag</a>, but a few <a>valid</a> <a>language tags</a> are not also valid Unicode locale identifiers.</p>
+        <p class="definition"><dfn data-lt="unicode locale|unicode locale identifier|unicode locale identifiers|unicode locales">Unicode Locale Identifier</dfn> or <em>Unicode Locale</em>. A <a>language tag</a> that follows the additional rules and restrictions on subtag choice defined in UTR#35 [[LDML]]. Any valid Unicode locale identifier is also a <a>valid</a> [[BCP47]] <a>language tag</a>, but a few <a>valid language tags</a> are not also valid Unicode locale identifiers.</p>
         
-        <p class="definition"><dfn data-lt="canonical Unicode locale identifier|canonical tag|canonical locale">Canonical Unicode locale identifier</dfn>. A <a>well-formed</a> language tag resulting from the application of the <a>Unicode locale identifier</a> canonicalization rules found in [[LDML]] (see <a href="https://www.unicode.org/reports/tr35/#Unicode_locale_identifier">Section 3</a>). This process converts any <a>valid</a> [[BCP47]] <a>language tag</a> into a valid <a>Unicode locale identifier</a>.  For example, deprecated subtags or irregular grandfathered tags are replaced with their preferred value from the <a>IANA language subtag registry</a>.</p>
+        <p class="definition"><dfn data-lt="canonical Unicode locale identifier|canonical tag|canonical locale">Canonical Unicode locale identifier</dfn>. A <a>well-formed language tag</a> resulting from the application of the <a>Unicode locale identifier</a> canonicalization rules found in [[LDML]] (see <a href="https://www.unicode.org/reports/tr35/#Unicode_locale_identifier">Section 3</a>). This process converts any <a>valid</a> [[BCP47]] <a>language tag</a> into a valid <a>Unicode locale identifier</a>.  For example, deprecated subtags or irregular grandfathered tags are replaced with their preferred value from the <a>IANA language subtag registry</a>.</p>
                 
         <p>[[CLDR]] defines and maintains two <a>language tag extensions</a> ([[RFC6067]] and [[RFC6497]]) that are related to <a>Unicode locale identifiers</a>. These extensions allow a <a>language tag</a> to express some <a>international preference</a> variations that go beyond linguistic or regional variation or to select formatting behavior or content when there are multiple options or user preferences within a given locale. <a>Unicode locale identifiers</a> are not required to include these extensions: they are only used when the locale being identified requires additional tailoring provided by one of these extensions. [[CLDR]] also applies specific interpretation of certain subtags when used as a locale identifier. See <a href="https://www.unicode.org/reports/tr35/tr35.html#Unicode_locale_identifier">Section 3.2</a> of [[LDML]] for details.</p>
         
