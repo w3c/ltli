@@ -258,8 +258,10 @@
         
         <p>As above, the additional content restrictions and normalization steps found in <a href="https://www.unicode.org/reports/tr35/#Canonical_Unicode_Locale_Identifiers">Section 3</a> of [[LDML]] provide for better interoperability and consistency than that afforded by [[BCP47]] directly. This best practice should not be interpreted as meaning that implementations need to support, generate, process, or understand either of [[CLDR]]'s extensions.</p>
         
-        <p>It is important to remember that every <a>Unicode locale</a> identifier is <em>also</em> a <a>well-formed</a> [[BCP47]] language tag.</p>
+        <p class="advisement" id="ltli-extensions-not-required"><a class="self" href="#ltli-extensions-not-required">&#x200B;</a>Content authors SHOULD NOT include <a>language tag extensions</a> in a <a>language tag</a> unless the specific application requires the additional tailoring.</p>
         
+        <p>It is important to remember that every <a>Unicode locale identifier</a> is <em>also</em> a <a>well-formed</a> [[BCP47]] language tag. <a>Unicode locale identifiers</a> do not require the use of either of [[CLDR]]'s <a>language tag extensions</a>.</p>
+
         <p class="note">Some international and cultural preferences are individual and are left to content authors, service providers, operating environments, or user agents to define and manage on behalf of the user.</p>
  
          <aside class="example" id="example-locale-variation">
