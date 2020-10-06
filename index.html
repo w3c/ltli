@@ -128,7 +128,7 @@
         
         <p class="definition"><dfn data-lt="well-formed|well-formed language tag|well-formed language tags">Well-formed language tag</dfn>. A language tag that follows the grammar defined in [[BCP47]]. That is, it is structurally correct, consisting of ASCII letters and digit <a>subtags</a> of the prescribed length, separated by hyphens.</p>
         
-        <p class="definition"><dfn data-lt="valid|valid language tag|valid language tags">Valid language tag</dfn>. A language tag that is <a>well-formed</a> and has also been checked to ensure that each of the subtags appears in the <a>IANA Language Subtag Registry</a>.</p>
+        <p class="definition"><dfn data-lt="valid|valid language tag|valid language tags">Valid language tag</dfn>. A language tag that is <a>well-formed</a> and which also conforms to the additional <a href="https://tools.ietf.org/html/bcp47#section-2.2.9">conformance requirements</a> in [BCP47], notably that each of the subtags appears in the IANA Language Subtag Registry.</p>
         
         <p class="advisement" id="ltli-well-formed-req"><a href="#ltli-well-formed-req" class="self">&#x200B;</a>Specifications SHOULD require that language tags be <a>well-formed</a>.</p>
         
