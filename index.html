@@ -265,10 +265,11 @@
         <p>It is important to remember that every <a>Unicode locale identifier</a> is <em>also</em> a <a>well-formed</a> [[BCP47]] language tag. <a>Unicode locale identifiers</a> do not require the use of either of [[CLDR]]'s <a>language tag extensions</a>.</p>
 
         <p class="note">Some international and cultural preferences are individual and are left to content authors, service providers, operating environments, or user agents to define and manage on behalf of the user.</p>
+        
+        <p>Here are a few selected examples of <a>Unicode Locale identifiers</a> and the variations associated with them.</p>
  
-         <aside class="example" id="example-locale-variation">
-			<p>Here are a few selected examples of <a>Unicode Locale identifiers</a> and the variations associated with them.</p>
-			<p>In the first example, the value <code>123456789.5678</code> is formatted using the locale rules represented by the various language tags. Notice how the <code>u</code> extension and its <code>nu</code> keyword are used to select  between Latin and Devanagari digit shapes in the Hindi-as-used-in-India (<code>hi-IN</code>) locale and between Latin and Arabic script digit shaps in the Arabic (<code>ar</code>) locale.</p>
+         <aside class="example" id="example-locale-variation" title="Numeric Formats and Digit Shapes">
+			<p>In this example, the value <code>123456789.5678</code> is formatted using the locale rules represented by the various language tags. Notice how the <code>u</code> extension and its <code>nu</code> keyword are used to select  between Latin and Devanagari digit shapes in the Hindi-as-used-in-India (<code>hi-IN</code>) locale and between Latin and Arabic script digit shaps in the Arabic (<code>ar</code>) locale.</p>
 
 			<table>
 				<thead>
@@ -306,11 +307,15 @@
 					</tr>
             </tbody>
          </table>
-             <p>In the second example, the date value corresponding to 11 July 2020 on the Gregorian calendar is formatted using various different locales. Here, for example, the language tag for Thai (<code>th</code>) is extended to select between the Greogrian (<code>-u-ca-gregory</code>) and Thai Buddhist (<code>-u-ca-buddhist</code>) calendar systems. Other examples show the Japanese Imperial calendar and one type of Islamic calendar. Notice in the last example that the calendar is not restricted to a specific locale: here we show the Islamic calendar system in an English locale.</p>
+         </aside>
+         <aside class="example" id="example-calendar-variation" title="Date Formats and Calendars">
+             <p>In this example, a date value corresponding to <kbd>8 October 2020</kbd> on the Gregorian calendar is formatted using various different locales. In the tables below we present both the local-language and English (<code>en</code>) <a>locale</a> format of the same date value with different corresponding extension sequences supplied. This demonstrates the interplay between different locales and calendars when formatting a <a>locale-neutral</a> date value. Note that the <a>language tag extensions</a> can be applied to any <a>language tag</a> to modify the resulting <a>Unicode locale</a>.</p>
+             
+             <p>Here are some presentational differences between English, French, and Japanese locales without using <a>language tag extensions</a> (each of which happens to use the Gregorian calendar):</p>
+             
              <table>
 				<thead>
 					<tr>
-						<th>Variation Type</th>
 					    <th>Value</th>
 					    <th>Locale</th>
 					    <th>Formatted Value</th>
@@ -318,29 +323,116 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td rowspan=5>Calendar</td>
-						<td rowspan=5><code>2020-07-11T12:00:00Z</code></td>
-						<td>th-u-ca-gregory</td>
-						<td lang="th-u-ca-gregory">11 ก.ค. 2020</td>
+						<td rowspan=3><code>2020-10-08T12:00:00Z</code></td>
+						<td>en</td>
+						<td>October 8, 2020</td>
 					</tr>
 					<tr>
-						<td>th-u-ca-buddhist</td>
-					    <td lang="th-u-ca-buddhist">11 ก.ค. 2563</td>
+						<td>fr</td>
+						<td>8 octobre 2020</td>
 					</tr>
 					<tr>
-						<td>ja-u-ca-japanese</td>
-						<td lang="ja-u-ca-japanese">令和2年7月11日</td>
-					</tr>
-					<tr>
-						<td>ar-u-ca-islamic</td>
-						<td dir=rtl lang="ar-u-ca-islamic">٢٠ ذو القعدة ١٤٤١ هـ</td>
-					</tr>
-                    <tr>
-						<td>en-u-ca-islamic</td>
-						<td lang="en-u-ca-islamic">Dhuʻl-Q. 20, 1441 AH</td>
+						<td>ja</td>
+						<td>2020&#x5E74;10&#x6708;8&#x65E5;</td>
 					</tr>
 				</tbody>
 			</table>
+             
+             <p>Thailand uses the Thai Buddhist calendar, which can be represented using the extension sequence <code>-u-ca-buddhist</code>. This calendar is similar to the Gregorian calendar, but uses a different year numbering scheme.</p>
+             
+             <table>
+				<thead>
+					<tr>
+					    <th>Value</th>
+					    <th>Locale</th>
+					    <th>Formatted Value</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td rowspan=4><code>2020-10-08T12:00:00Z</code></td>
+						<td>en</td>
+						<td>October 8, 2020</td>
+					</tr>
+					
+					<tr>
+						<td>th-u-ca-gregory</td>
+						<td>8 &#x0E15;&#x0E38;&#x0E25;&#x0E32;&#x0E04;&#x0E21; &#x0E04;.&#x0E28;. 2020</td>
+					</tr>
+					
+					<tr>
+						<td>th-u-ca-buddhist</td>
+						<td>8 &#x0E15;&#x0E38;&#x0E25;&#x0E32;&#x0E04;&#x0E21; 2563</td>
+					</tr>	
+					
+					
+					<tr>
+						<td>en-u-ca-buddhist</td>
+						<td>October 8, 2563 BE</td>
+					</tr>
+				</tbody>
+			</table>
+             
+             <p>In addition to the Gregorian calendar, Japan uses other calendar systems for different cultural or official purposes. One such calendar is the Japanese Imperial calendar denoted by the extension sequence <code>-u-ca-japanese</code>. This calendar is also similar to the Gregorian calendar, but uses a different year numbering scheme.</p>
+             
+             <table>
+				<thead>
+					<tr>
+					    <th>Value</th>
+					    <th>Locale</th>
+					    <th>Formatted Value</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td rowspan=3><code>2020-10-08T12:00:00Z</code></td>
+						<td>en</td>
+						<td>October 8, 2020</td>
+					</tr>
+					
+					<tr>
+						<td>ja-u-ca-japanese</td>
+						<td>&#x4EE4;&#x548C;2&#x5E74;10&#x6708;8&#x65E5;</td>
+					</tr>
+					
+					<tr>
+						<td>en-u-ca-japanese</td>
+						<td>October 8, 2 Reiwa</td>
+					</tr>
+				</tbody>
+			</table>
+             
+             <p>Some countries or cultures use non-Gregorian calendars for official, religious, or cultural purposes. One such calendar is represented by the extension sequence <code>-u-ca-islamic</code>. This particular calendar is based on lunar months and thus <code>2020-10-08</code> (Gregorian) corresponds to the 21st day of the 2nd month (called "Safar" when rendered into English). This calendar also uses a different year numbering scheme.</p>
+
+             <table>
+				<thead>
+					<tr>
+					    <th>Value</th>
+					    <th>Locale</th>
+					    <th>Formatted Value</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td rowspan=3><code>2020-10-08T12:00:00Z</code></td>
+						<td>en</td>
+						<td>October 8, 2020</td>
+					</tr>
+					
+					<tr>
+						<td>ar-u-ca-islamic</td>
+						<td>&#x0662;&#x0661; &#x0635;&#x0641;&#x0631; &#x0661;&#x0664;&#x0664;&#x0662; &#x0647;&#x0640;</td>
+					</tr>
+					
+					
+					<tr>
+						<td>en-u-ca-islamic</td>
+						<td>Safar 21, 1442 AH</td>
+					</tr>
+					
+				</tbody>
+			</table>
+			
         </aside>       
         
         <p class="definition"><dfn data-lt="non-linguistic field|field|non-linguistic fields|fields">Non-linguistic Field</dfn>. Any element of a data structure not intended for the storage or interchange of natural language textual data. This includes non-string data types, such as booleans, numbers, dates, and so forth. It also includes strings, such as program or protocol internal identifiers. This document uses the term <em>field</em> as a short hand for this concept.</p>
