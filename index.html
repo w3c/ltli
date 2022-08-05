@@ -10,9 +10,8 @@
 	      edDraftURI: "https://w3c.github.io/ltli/",
           shortName:  "ltli",
           editors: [
-                {   name:       "Addison Phillips",
-                    company:    "Amazon.com" , w3cid: 33573
-	            },
+                {   name: "Addison Phillips", mailto: "addisonI18N@gmail.com",
+                    company: "Invited Expert", w3cid: 33573 },
 	            {   name: "Felix Sasaki",
 		            company: "Invited Expert"
                 }
@@ -26,6 +25,7 @@
 		  
           group:  "i18n",
           github: "w3c/ltli",
+          xref: ["i18n-glossary"],
 
     localBiblio:  {
     "CLDR": {
@@ -75,13 +75,16 @@
         
         <p>This document also provides terminology and best practices needed by specification authors for the identification of <a>natural language</a> values in document formats or protocols and which are recommended by the Internationalization (I18N) Working Group. These (and many other) best practices, along with links to supporting materials, can also be found in the <cite>Internationalization Best Practices for Spec Developers</cite> [[INTERNATIONAL-SPECS]]. In addition to the best practices found here, additional best practices relating to language metadata on the Web can be found in [[STRING-META]].</p>
         
-        <aside class="note">
-           <p>In this document [[RFC2119]] keywords have their usual meaning. Best practices and definitions are set off from the remainder of the text with special formatting.</p>
-           <p class="advisement">Best practices appear with a different background color and decoration like this.</p>
-           <p class="definition">Definitions appear with a different background color and decoration like this.</p>
-           <p class="issue-example">Gaps or recommendations for future work appear with a different background color and decoration like this.</p>
-        </aside>
-        
+      </section>
+      <section id="conventions">
+	  <h3>Document Conventions</h3>
+	
+          <p>In this document [[RFC2119]] keywords in uppercase italics have their usual meaning. We also use these stylistic conventions:</p>
+
+          <p class="definition-example"><strong>Definitions</strong> appear with a different background color and decoration like this.</p>
+          <p class="advisement"><strong>Best practices</strong> appear with a different background color and decoration like this.</p>
+          <p class="issue-example" id="issue-example"><strong>Recommendations</strong> for future work appear with a different background color and decoration like this.</p>
+
       </section>
  
       <section id="language-terminology">
