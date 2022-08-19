@@ -189,8 +189,53 @@
         <p class="advisement" id="ltli-matching-type-ref"><a href="#ltli-matching-type-ref" class="self">&#x200B;</a>Specifications that define language tag matching MUST specify the matching algorithms available and the selection mechanism.</p>
         
         <p>For example, JavaScript internationalization [[ECMA-402]] and [[CLDR]] provide a "best fit" algorithm which can be tailored by implementers.</p>
+    <section id="metadata-versus-text-processing">
+		<h4>Defining and using language tags</h4>
+		
+		<p>There are two common uses for language tags in document formats, protocols, and specifications. In some cases, language tags are used to provide metadata about intended audience for collections of content, such as at the record or document level. In other cases, language tags are used to identify the language of specific bits of text in order to facilitate text processing.</p>
+		
+        <section id="intended-audience"><h5>The language of the intended audience</h5>
 
-      
+        <p>Metadata that describes the language of the intended audience is about <strong>the document as a whole</strong>. Such metadata may be used for searching, serving the right language version, classification, etc. Where there are language changes in a document, information about the language of the intended audience is not specific enough to support text-processing, that is to say, in a way that would be needed for the application of text-to-speech, styling, automatic font assignment, etc.</p>
+
+        <p>The language of the intended audience does not include every language used in a document. Many documents on the Web contain embedded fragments of content in different languages, whereas the page is clearly aimed at speakers of one particular language. For example, a German city-guide for Beijing may contain useful phrases in Chinese, but it is aimed at a German-speaking audience, not a Chinese one.</p>
+
+        <p>On the other hand, it is also possible to imagine a situation where a document contains the same or parallel content in more than one language. For example, a Web page may welcome Canadian readers with French content in the left column, and the same content in English in the right-hand column. Here the document is equally targeted at speakers of both languages, so there are two audience languages. This situation is not as common on the Web as in printed material since it is easy to link to separate pages on the Web for different audiences, but it does occur where there are multilingual communities. Another use case is a blog or a news page aimed at a multilingual community, where some articles on a page are in one language and some in another.</p>
+
+        <p>There are also pages where the navigational information, including the page title, is in one language but the real content of the page is in another. While this is not necessarily good practice, it doesn't change the fact that the language of the intended audience is usually that of the content, regardless of the language at the top of the document source.</p>
+
+        <p>Metadata about the language of the intended audience is usually best declared outside the document, such as in the HTTP <kbd>Content-Language</kbd> header.</p>
+        
+        </section>
+        <section><h5>The text-processing language</h5>
+
+        <p>When specifying the text-processing language you are declaring the language in which a specific range of text is actually written, so that user agents or applications that manipulate the text, such as voice browsers, spell checkers, or style processors can effectively handle the text in question. So we are, by necessity, talking about associating a single language with a specific range of text.</p>
+
+        <p>This specificity distinguishes the declaration of the language for text-processing from that of the language of the intended audience.</p>
+
+        <p>The language for text-processing is usually best declared using attributes on elements, including setting a document-wide default.</p>
+
+        <aside class="example">
+        <p>For example the <kbd>html</kbd> element in [[HTML]] contains all of the content of the document, so setting the <kbd>lang</kbd> attribute sets the text-processing language for the whole document except where locally overridden. Enclosed elements inherit the declared value, but you can, of course, override an initial declaration by specifying a different language on embedded elements where the language changes, eg. a French phrase in an English paragraph:</p>
+        <pre>&lt;html lang="en" dir="ltr">
+   &lt;head>
+      &lt;title>This example is in English&lt;/title>
+      ...
+   &lt;/head>
+   &lt;body>
+       &lt;h1>This also inherits from &lt;code>html&lt;/code>&lt;/h1>
+       
+       &lt;p>The following example is in French:
+           &lt;!-- Text-processing in French inside the 'span' tag --&gt;
+           &lt;span lang="fr">cet exemple est en français&lt;/span>
+           &lt;!-- Text-processing reverts to English here --&gt;
+       &lt;/p>
+   &lt;/body>
+&lt;/html>
+        </pre>
+        </aside>
+        </section>
+    </section>
         
     </section>
 
@@ -240,7 +285,7 @@
         
         <p>Since the adoption of the current [[BCP47]] identifier syntax, a number of locale models have adopted BCP47 directly or provided adaptation or mappings between proprietary models and <a>language tags</a>. Notably, the development and adoption of the open-source repository of locale data known as [[CLDR]] has led to wider general adoption of <a>language tags</a> as <a>locale</a> identifiers.</p>
         
-        <p class="definition"><dfn data-lt="common locale data repository|CLDR">Common Locale Data Repository</dfn> (or <em>[[CLDR]]</em>). The Common Locale Data Repository is a Unicode Consortium project that defines, collects, and curates sets of data needed to enable <a>locales</a> in systems or operating environments. CLDR data and its locale model are widely adopted, particularly in browsers.</p>
+        <p class="definition"><dfn data-lt="common locale data repository|CLDR" class="lint-ignore">Common Locale Data Repository</dfn> (or <em>[[CLDR]]</em>). The Common Locale Data Repository is a Unicode Consortium project that defines, collects, and curates sets of data needed to enable <a>locales</a> in systems or operating environments. CLDR data and its locale model are widely adopted, particularly in browsers.</p>
         
         <p class="definition"><dfn data-lt="unicode locale|unicode locale identifier|unicode locale identifiers|unicode locales">Unicode Locale Identifier</dfn> or <em>Unicode Locale</em>. A <a>language tag</a> that follows the additional rules and restrictions on subtag choice defined in UTR#35 [[LDML]]. Any valid Unicode locale identifier is also a <a>valid</a> [[BCP47]] <a>language tag</a>, but a few <a>valid language tags</a> are not also valid Unicode locale identifiers.</p>
         
