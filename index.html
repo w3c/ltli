@@ -204,7 +204,7 @@
 
         <p>There are also pages where the navigational information, including the page title, is in one language but the real content of the page is in another. While this is not necessarily good practice, it doesn't change the fact that the language of the intended audience is usually that of the content, regardless of the language at the top of the document source.</p>
 
-        <p>Metadata about the language of the intended audience is usually best declared outside the document, such as in the HTTP <kbd>Content-Language</kbd> header.</p>
+        <p>Metadata about the language of the intended audience is usually best declared outside the document, such as in the HTTP <span class="kw" translate="no">Content-Language</span> header.</p>
         
         </section>
         <section><h5>The text-processing language</h5>
@@ -216,7 +216,7 @@
         <p>The language for text-processing is usually best declared using attributes on elements, including setting a document-wide default.</p>
 
         <aside class="example">
-        <p>For example the <kbd>html</kbd> element in [[HTML]] contains all of the content of the document, so setting the <kbd>lang</kbd> attribute sets the text-processing language for the whole document except where locally overridden. Enclosed elements inherit the declared value, but you can, of course, override an initial declaration by specifying a different language on embedded elements where the language changes, eg. a French phrase in an English paragraph:</p>
+        <p>For example the <span class="kw" translate="no">html</span> element in [[HTML]] contains all of the content of the document, so setting the <span class="kw" translate="no">lang</span> attribute sets the text-processing language for the whole document except where locally overridden. Enclosed elements inherit the declared value, but you can, of course, override an initial declaration by specifying a different language on embedded elements where the language changes, eg. a French phrase in an English paragraph:</p>
         <pre>&lt;html lang="en" dir="ltr">
    &lt;head>
       &lt;title>This example is in English&lt;/title>
