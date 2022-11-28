@@ -93,17 +93,20 @@
         <p>Tags for identifying the <a>natural language</a> of content or the <a>international preferences</a> of users are one of the fundamental building blocks of the Web. The <a>language tags</a> found in Web and Internet formats and protocols are defined by [[BCP47]]. Consistent use of language tags provides applications the ability to perform language-specific formatting or processing. For example, a user-agent might use the language to select an appropriate font for displaying text or a Web page designer might style text differently in one language than in another.</p>
         
         <p>Many of the core standards for the Web include support for <a>language tags</a>; these include the <code>xml:lang</code> attribute in [[XML10]], the <code>lang</code> and <code>hreflang</code> atttributes in [[HTML]], the <code>language</code> property in [[XSL10]], and the <code>:lang</code> pseudo-class in CSS [[CSS3-SELECTORS]], and many others, including SVG, TTML, SSML, etc.</p>
-<p class="definition"><dfn data-lt="natural language|language">Natural Language</dfn> (or, in this document, just <em>language</em>). The spoken, written, or signed communications used by human beings.</p>
+        
+        <p class="definition"><dfn data-lt="natural language|language">Natural Language</dfn> (or, in this document, just <em>language</em>). The spoken, written, or signed communications used by human beings.</p>
         
         <p>There are many ways that languages might be identified and many reasons that software might need to identify the language of content on the Web. Document formats and protocols on the Web generally use the identifiers used in most other parts of the Internet, consisting of the language tags defined in [[BCP47]]. "BCP" nomenclature refers to the current set of IETF RFCs that form the "best current practice".</p>
-<p class="definition"><dfn data-lt="language tag|language tags">Language tag</dfn>. A string used as an identifier for a language. In this document, the term <em>language tag</em> always refers explicitly to a [[BCP47]] language tag. These language tags consist of one or more subtags.</p>
+        
+        <p class="definition"><dfn data-lt="language tag|language tags">Language tag</dfn>. A string used as an identifier for a language. In this document, the term <em>language tag</em> always refers explicitly to a [[BCP47]] language tag. These language tags consist of one or more subtags.</p>
         
         <p class="advisement" id="ltli-bcp47-refer"><a class="self" href="#ltli-bcp47-refer">&#x200B;</a>Specifications for the Web that require language identification MUST refer to [[BCP47]]. </p>
         
         <p class="advisement" id="ltli-no-rfc-refs"><a href="#ltli-no-rfc-refs" class="self">&#x200B;</a>Specifications SHOULD NOT refer to specific component RFCs of [[BCP47]].</p>
         
-        <p>[[BCP47]] is a multipart document consisting, at the time this document was published, of two separate RFCs. The first part, called <em>Tags for Identifying Languages</em> [[RFC5646]], defines the grammar, form, and terminology of language tags. The second part, called <em>Matching of Language Tags</em> [[RFC4647]], describes several schemes for matching, comparing, and selecting content using language tags and includes useful terminology related to comparison of language preferences to tagged content.        </p>
-<p class="advisement" id="ltli-successor-ref"><a href="#ltli-successor-ref" class="self">&#x200B;</a>Formulations such as "<span class="quote">RFC 5646 or its successor</span>" MAY be used, but only in cases where the specific document version is necessary.</p>
+        <p>[[BCP47]] is a multipart document consisting, at the time this document was published, of two separate RFCs. The first part, called <em>Tags for Identifying Languages</em> [[RFC5646]], defines the grammar, form, and terminology of language tags. The second part, called <em>Matching of Language Tags</em> [[RFC4647]], describes several schemes for matching, comparing, and selecting content using language tags and includes useful terminology related to comparison of language preferences to tagged content.</p>
+        
+        <p class="advisement" id="ltli-successor-ref"><a href="#ltli-successor-ref" class="self">&#x200B;</a>Formulations such as "<span class="quote">RFC 5646 or its successor</span>" MAY be used, but only in cases where the specific document version is necessary.</p>
         
         <p>While this style of reference was once popular, using the BCP reference is more accurate. Since the grammar of language tags has been fixed since [[RFC4646]], referring to the BCP will not incur additional compliance risk to most implementations.</p>
         
@@ -189,54 +192,7 @@
         <p class="advisement" id="ltli-matching-type-ref"><a href="#ltli-matching-type-ref" class="self">&#x200B;</a>Specifications that define language tag matching MUST specify the matching algorithms available and the selection mechanism.</p>
         
         <p>For example, JavaScript internationalization [[ECMA-402]] and [[CLDR]] provide a "best fit" algorithm which can be tailored by implementers.</p>
-    <section id="metadata-versus-text-processing">
-		<h4>Defining and using language tags</h4>
-		
-		<p>There are two common uses for language tags in document formats, protocols, and specifications. In some cases, language tags are used to provide metadata about intended audience for collections of content, such as at the record or document level. In other cases, language tags are used to identify the language of specific bits of text in order to facilitate text processing.</p>
-		
-        <section id="intended-audience"><h5>The language of the intended audience</h5>
 
-        <p>Metadata that describes the language of the intended audience is about <strong>the document as a whole</strong>. Such metadata may be used for searching, serving the right language version, classification, etc. Where there are language changes in a document, information about the language of the intended audience is not specific enough to support text-processing, that is to say, in a way that would be needed for the application of text-to-speech, styling, automatic font assignment, etc.</p>
-
-        <p>The language of the intended audience does not include every language used in a document. Many documents on the Web contain embedded fragments of content in different languages, whereas the page is clearly aimed at speakers of one particular language. For example, a German city-guide for Beijing may contain useful phrases in Chinese, but it is aimed at a German-speaking audience, not a Chinese one.</p>
-
-        <p>On the other hand, it is also possible to imagine a situation where a document contains the same or parallel content in more than one language. For example, a Web page may welcome Canadian readers with French content in the left column, and the same content in English in the right-hand column. Here the document is equally targeted at speakers of both languages, so there are two audience languages. This situation is not as common on the Web as in printed material since it is easy to link to separate pages on the Web for different audiences, but it does occur where there are multilingual communities. Another use case is a blog or a news page aimed at a multilingual community, where some articles on a page are in one language and some in another.</p>
-
-        <p>There are also pages where the navigational information, including the page title, is in one language but the real content of the page is in another. While this is not necessarily good practice, it doesn't change the fact that the language of the intended audience is usually that of the content, regardless of the language at the top of the document source.</p>
-
-        <p>Metadata about the language of the intended audience is usually best declared outside the document, such as in the HTTP <span class="kw" translate="no">Content-Language</span> header.</p>
-        
-        </section>
-        <section><h5>The text-processing language</h5>
-
-        <p>When specifying the text-processing language you are declaring the language in which a specific range of text is actually written, so that user agents or applications that manipulate the text, such as voice browsers, spell checkers, or style processors can effectively handle the text in question. So we are, by necessity, talking about associating a single language with a specific range of text.</p>
-
-        <p>This specificity distinguishes the declaration of the language for text-processing from that of the language of the intended audience.</p>
-
-        <p>The language for text-processing is usually best declared using attributes on elements, including setting a document-wide default.</p>
-
-        <aside class="example">
-        <p>For example the <span class="kw" translate="no">html</span> element in [[HTML]] contains all of the content of the document, so setting the <span class="kw" translate="no">lang</span> attribute sets the text-processing language for the whole document except where locally overridden. Enclosed elements inherit the declared value, but you can, of course, override an initial declaration by specifying a different language on embedded elements where the language changes, eg. a French phrase in an English paragraph:</p>
-        <pre>&lt;html lang="en" dir="ltr">
-   &lt;head>
-      &lt;title>This example is in English&lt;/title>
-      ...
-   &lt;/head>
-   &lt;body>
-       &lt;h1>This also inherits from &lt;code>html&lt;/code>&lt;/h1>
-       
-       &lt;p>The following example is in French:
-           &lt;!-- Text-processing in French inside the 'span' tag --&gt;
-           &lt;span lang="fr">cet exemple est en français&lt;/span>
-           &lt;!-- Text-processing reverts to English here --&gt;
-       &lt;/p>
-   &lt;/body>
-&lt;/html>
-        </pre>
-        </aside>
-        </section>
-    </section>
-        
     </section>
 
       <section id="i18n-terminology">
@@ -552,7 +508,59 @@
         
         <p>Users expect form fields and other data inputs to use a presentation for <a>non-linguistic fields</a> that is consistent with the document or application where the values appear. User's usually expect their input to match the document's context rather than the user-agent or operating environments and input validation, prompting, or controls are also thus consistent with the content. This gives content authors the ability to create a wholly localized customer experience and is generally in keeping with customer expectations.</p>
       </section>
-      
+   
+       <section id="metadata-versus-text-processing">
+		<h3>Choosing between metadata and text-processing language</h3>
+		
+		<p>There are two common uses for language tags in document formats, protocols, and specifications. In some cases, language tags are used to provide metadata about intended audience for collections of content, such as at the record or document level. In other cases, language tags are used to identify the language of specific bits of text in order to facilitate text processing.</p>
+		
+        <section id="intended-audience">
+			<h5>The language of the intended audience</h5>
+
+            <p>Metadata that describes the language of the intended audience is about <strong>the document as a whole</strong>. Such metadata may be used for searching, serving the right language version, classification, etc. Where there are language changes in a document, information about the language of the intended audience is not specific enough to support text-processing, that is to say, in a way that would be needed for the application of text-to-speech, styling, automatic font assignment, etc.</p>
+
+            <p>The language of the intended audience does not include every language used in a document. Many documents on the Web contain embedded fragments of content in different languages, whereas the page is clearly aimed at speakers of one particular language. For example, a German city-guide for Beijing may contain useful phrases in Chinese, but it is aimed at a German-speaking audience, not a Chinese one.</p>
+
+            <p>On the other hand, it is also possible to imagine a situation where a document contains the same or parallel content in more than one language. For example, a Web page may welcome Canadian readers with French content in the left column, and the same content in English in the right-hand column. Here the document is equally targeted at speakers of both languages, so there are two audience languages. This situation is not as common on the Web as in printed material since it is easy to link to separate pages on the Web for different audiences, but it does occur where there are multilingual communities. Another use case is a blog or a news page aimed at a multilingual community, where some articles on a page are in one language and some in another.</p>
+
+            <p>There are also pages where the navigational information, including the page title, is in one language but the real content of the page is in another. While this is not necessarily good practice, it doesn't change the fact that the language of the intended audience is usually that of the content, regardless of the language at the top of the document source.</p>
+
+            <p>Metadata about the language of the intended audience is usually best declared outside the document, such as in the HTTP <span class="kw" translate="no">Content-Language</span> header.</p>
+        </section>
+        
+        <section>
+			<h5>The text-processing language</h5>
+
+            <p>When specifying the text-processing language you are declaring the language in which a specific range of text is actually written, so that user agents or applications that manipulate the text (such as voice browsers, spell checkers, or style processors) can process the text in a language-appropriate manner. So we are, by necessity, talking about associating a single language with a specific range of text.</p>
+
+            <p>This specificity distinguishes the declaration of the language for text-processing from that of the language of the intended audience.</p>
+
+            <p>The language for text-processing is usually best declared using attributes on elements, including setting a document-wide default.</p>
+
+            <aside class="example">
+                <p>For example the <span class="kw" translate="no">html</span> element in [[HTML]] contains all of the content of the document, so setting the <span class="kw" translate="no">lang</span> attribute sets the text-processing language for the whole document except where locally overridden. Enclosed elements inherit the declared value, but you can, of course, override an initial declaration by specifying a different language on embedded elements where the language changes, eg. a French phrase in an English paragraph:</p>
+                <pre>&lt;html lang="en" dir="ltr">
+   &lt;head>
+      &lt;title>This example is in English&lt;/title>
+      ...
+   &lt;/head>
+   &lt;body>
+       &lt;h1>This also inherits from &lt;code>html&lt;/code>&lt;/h1>
+       
+       &lt;p>The following example is in French:
+           &lt;!-- Text-processing in French inside the 'span' tag --&gt;
+           &lt;span lang="fr">cet exemple est en français&lt;/span>
+           &lt;!-- Text-processing reverts to English here --&gt;
+       &lt;/p>
+   &lt;/body>
+&lt;/html>
+                </pre>
+            </aside>
+            <aside class="note">
+				<p>The text-processing language can also be used as the locale identifier, such as when the user-agent must format data or when setting the <span class="kw" translate="no">Intl.Locale</span> for a JavaScript formatting function.</p>
+		    </aside>
+        </section>
+    </section>   
       
    <section id="further-reading">
    <h2>Further Reading</h2>
