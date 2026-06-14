@@ -244,11 +244,15 @@
           <li>Tax or regulatory regime;</li>
           <li>Currency</li>
           </ul>
-          ... and many more. </p></p>
+          ... and many more. </p>
+          
+        <p>The work to enable software to have language and culturally sensitive processing is called <a>internationalization</a>. It is primarily the work of the software developers, since it involves using the correct APIs and libraries and making appropriate modifications to the source code.</p>
         
-        <p>The work to enable software to have language and culturally sensitive processing is called <a>internationalization</a>. It primarily the work of the software developers, since it involves using the correct APIs and libraries and making appropriate modifications to the source code. This includes separating the portion of the software that requires translation or adaptation (called "resources") from the portion of the software that is universal.</p>
+        <p class="definition"><dfn data-lt="localizable resource|resource">Localizable Resource</dfn>. The portion of the software's source code that can be translated or adjusted to suit local language or cultural requirements. This term is usually shortened to "resource" or "resources", which is confusingly similar to the more generic term <a href="https://www.w3.org/TR/i18n-glossary#dfn-resource">resource</a> used commonly on the Web.</p>
         
-        <p>The work to create specific language versions (including versions tailored for specific regions) is called <a>localization</a>. This includes translation of the resources created during internationalization.</p>
+        <p>Internationalization includes separating the portion of the software that requires translation or adaptation from the portion of the software that is common to all language or regional versions. These separated portions of the software are the <a>localizable resources</a> and are often stored in special files ("resource files") in specific locations in the source tree. The most common <a>localizable resources</a> are user interface strings and messages.</p>
+        
+        <p>The work to create specific language versions (including versions tailored for specific regions) is called <a>localization</a>. This includes translation of the <a>localizable resources</a> created during internationalization.</p>
         
         <p class="definition"><dfn id="internationl-preferences" data-lt="international preferences">International Preferences</dfn>. A user's particular language, formatting, regional preferences or associated cultural preferences.</p>
           
