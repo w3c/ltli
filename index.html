@@ -246,11 +246,13 @@
           </ul>
           ... and many more. </p></p>
         
-        <p>The work done by software developers (and others) to enable this kind of language and culturally sensitive processing is called <a>internationalization</a>. The work done to create specific language versions (including versions tailored for specific regions), which includes the translation of software messages, is called <a>localization</a>.</p>
+        <p>The work to enable software to have language and culturally sensitive processing is called <a>internationalization</a>. It primarily the work of the software developers, since it involves using the correct APIs and libraries and making appropriate modifications to the source code. This includes separating the portion of the software that requires translation or adaptation (called "resources") from the portion of the software that is universal.</p>
+        
+        <p>The work to create specific language versions (including versions tailored for specific regions) is called <a>localization</a>. This includes translation of the resources created during internationalization.</p>
         
         <p class="definition"><dfn id="internationl-preferences" data-lt="international preferences">International Preferences</dfn>. A user's particular language, formatting, regional preferences or associated cultural preferences.</p>
           
-        <p>When constructing a software system, the developer has to be aware of and account for the various ways in which a user might wish for display or functionality to be adapted to suit local needs. Each such individual setting might be considered to be its own <a>international preference</a>. Entire groups of preferences might be necessary in order for the content or software to be considered usable and acceptable by users around the world.</p>
+        <p>When constructing an internationalized piece of software, the developer has to be aware of and account for the various ways in which a user might wish for display or functionality to be adapted to suit local needs. Each such individual setting might be considered to be its own <a>international preference</a>. Groups of preferences might be necessary in order for the content or software to be considered usable and acceptable by users around the world.</p>
         
         <aside class="example" title="International preferences when formatting a number">
            <p>The range of variation in user preferences for something as simple as formatting a number can be quite wide. Some of the international preferences for this might include:</p>
