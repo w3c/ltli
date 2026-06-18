@@ -322,13 +322,13 @@
 			<p>Previous versions of this document used the term "international preferences" for the concept of a [=local preference=].</p>
         </aside>        
         
-        <p class="definition"><dfn>Locale</dfn>. A particular set of <a>local preferences</a> for a specific group of people who share linguistic, regional, formatting, or cultural affinity. A locale is passed in APIs or set in the operating environment to obtain culturally-affected behavior within a system or process.</p>
+        <p class="definition"><dfn>Locale</dfn>. A particular set of <a>local preferences</a> for a specific group of people who share linguistic, regional, formatting, or cultural affinity.</p>
         
         <p>There can be hundreds or thousands of different individual <a>local preferences</a> required to <a>internationalize</a> and <a>localize</a> a bit of software. However, most users share their preferences with other speakers of the same language within a given region. While specific user preferences are sometimes useful as overrides, software will represent the pre-tailored complete set of <a>local preferences</a> using a single, all-encompassing setting called a <a>locale</a>. A locale will also include the range of applicable values for a given <a>local preference</a> in cases where a user might wish to override the default.</p>
         
         <p>The <a>locale</a> is applied to processes such as selecting content in the most appropriate language; presenting data values such as numbers, dates, or times shown next to or within such content; sorting lists linguistically; providing defaults for items such as the presentation of a calendar, or common units of measurement; selecting between 12- vs. 24-hour time presentation; and many other details that users might find too tedious to set individually.</p>
         
-        <p class="definition"><dfn>Locale Identifier</dfn>. An identifier (often a <a>language tag</a>) for a <a>locale</a>. Usually this identifier indicates the preferred language of the user. It can also include other information, such as a geographic region (such as a country).</p>
+        <p class="definition"><dfn>Locale Identifier</dfn>. An identifier (often a <a>language tag</a>) for a <a>locale</a>. Usually this identifier indicates the preferred language of the user. It can also include other information, such as a geographic region (such as a country).  A locale identifier is passed in APIs or used to set the locale in the operating environment to obtain culturally-affected behavior within a system or process.</p>
         
         <p>Each <a>locale</a> is associated with a <a>locale identifier</a>. Some APIs allow the identifier to be passed directly. Others require the user to create a locale data object (such as JavaScript's <code>Intl.Locale</code> or Java's <code>java.util.Locale</code>) that is passed to APIs. Often there is a global environment setting that contain the current program or thread-specific locale or locale identifier.</p>
         
