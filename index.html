@@ -57,7 +57,11 @@
 
 .locale-examples th,
 .locale-examples td {
-    vertical-align: top;
+    vertical-align: center;
+}
+
+.locale-examples th {
+	text-align: center;
 }
 
 .locale-examples .numeric {
@@ -254,17 +258,17 @@
         
         <p>The work to create specific language versions (including versions tailored for specific regions) is called <a>localization</a>. This includes translation of the <a>localizable resources</a> created during internationalization.</p>
         
-        <p class="definition"><dfn id="internationl-preferences" data-lt="international preferences">International Preferences</dfn>. A user's particular language, formatting, regional preferences or associated cultural preferences.</p>
-          
-        <p>When constructing an internationalized piece of software, the developer has to be aware of and account for the various ways in which a user might wish for display or functionality to be adapted to suit local needs. Each such individual setting might be considered to be its own <a>international preference</a>. Groups of preferences might be necessary in order for the content or software to be considered usable and acceptable by users around the world.</p>
+        <p class="definition"><dfn id="local-preference" data-lt="international preferences|local preference">Local Preference</dfn>. A particular  preference associated with a group of people who share linguistic, regional, formatting, or cultural affinity.</p>
         
-        <aside class="example" title="International preferences when formatting a number">
-           <p>The range of variation in user preferences for something as simple as formatting a number can be quite wide. Some of the international preferences for this might include:</p>
+        <p>When constructing an internationalized piece of software, the developer has to be aware of and account for the various ways in which a user might wish for display or functionality to be adapted to suit local needs. Each such individual setting might be considered to be its own <a>local preference</a>. Groups of preferences might be necessary in order for the content or software to be considered usable and acceptable by users around the world.</p>
+        
+        <aside class="example" title="Local preferences when formatting a number">
+           <p>The range of variation in local preferences for something as simple as formatting a number can be quite wide. Some of the local preferences for this might include:</p>
            
            <table class="locale-examples">
 			   <thead>
 				   <tr>
-					   <th>International Preference</th>
+					   <th>Local Preference</th>
 					   <th>US English</th>
 					   <th>Local</th>
 					   <th>Variation</th>
@@ -299,13 +303,12 @@
 			   </tr>
 			   <tr>
 				   <td rowspan=2>Digit Shapes</td>
-				   <td class="numeric">1,23,45,678.9</td>
+				   <td class="numeric" rowspan=2>1,23,45,678.9</td>
 				   <td lang="hi-IN" class="numeric">&#x967;,&#x968;&#x969;,&#x96A;&#x96B;,&#x96C;&#x96D;&#x96E;.&#x96F;</td>
 				   <td>Devanagari digits, such as used in Hindi</td>
 			   </tr>
 			   <tr>
-				   <td class="numeric">-12,345,678.9</td>
-				   <td lang="ar-EG" dir="rtl" class="numeric">-&#x661;&#x662;&#x66C;&#x663;&#x664;&#x665;&#x66C;&#x666;&#x667;&#x668;&#x66B;&#x669;</td>
+				   <td lang="ar-EG" dir="rtl" class="numeric">&#x661;&#x662;&#x66C;&#x663;&#x664;&#x665;&#x66C;&#x666;&#x667;&#x668;&#x66B;&#x669;</td>
 				   <td>Arabic digits</td>
 			   </tr>
 			   </tbody>
@@ -314,26 +317,28 @@
 		   <p>... and many more.</p>
 
         </aside>
-
         
+        <aside class="note">
+			<p>Previous versions of this document used the term "international preferences" for the concept of a [=local preference=].</p>
+        </aside>        
         
-        <p class="definition"><dfn>Locale</dfn>. A particular set of <a>international preferences</a> for a specific language, including regional or other tailorings.</p>
+        <p class="definition"><dfn>Locale</dfn>. A particular set of <a>local preferences</a> for a specific group of people who share linguistic, regional, formatting, or cultural affinity. A locale is passed in APIs or set in the operating environment to obtain culturally-affected behavior within a system or process.</p>
         
-        <p>There can be hundreds or thousands of different individual <a>international preferences</a> required to <a>internationalize</a> and <a>localize</a> a bit of software. However, most users share their preferences with other speakers of the same language within a given region. While specific overrides are sometimes useful, in most cases software represents the pre-tailored complete set of <a>international preferences</a> using a single, all-encompassing setting called a <a>locale</a>.</p>
+        <p>There can be hundreds or thousands of different individual <a>local preferences</a> required to <a>internationalize</a> and <a>localize</a> a bit of software. However, most users share their preferences with other speakers of the same language within a given region. While specific user preferences are sometimes useful as overrides, software will represent the pre-tailored complete set of <a>local preferences</a> using a single, all-encompassing setting called a <a>locale</a>. A locale will also include the range of applicable values for a given <a>local preference</a> in cases where a user might wish to override the default.</p>
         
-        <p>The <a>locale</a> is applied to processes such as selecting content in the most appropriate language; presenting numbers, dates, or times shown next to or within such content; sorting lists linguistically; providing defaults for items such as the presentation of a calendar, or common units of measurement; selecting between 12- vs. 24-hour time presentation; and many other details that users might find too tedious to set individually.</p>
+        <p>The <a>locale</a> is applied to processes such as selecting content in the most appropriate language; presenting data values such as numbers, dates, or times shown next to or within such content; sorting lists linguistically; providing defaults for items such as the presentation of a calendar, or common units of measurement; selecting between 12- vs. 24-hour time presentation; and many other details that users might find too tedious to set individually.</p>
         
-        <p class="definition"><dfn>Locale Identifier</dfn>. An identifier (often a <a>language tag</a>) for a <a>locale</a>. Usually this identifier indicates the preferred language of the user. It can also possibly include other information, such as a geographic region (such as a country). A locale is passed in APIs or set in the operating environment to obtain culturally-affected behavior within a system or process.</p>
+        <p class="definition"><dfn>Locale Identifier</dfn>. An identifier (often a <a>language tag</a>) for a <a>locale</a>. Usually this identifier indicates the preferred language of the user. It can also include other information, such as a geographic region (such as a country).</p>
         
-        <p>Each <a>locale</a> is associated with a <a>locale identifier</a>. Some APIs allow the identifier to be passed directly. Others require the user to create a locale data objection (such as JavaScript's <code>Intl.Locale</code> or Java's <code>java.util.Locale</code>) that is passed to APIs. Often there is a global environment setting that contain the current program or thread-specific locale or locale identifier.</p>
+        <p>Each <a>locale</a> is associated with a <a>locale identifier</a>. Some APIs allow the identifier to be passed directly. Others require the user to create a locale data object (such as JavaScript's <code>Intl.Locale</code> or Java's <code>java.util.Locale</code>) that is passed to APIs. Often there is a global environment setting that contain the current program or thread-specific locale or locale identifier.</p>
         
         <p>Historically, <a>locale identifiers</a> were associated with (and specific to) the programming language or operating environment of the user. These application-specific identifiers might contain a <a>language tag</a> (although some did not). They often could be inferred from or converted into <a>language tags</a>. Some examples of locale models include Java's <code>java.util.Locale</code>, POSIX (with identifiers such as <code>de_CH@utf8</code>), Oracle databases (<code>AMERICAN_AMERICA.AL32UTF8</code>), or Microsoft's LCIDs (which used numeric codes such as <code>0x0409</code>). The relationship between several of these models, the underlying standards such as ISO639 or ISO3166, and early language tags (such as [[RFC1766]]) was entirely intentional. Implementations often mapped (and continue to map) language tags from an existing protocol, such as HTTP's Accept-Language header, to proprietary or platform-specific locale models.</p>
         
-        <p><a>Language tags</a> can provide information about the language, script, region, and various specially-registered variants using subtags. But sometimes there are <a>international preferences</a> that do not correlate directly with any of these. For example, many cultures have more than one way of sorting content items, and so the appropriate sort ordering cannot always be inferred from the language tag by itself. Thus a German language user might want to choose between the sort ordering used in a dictionary versus that used in a phone book.</p>
+        <p><a>Language tags</a> can provide information about the language, script, region, and various specially-registered variants using subtags. But sometimes there are <a>local preferences</a> that do not correlate directly with any of these. For example, many cultures have more than one way of sorting content items, and so the appropriate sort ordering cannot always be inferred from the language tag by itself. Thus a German language user might want to choose between the sort ordering used in a dictionary versus that used in a phone book.</p>
         
         <p>Since the adoption of the current [[BCP47]] identifier syntax, a number of locale models have adopted BCP47 directly or provided adaptation or mappings between proprietary models and <a>language tags</a>. Notably, the development and adoption of the open-source repository of locale data known as [[CLDR]] has led to wider general adoption of <a>language tags</a> as <a>locale identifiers</a>. The extensions to [[BCP47]] that define <a>Unicode locales</a> [[CLDR]] provide the basis for <a>internationalization</a> APIs on the Web. For example, the JavaScript language [[ECMASCRIPT]] uses <a>Unicode locales</a> as the basis for the APIs found in [[ECMA-402]].</p>
 
-        <p class="definition"><dfn data-lt="locale aware|locale-aware|enabled|enable">Locale-aware</dfn> (or <em>Enabled</em>). Any system or component of a system (such as a library or API) that can respond to changes in the <a>locale</a> with cultural- or language-specific behavior or content. Generally, software that is internationalized can support a wide range of <a>locales</a> in order to meet the <a>international preferences</a> of many kinds of users.</p>
+        <p class="definition"><dfn data-lt="locale aware|locale-aware|enabled|enable">Locale-aware</dfn> (or <em>Enabled</em>). Any system or component of a system (such as a library or API) that can respond to changes in the <a>locale</a> with cultural- or language-specific behavior or content. Generally, software that is internationalized can support a wide range of <a>locales</a> in order to meet the <a>local preferences</a> of many kinds of users.</p>
         
 
         
@@ -347,7 +352,7 @@
         
         <p class="definition"><dfn data-lt="canonical Unicode locale identifier|canonical tag|canonical locale">Canonical Unicode locale identifier</dfn>. A <a>well-formed language tag</a> resulting from the application of the <a>Unicode locale identifier</a> canonicalization rules found in [[LDML]] (see <a href="https://www.unicode.org/reports/tr35/#Unicode_locale_identifier">Section 3</a>). This process converts any <a>valid</a> [[BCP47]] <a>language tag</a> into a valid <a>Unicode locale identifier</a>.  For example, deprecated subtags or irregular grandfathered tags are replaced with their preferred value from the <a>IANA language subtag registry</a>.</p>
                 
-        <p>[[CLDR]] defines and maintains two <a>language tag extensions</a> ([[RFC6067]] and [[RFC6497]]) that are related to <a>Unicode locale identifiers</a>. These extensions allow a <a>language tag</a> to express some <a>international preference</a> variations that go beyond linguistic or regional variation or to select formatting behavior or content when there are multiple options or user preferences within a given locale. <a>Unicode locale identifiers</a> are not required to include these extensions: they are only used when the locale being identified requires additional tailoring provided by one of these extensions. [[CLDR]] also applies specific interpretation of certain subtags when used as a locale identifier. See <a href="https://www.unicode.org/reports/tr35/tr35.html#Unicode_locale_identifier">Section 3.2</a> of [[LDML]] for details.</p>
+        <p>[[CLDR]] defines and maintains two <a>language tag extensions</a> ([[RFC6067]] and [[RFC6497]]) that are related to <a>Unicode locale identifiers</a>. These extensions allow a <a>language tag</a> to express some <a>local preference</a> variations that go beyond linguistic or regional variation or to select formatting behavior or content when there are multiple options or user preferences within a given locale. <a>Unicode locale identifiers</a> are not required to include these extensions: they are only used when the locale being identified requires additional tailoring provided by one of these extensions. [[CLDR]] also applies specific interpretation of certain subtags when used as a locale identifier. See <a href="https://www.unicode.org/reports/tr35/tr35.html#Unicode_locale_identifier">Section 3.2</a> of [[LDML]] for details.</p>
         
         <p>The <strong>Unicode locale <a>language tag extension</a></strong> [[RFC6067]] uses the <code>-u-</code> subtag, and provides subtags for selecting different locale-based formats and behaviors. See <a href="https://www.unicode.org/reports/tr35/tr35.html#Locale_Extension_Key_and_Type_Data">Section 3.6</a> of [[LDML]] for details.</p>
       
