@@ -50,6 +50,31 @@
 
     </script>
     <link rel="stylesheet" href="local.css" />
+    <style>
+		table.locale-examples {
+    border-collapse: collapse;
+}
+
+.locale-examples th,
+.locale-examples td {
+    vertical-align: center;
+}
+
+.locale-examples th {
+	text-align: center;
+}
+
+.locale-examples .numeric {
+    text-align: right;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    white-space: nowrap;
+}
+
+.locale-examples {
+    font-variant-numeric: tabular-nums;
+}
+    </style>
   </head>
   <body>
     <section id="abstract">
@@ -93,20 +118,23 @@
       <section id="language-terminology">
         <h3>Languages and Language Tags</h3>
         
-        <p>Tags for identifying the <a>natural language</a> of content or the <a>international preferences</a> of users are one of the fundamental building blocks of the Web. The <a>language tags</a> found in Web and Internet formats and protocols are defined by [[BCP47]]. Consistent use of language tags provides applications the ability to perform language-specific formatting or processing. For example, a user-agent might use the language to select an appropriate font for displaying text or a Web page designer might style text differently in one language than in another.</p>
+        <p>Tags for identifying the <a>natural language</a> of content or the <a>locale</a> of users are one of the fundamental building blocks of the Web. The <a>language tags</a> found in Web and Internet formats and protocols are defined by [[BCP47]]. Consistent use of language tags provides applications the ability to perform language-specific formatting or processing. For example, a user-agent might use the language to select an appropriate font for displaying text or a Web page designer might style text differently in one language than in another.</p>
         
         <p>Many of the core standards for the Web include support for <a>language tags</a>; these include the <code>xml:lang</code> attribute in [[XML10]], the <code>lang</code> and <code>hreflang</code> atttributes in [[HTML]], the <code>language</code> property in [[XSL10]], and the <code>:lang</code> pseudo-class in CSS [[CSS3-SELECTORS]], and many others, including SVG, TTML, SSML, etc.</p>
-<p class="definition"><dfn data-lt="natural language|language">Natural Language</dfn> (or, in this document, just <em>language</em>). The spoken, written, or signed communications used by human beings.</p>
+        
+        <p class="definition"><dfn data-lt="natural language|language">Natural Language</dfn> (or, in this document, just <em>language</em>). The spoken, written, or signed communications used by human beings.</p>
         
         <p>There are many ways that languages might be identified and many reasons that software might need to identify the language of content on the Web. Document formats and protocols on the Web generally use the identifiers used in most other parts of the Internet, consisting of the language tags defined in [[BCP47]]. "BCP" nomenclature refers to the current set of IETF RFCs that form the "best current practice".</p>
-<p class="definition"><dfn data-lt="language tag|language tags">Language tag</dfn>. A string used as an identifier for a language. In this document, the term <em>language tag</em> always refers explicitly to a [[BCP47]] language tag. These language tags consist of one or more subtags.</p>
+        
+        <p class="definition"><dfn data-lt="language tag|language tags">Language tag</dfn>. A string used as an identifier for a language. In this document, the term <em>language tag</em> always refers explicitly to a [[BCP47]] language tag. These language tags consist of one or more subtags.</p>
         
         <p class="advisement" id="ltli-bcp47-refer"><a class="self" href="#ltli-bcp47-refer">&#x200B;</a>Specifications for the Web that require language identification MUST refer to [[BCP47]]. </p>
         
         <p class="advisement" id="ltli-no-rfc-refs"><a href="#ltli-no-rfc-refs" class="self">&#x200B;</a>Specifications SHOULD NOT refer to specific component RFCs of [[BCP47]].</p>
         
-        <p>[[BCP47]] is a multipart document consisting, at the time this document was published, of two separate RFCs. The first part, called <em>Tags for Identifying Languages</em> [[RFC5646]], defines the grammar, form, and terminology of language tags. The second part, called <em>Matching of Language Tags</em> [[RFC4647]], describes several schemes for matching, comparing, and selecting content using language tags and includes useful terminology related to comparison of language preferences to tagged content.        </p>
-<p class="advisement" id="ltli-successor-ref"><a href="#ltli-successor-ref" class="self">&#x200B;</a>Formulations such as "<span class="quote">RFC 5646 or its successor</span>" MAY be used, but only in cases where the specific document version is necessary.</p>
+        <p>[[BCP47]] is a multipart document consisting, at the time this document was published, of two separate RFCs. The first part, called <em>Tags for Identifying Languages</em> [[RFC5646]], defines the grammar, form, and terminology of language tags. The second part, called <em>Matching of Language Tags</em> [[RFC4647]], describes several schemes for matching, comparing, and selecting content using language tags and includes useful terminology related to comparison of language preferences to tagged content.</p>
+        
+        <p class="advisement" id="ltli-successor-ref"><a href="#ltli-successor-ref" class="self">&#x200B;</a>Formulations such as "<span class="quote">RFC 5646 or its successor</span>" MAY be used, but only in cases where the specific document version is necessary.</p>
         
         <p>While this style of reference was once popular, using the BCP reference is more accurate. Since the grammar of language tags has been fixed since [[RFC4646]], referring to the BCP will not incur additional compliance risk to most implementations.</p>
         
@@ -193,8 +221,6 @@
         
         <p>For example, JavaScript internationalization [[ECMA-402]] and [[CLDR]] provide a "best fit" algorithm which can be tailored by implementers.</p>
 
-      
-        
     </section>
 
       <section id="i18n-terminology">
@@ -202,19 +228,14 @@
         
         <p><em>This section defines basic terminology related to internationalization and localization.</em></p>
         
-        <p>Users who speak different languages or come from different cultural backgrounds usually require software and services that are adapted to correctly process information using their native languages, writing systems, measurement systems, calendars, and other linguistic rules and cultural conventions.</p>
-<p><a>Language tags</a> can also be used to identify <a>international preferences</a> associated with a given piece of content or user because these preferences are linked to the natural language, regional association, or culture of the end user. Such preferences are applied to processes such as presenting numbers, dates, or times; sorting lists linguistically; providing defaults for items such as the presentation of a calendar, or common units of measurement; selecting between 12- vs. 24-hour time presentation; and many other details that users might find too tedious to set individually. Collectively, an identifier for these preferences is usually called a <a>locale</a>. The extensions to [[BCP47]] that define <a>Unicode locales</a> [[CLDR]] provide the basis for <a>internationalization</a> APIs on the Web, notably the JavaScript language [[ECMASCRIPT]] uses <a>Unicode locales</a> as the basis for the APIs found in [[ECMA-402]].</p>
-          
-        <p class="definition"><dfn id="international-preferences" data-lt="international preferences">International Preferences.</dfn> A user's particular set of language and formatting preferences and associated cultural conventions. Software can use these preferences to correctly process or present information exchanged with that user.</p>
-          
-        <p>Many kinds of <a>international preference</a> may be offered
-          on the Web in order for a content or a service to be considered usable
-          and acceptable by users around the world. Some of these preferences
-          might include:
-      <ul>
-          <li>Natural language for text processing, such as parsing, spell checking, and
-            grammar checking;</li>
-          <li>User interface language, which may include items like images,
+        <p class="definition"><dfn id="internationalization" data-lt="internationalization|I18N|internationalized">Internationalization</dfn>. The design and development of a product that is enabled for target audiences that vary in culture, region, or language. Internationalization is sometimes abbreviated <code>i18n</code> because there are eighteen letters between the "I" and the "N" in the English word.</p>
+        
+        <p class="definition"><dfn data-lt="localization|localized|L10N|localize">Localization</dfn>. The tailoring of a given software component to the individual cultural expectations of a specific target market or group of individuals. Localization includes, but is not limited to, the translation of user-facing text and messages. Localization is sometimes abbreviated as <code>l10n</code> because there are ten letters between the "L" and the "N" in the English word. When a particular set of content and preferences corresponding to a specific locale is operationally available, then the software is said to be <em>localized</em>.</p>
+        
+        <p>Users who speak different languages or come from different cultural backgrounds usually require software and services that are adapted to correctly process or present information using their native languages, writing systems, measurement systems, calendars, and other linguistic rules and cultural conventions. Some of these preferences might include:
+        <ul>
+          <li>Natural language for text processing, such as parsing, spell checking, grammar checking, or boundary analysis;</li>
+          <li>User interface language, which can include items such as images,
             colors, sounds, formats, and navigational elements as well as the
             visible text strings;</li>
           <li>Presentation (human-oriented formatting) of dates, times, numbers,
@@ -223,33 +244,115 @@
             phone book or a dictionary);</li>
           <li>Alternate time-keeping and calendars, which may include holidays,
             work rules, weekday/weekend distinctions, the number and
-            organization of months, the numbering of years, and so forth;</li>
+            organization of months, the numbering of years and their organization into eras, and so forth;</li>
           <li>Tax or regulatory regime;</li>
           <li>Currency</li>
-        </ul>
-        ... and many more. </p>
-        
-        <p class="definition"><dfn id="internationalization" data-lt="internationalization|I18N|internationalized">Internationalization</dfn>. The design and development of a product that is enabled for target audiences that vary in culture, region, or language. Internationalization is sometimes abbreviated <code>i18n</code> because there are eighteen letters between the "I" and the "N" in the English word.</p>
-        
-        <p class="definition"><dfn data-lt="localization|localized|L10N">Localization</dfn>. The tailoring of a system to the individual cultural expectations of a specific target market or group of individuals. Localization includes, but is not limited to, the translation of user-facing text and messages. Localization is sometimes abbreviated as <code>l10n</code> because there are ten letters between the "L" and the "N" in the English word. When a particular set of content and preferences corresponding to a specific set of international preferences is operationally available, then the system is said to be <em>localized</em>.</p>
+          </ul>
+          ... and many more. </p>
           
-        <p class="definition"><dfn id="locale" data-lt="locale|locales">Locale</dfn>. An identifier (such as a <a>language tag</a>) for a set of <a>international preferences</a>. Usually this identifier indicates the preferred language of the user and possibly includes other information, such as a geographic region (such as a country). A locale is passed in APIs or set in the operating environment to obtain culturally-affected behavior within a system or process.</p>
+        <p>The work to enable software to have language and culturally sensitive processing is called <a>internationalization</a>. It is primarily the work of the software developers, since it involves using the correct APIs and libraries and making appropriate modifications to the source code.</p>
         
-        <p class="definition"><dfn data-lt="locale aware|locale-aware|enabled|enable">Locale-aware</dfn> (or <em>Enabled</em>). A system that can respond to changes in the <a>locale</a> with culturally and language-specific behavior or content. Generally, systems that are internationalized can support a wide range of <a>locales</a> in order to meet the <a>international preferences</a> of many kinds of users.</p>
+        <p class="definition"><dfn data-lt="localizable resource|resource">Localizable Resource</dfn>. The portion of the software's source code that can be translated or adjusted to suit local language or cultural requirements. This term is usually shortened to "resource" or "resources", which is confusingly similar to the more generic term <a href="https://www.w3.org/TR/i18n-glossary#dfn-resource">resource</a> used commonly on the Web.</p>
         
-        <p><a>Language tags</a> can provide information about the language, script, region, and various specially-registered variants using subtags. But sometimes there are international preferences that do not correlate directly with any of these. For example, many cultures have more than one way of sorting content items, and so the appropriate sort ordering cannot always be inferred from the language tag by itself. Thus a German language user might want to choose between the sort ordering used in a dictionary versus that used in a phone book.</p>
+        <p>Internationalization includes separating the portion of the software that requires translation or adaptation from the portion of the software that is common to all language or regional versions. These separated portions of the software are the <a>localizable resources</a> and are often stored in special files ("resource files") in specific locations in the source tree. The most common <a>localizable resources</a> are user interface strings and messages.</p>
         
-        <p>Historically, locales were associated with and specific to the programming language or operating environment of the user. These application-specific identifiers often could be inferred from or converted into language tags. Some examples of locale models include Java's <code>java.util.Locale</code>, POSIX (with identifiers such as <code>de_CH@utf8</code>), Oracle databases (<code>AMERICAN_AMERICA.AL32UTF8</code>), or Microsoft's LCIDs (which used numeric codes such as <code>0x0409</code>). The relationship between several of these models, the underlying standards such as ISO639 or ISO3166, and early language tags (such as [[RFC1766]]) was entirely intentional. Implementations often mapped (and continue to map) language tags from an existing protocol, such as HTTP's Accept-Language header, to proprietary or platform-specific locale models.</p>
+        <p>The work to create specific language versions (including versions tailored for specific regions) is called <a>localization</a>. This includes translation of the <a>localizable resources</a> created during internationalization.</p>
         
-        <p>Since the adoption of the current [[BCP47]] identifier syntax, a number of locale models have adopted BCP47 directly or provided adaptation or mappings between proprietary models and <a>language tags</a>. Notably, the development and adoption of the open-source repository of locale data known as [[CLDR]] has led to wider general adoption of <a>language tags</a> as <a>locale</a> identifiers.</p>
+        <p class="definition"><dfn id="local-preference" data-lt="international preferences|local preference">Local Preference</dfn>. A particular  preference associated with a group of people who share linguistic, regional, formatting, or cultural affinity.</p>
         
-        <p class="definition"><dfn data-lt="common locale data repository|CLDR">Common Locale Data Repository</dfn> (or <em>[[CLDR]]</em>). The Common Locale Data Repository is a Unicode Consortium project that defines, collects, and curates sets of data needed to enable <a>locales</a> in systems or operating environments. CLDR data and its locale model are widely adopted, particularly in browsers.</p>
+        <p>When constructing an internationalized piece of software, the developer has to be aware of and account for the various ways in which a user might wish for display or functionality to be adapted to suit local needs. Each such individual setting might be considered to be its own <a>local preference</a>. Groups of preferences might be necessary in order for the content or software to be considered usable and acceptable by users around the world.</p>
+        
+        <aside class="example" title="Local preferences when formatting a number">
+           <p>The range of variation in local preferences for something as simple as formatting a number can be quite wide. Some of the local preferences for this might include:</p>
+           
+           <table class="locale-examples">
+			   <thead>
+				   <tr>
+					   <th>Local Preference</th>
+					   <th>US English</th>
+					   <th>Local</th>
+					   <th>Variation</th>
+				   </tr>
+			   </thead>
+			   <tbody>
+			   <tr>
+				   <td>Decimal Separator</td>
+				   <td class="numeric">8.9</td>
+				   <td class="numeric">8,9</td>
+				   <td>Comma</td>
+			   </tr>
+			   <tr>
+				   <td rowspan=3>Grouping Separator</td>
+				   <td rowspan=3 class="numeric">5,678</td>
+				   <td class="numeric">5'678</td>
+				   <td>Apostrophe</td>
+			   </tr>
+			   <tr>
+				   <td class="numeric">5&#x202f;678</td>
+				   <td>Narrow no-break space</td>
+			   </tr>
+			   <tr>
+				   <td class="numeric">5.678</td>
+				   <td>Period</td>
+			   </tr>
+			   <tr>
+				   <td>Grouping Strategy</td>
+				   <td class="numeric">12,345,678.9</td>
+				   <td class="numeric">1,23,45,678.9</td>
+				   <td>"lakh" style common in South Asian languages</td>
+			   </tr>
+			   <tr>
+				   <td rowspan=2>Digit Shapes</td>
+				   <td class="numeric" rowspan=2>1,23,45,678.9</td>
+				   <td lang="hi-IN" class="numeric">&#x967;,&#x968;&#x969;,&#x96A;&#x96B;,&#x96C;&#x96D;&#x96E;.&#x96F;</td>
+				   <td>Devanagari digits, such as used in Hindi</td>
+			   </tr>
+			   <tr>
+				   <td lang="ar-EG" dir="rtl" class="numeric">&#x661;&#x662;&#x66C;&#x663;&#x664;&#x665;&#x66C;&#x666;&#x667;&#x668;&#x66B;&#x669;</td>
+				   <td>Arabic digits</td>
+			   </tr>
+			   </tbody>
+           </table>
+           
+		   <p>... and many more.</p>
+
+        </aside>
+        
+        <aside class="note">
+			<p>Previous versions of this document used the term "international preferences" for the concept of a [=local preference=].</p>
+        </aside>        
+        
+        <p class="definition"><dfn>Locale</dfn>. A particular set of <a>local preferences</a> for a specific group of people who share linguistic, regional, formatting, or cultural affinity.</p>
+        
+        <p>There can be hundreds or thousands of different individual <a>local preferences</a> required to <a>internationalize</a> and <a>localize</a> a bit of software. However, most users share their preferences with other speakers of the same language within a given region. While specific user preferences are sometimes useful as overrides, software will represent the pre-tailored complete set of <a>local preferences</a> using a single, all-encompassing setting called a <a>locale</a>. A locale will also include the range of applicable values for a given <a>local preference</a> in cases where a user might wish to override the default.</p>
+        
+        <p>The <a>locale</a> is applied to processes such as selecting content in the most appropriate language; presenting data values such as numbers, dates, or times shown next to or within such content; sorting lists linguistically; providing defaults for items such as the presentation of a calendar, or common units of measurement; selecting between 12- vs. 24-hour time presentation; and many other details that users might find too tedious to set individually.</p>
+        
+        <p class="definition"><dfn>Locale Identifier</dfn>. An identifier (often a <a>language tag</a>) for a <a>locale</a>. Usually this identifier indicates the preferred language of the user. It can also include other information, such as a geographic region (such as a country).  A locale identifier is passed in APIs or used to set the locale in the operating environment to obtain culturally-affected behavior within a system or process.</p>
+        
+        <p>Each <a>locale</a> is associated with a <a>locale identifier</a>. Some APIs allow the identifier to be passed directly. Others require the user to create a locale data object (such as JavaScript's <code>Intl.Locale</code> or Java's <code>java.util.Locale</code>) that is passed to APIs. Often there is a global environment setting that contain the current program or thread-specific locale or locale identifier.</p>
+        
+        <p>Historically, <a>locale identifiers</a> were associated with (and specific to) the programming language or operating environment of the user. These application-specific identifiers might contain a <a>language tag</a> (although some did not). They often could be inferred from or converted into <a>language tags</a>. Some examples of locale models include Java's <code>java.util.Locale</code>, POSIX (with identifiers such as <code>de_CH@utf8</code>), Oracle databases (<code>AMERICAN_AMERICA.AL32UTF8</code>), or Microsoft's LCIDs (which used numeric codes such as <code>0x0409</code>). The relationship between several of these models, the underlying standards such as ISO639 or ISO3166, and early language tags (such as [[RFC1766]]) was entirely intentional. Implementations often mapped (and continue to map) language tags from an existing protocol, such as HTTP's Accept-Language header, to proprietary or platform-specific locale models.</p>
+        
+        <p><a>Language tags</a> can provide information about the language, script, region, and various specially-registered variants using subtags. But sometimes there are <a>local preferences</a> that do not correlate directly with any of these. For example, many cultures have more than one way of sorting content items, and so the appropriate sort ordering cannot always be inferred from the language tag by itself. Thus a German language user might want to choose between the sort ordering used in a dictionary versus that used in a phone book.</p>
+        
+        <p>Since the adoption of the current [[BCP47]] identifier syntax, a number of locale models have adopted BCP47 directly or provided adaptation or mappings between proprietary models and <a>language tags</a>. Notably, the development and adoption of the open-source repository of locale data known as [[CLDR]] has led to wider general adoption of <a>language tags</a> as <a>locale identifiers</a>. The extensions to [[BCP47]] that define <a>Unicode locales</a> [[CLDR]] provide the basis for <a>internationalization</a> APIs on the Web. For example, the JavaScript language [[ECMASCRIPT]] uses <a>Unicode locales</a> as the basis for the APIs found in [[ECMA-402]].</p>
+
+        <p class="definition"><dfn data-lt="locale aware|locale-aware|enabled|enable">Locale-aware</dfn> (or <em>Enabled</em>). Any system or component of a system (such as a library or API) that can respond to changes in the <a>locale</a> with cultural- or language-specific behavior or content. Generally, software that is internationalized can support a wide range of <a>locales</a> in order to meet the <a>local preferences</a> of many kinds of users.</p>
+        
+
+        
+
+        
+
+        
+        <p class="definition"><dfn data-lt="common locale data repository|CLDR" class="lint-ignore">Common Locale Data Repository</dfn> (or <em>[[CLDR]]</em>). The Common Locale Data Repository is a Unicode Consortium project that, using formats and processes found in [[LDML]], defines, collects, and curates the data needed to enable <a>locales</a> in systems or operating environments. CLDR data and its locale model are widely adopted, particularly in browsers.</p>
         
         <p class="definition"><dfn data-lt="unicode locale|unicode locale identifier|unicode locale identifiers|unicode locales">Unicode Locale Identifier</dfn> or <em>Unicode Locale</em>. A <a>language tag</a> that follows the additional rules and restrictions on subtag choice defined in UTR#35 [[LDML]]. Any valid Unicode locale identifier is also a <a>valid</a> [[BCP47]] <a>language tag</a>, but a few <a>valid language tags</a> are not also valid Unicode locale identifiers.</p>
         
         <p class="definition"><dfn data-lt="canonical Unicode locale identifier|canonical tag|canonical locale">Canonical Unicode locale identifier</dfn>. A <a>well-formed language tag</a> resulting from the application of the <a>Unicode locale identifier</a> canonicalization rules found in [[LDML]] (see <a href="https://www.unicode.org/reports/tr35/#Unicode_locale_identifier">Section 3</a>). This process converts any <a>valid</a> [[BCP47]] <a>language tag</a> into a valid <a>Unicode locale identifier</a>.  For example, deprecated subtags or irregular grandfathered tags are replaced with their preferred value from the <a>IANA language subtag registry</a>.</p>
                 
-        <p>[[CLDR]] defines and maintains two <a>language tag extensions</a> ([[RFC6067]] and [[RFC6497]]) that are related to <a>Unicode locale identifiers</a>. These extensions allow a <a>language tag</a> to express some <a>international preference</a> variations that go beyond linguistic or regional variation or to select formatting behavior or content when there are multiple options or user preferences within a given locale. <a>Unicode locale identifiers</a> are not required to include these extensions: they are only used when the locale being identified requires additional tailoring provided by one of these extensions. [[CLDR]] also applies specific interpretation of certain subtags when used as a locale identifier. See <a href="https://www.unicode.org/reports/tr35/tr35.html#Unicode_locale_identifier">Section 3.2</a> of [[LDML]] for details.</p>
+        <p>[[CLDR]] defines and maintains two <a>language tag extensions</a> ([[RFC6067]] and [[RFC6497]]) that are related to <a>Unicode locale identifiers</a>. These extensions allow a <a>language tag</a> to express some <a>local preference</a> variations that go beyond linguistic or regional variation or to select formatting behavior or content when there are multiple options or user preferences within a given locale. <a>Unicode locale identifiers</a> are not required to include these extensions: they are only used when the locale being identified requires additional tailoring provided by one of these extensions. [[CLDR]] also applies specific interpretation of certain subtags when used as a locale identifier. See <a href="https://www.unicode.org/reports/tr35/tr35.html#Unicode_locale_identifier">Section 3.2</a> of [[LDML]] for details.</p>
         
         <p>The <strong>Unicode locale <a>language tag extension</a></strong> [[RFC6067]] uses the <code>-u-</code> subtag, and provides subtags for selecting different locale-based formats and behaviors. See <a href="https://www.unicode.org/reports/tr35/tr35.html#Locale_Extension_Key_and_Type_Data">Section 3.6</a> of [[LDML]] for details.</p>
       
@@ -492,7 +595,7 @@
 			</table>
         </aside>
         
-        <p class="definition"><dfn>Language negotiation</dfn>. The process of matching a user's <a>international preferences</a> to available locales, localized resources, content, or processing.</p>
+        <p class="definition"><dfn>Language negotiation</dfn>. The process of matching a user's <a>locale</a> to the available locales, localized resources, content, or processing.</p>
         
         <p class="definition"><dfn data-lt="locale fallback|fallback">Locale fallback</dfn>. The process of searching for translated content, locale data, or other resources by "falling back" from more-specific resources to more-general ones following a deterministic pattern.</p>
         
@@ -510,7 +613,59 @@
         
         <p>Users expect form fields and other data inputs to use a presentation for <a>non-linguistic fields</a> that is consistent with the document or application where the values appear. User's usually expect their input to match the document's context rather than the user-agent or operating environments and input validation, prompting, or controls are also thus consistent with the content. This gives content authors the ability to create a wholly localized customer experience and is generally in keeping with customer expectations.</p>
       </section>
-      
+   
+       <section id="metadata-versus-text-processing">
+		<h3>Choosing between metadata and text-processing language</h3>
+		
+		<p>There are two common uses for language tags in document formats, protocols, and specifications. In some cases, language tags are used to provide metadata about intended audience for collections of content, such as at the record or document level. In other cases, language tags are used to identify the language of specific bits of text in order to facilitate text processing.</p>
+		
+        <section id="intended-audience">
+			<h5>The language of the intended audience</h5>
+
+            <p>Metadata that describes the language of the intended audience is about <strong>the document as a whole</strong>. Such metadata may be used for searching, serving the right language version, classification, etc. Where there are language changes in a document, information about the language of the intended audience is not specific enough to support text-processing, that is to say, in a way that would be needed for the application of text-to-speech, styling, automatic font assignment, etc.</p>
+
+            <p>The language of the intended audience does not include every language used in a document. Many documents on the Web contain embedded fragments of content in different languages, whereas the page is clearly aimed at speakers of one particular language. For example, a German city-guide for Beijing may contain useful phrases in Chinese, but it is aimed at a German-speaking audience, not a Chinese one.</p>
+
+            <p>On the other hand, it is also possible to imagine a situation where a document contains the same or parallel content in more than one language. For example, a Web page may welcome Canadian readers with French content in the left column, and the same content in English in the right-hand column. Here the document is equally targeted at speakers of both languages, so there are two audience languages. This situation is not as common on the Web as in printed material since it is easy to link to separate pages on the Web for different audiences, but it does occur where there are multilingual communities. Another use case is a blog or a news page aimed at a multilingual community, where some articles on a page are in one language and some in another.</p>
+
+            <p>There are also pages where the navigational information, including the page title, is in one language but the real content of the page is in another. While this is not necessarily good practice, it doesn't change the fact that the language of the intended audience is usually that of the content, regardless of the language at the top of the document source.</p>
+
+            <p>Metadata about the language of the intended audience is usually best declared outside the document, such as in the HTTP <span class="kw" translate="no">Content-Language</span> header.</p>
+        </section>
+        
+        <section>
+			<h5>The text-processing language</h5>
+
+            <p>When specifying the text-processing language you are declaring the language in which a specific range of text is actually written, so that user agents or applications that manipulate the text (such as voice browsers, spell checkers, or style processors) can process the text in a language-appropriate manner. So we are, by necessity, talking about associating a single language with a specific range of text.</p>
+
+            <p>This specificity distinguishes the declaration of the language for text-processing from that of the language of the intended audience.</p>
+
+            <p>The language for text-processing is usually best declared using attributes on elements, including setting a document-wide default.</p>
+
+            <aside class="example">
+                <p>For example the <span class="kw" translate="no">html</span> element in [[HTML]] contains all of the content of the document, so setting the <span class="kw" translate="no">lang</span> attribute sets the text-processing language for the whole document except where locally overridden. Enclosed elements inherit the declared value, but you can, of course, override an initial declaration by specifying a different language on embedded elements where the language changes, eg. a French phrase in an English paragraph:</p>
+                <pre>&lt;html lang="en" dir="ltr">
+   &lt;head>
+      &lt;title>This example is in English&lt;/title>
+      ...
+   &lt;/head>
+   &lt;body>
+       &lt;h1>This also inherits from &lt;code>html&lt;/code>&lt;/h1>
+       
+       &lt;p>The following example is in French:
+           &lt;!-- Text-processing in French inside the 'span' tag --&gt;
+           &lt;span lang="fr">cet exemple est en français&lt;/span>
+           &lt;!-- Text-processing reverts to English here --&gt;
+       &lt;/p>
+   &lt;/body>
+&lt;/html>
+                </pre>
+            </aside>
+            <aside class="note">
+				<p>The text-processing language can also be used as the locale identifier, such as when the user-agent must format data or when setting the <span class="kw" translate="no">Intl.Locale</span> for a JavaScript formatting function.</p>
+		    </aside>
+        </section>
+    </section>   
       
    <section id="further-reading">
    <h2>Further Reading</h2>

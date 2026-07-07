@@ -77,6 +77,15 @@ kbd {
    text-align: start;
 }
 
+.kw {
+   font-family: Menlo, Consolas, "DejaVu Sans Mono", Monaco, monospace;
+   font-size: .95em;
+   color: blue;
+   page-break-inside: avoid;
+   hyphens: none;
+   text-transform: none;
+}
+
 
 .summary {
     padding: 1em;
