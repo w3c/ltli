@@ -1,0 +1,26 @@
+name: Auto-publish
+
+on:
+  pull_request: {}
+  push:
+    branches: [gh-pages]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Build, validate and publish to /TR
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: w3c/spec-prod@v2
+        with:
+          TOOLCHAIN: respec
+          W3C_ECHIDNA_TOKEN: ${{ secrets.ECHIDNA_TOKEN }}
+          W3C_WG_DECISION_URL: https://www.w3.org/2016/04/07-i18n-minutes.html#item04
+          # Publish the Editor's Draft as a Working Draft.
+          W3C_BUILD_OVERRIDE: |
+            specStatus: DNOTE
+            shortName: ltli
